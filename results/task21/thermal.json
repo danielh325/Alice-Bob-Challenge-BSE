@@ -1,0 +1,338 @@
+{
+ "params": {
+  "g2": 4.7940703893780245,
+  "kappa_b": 16.336281798666924,
+  "kappa_a": 0.058433623356770145,
+  "kappa2": 5.627501087839128,
+  "units": "rad/us",
+  "source": "R\u00e9glade et al. 2024, Table S2"
+ },
+ "convention": "$\\Gamma_X$ = decay rate of Re$\\langle a\\rangle$ ($= 2\\times$ one-way jump rate)",
+ "cases": [
+  {
+   "n_th_a": 0.1,
+   "n_th_b": 0.011,
+   "points": [
+    {
+     "alpha": 0.8,
+     "gamma_x": 0.049925424627263036,
+     "trunc": {
+      "na": 14,
+      "nb": 5,
+      "nb_extra": 1,
+      "na_taper": 1.92
+     },
+     "dim": 72,
+     "wall_s": 0.31
+    },
+    {
+     "alpha": 1.0,
+     "gamma_x": 0.03636711027091417,
+     "trunc": {
+      "na": 15,
+      "nb": 5,
+      "nb_extra": 1,
+      "na_taper": 3.0
+     },
+     "dim": 78,
+     "wall_s": 1.63
+    },
+    {
+     "alpha": 1.2,
+     "gamma_x": 0.023841864775791158,
+     "trunc": {
+      "na": 18,
+      "nb": 5,
+      "nb_extra": 1,
+      "na_taper": 4.32
+     },
+     "dim": 95,
+     "wall_s": 1.02
+    },
+    {
+     "alpha": 1.4,
+     "gamma_x": 0.013393215130565642,
+     "trunc": {
+      "na": 20,
+      "nb": 5,
+      "nb_extra": 2,
+      "na_taper": 5.88
+     },
+     "dim": 109,
+     "wall_s": 1.79
+    },
+    {
+     "alpha": 1.6,
+     "gamma_x": 0.0062169275031849465,
+     "trunc": {
+      "na": 22,
+      "nb": 5,
+      "nb_extra": 3,
+      "na_taper": 7.68
+     },
+     "dim": 127,
+     "wall_s": 3.3
+    },
+    {
+     "alpha": 1.8,
+     "gamma_x": 0.002365432008338174,
+     "trunc": {
+      "na": 24,
+      "nb": 5,
+      "nb_extra": 4,
+      "na_taper": 9.72
+     },
+     "dim": 146,
+     "wall_s": 7.2
+    },
+    {
+     "alpha": 1.9,
+     "gamma_x": 0.0013585071818076136,
+     "trunc": {
+      "na": 25,
+      "nb": 5,
+      "nb_extra": 5,
+      "na_taper": 10.83
+     },
+     "dim": 160,
+     "wall_s": 7.26
+    },
+    {
+     "alpha": 2.0,
+     "gamma_x": 0.0007446843903890863,
+     "trunc": {
+      "na": 26,
+      "nb": 5,
+      "nb_extra": 6,
+      "na_taper": 12.0
+     },
+     "dim": 172,
+     "wall_s": 11.82
+    },
+    {
+     "alpha": 2.1,
+     "gamma_x": 0.0003905398191038279,
+     "trunc": {
+      "na": 28,
+      "nb": 5,
+      "nb_extra": 7,
+      "na_taper": 13.23
+     },
+     "dim": 196,
+     "wall_s": 21.73
+    }
+   ],
+   "check_alpha_2p1_nb_extra": {
+    "gamma_x": 0.0003908515451094308,
+    "trunc": {
+     "na": 28,
+     "nb": 5,
+     "nb_extra": 10,
+     "na_taper": 13.23
+    },
+    "dim": 217,
+    "wall_s": 36.44,
+    "rel_shift": 0.0007981926306981357
+   }
+  },
+  {
+   "n_th_a": 0.05,
+   "n_th_b": 0.011,
+   "points": [
+    {
+     "alpha": 0.8,
+     "gamma_x": 0.04764328155271477,
+     "trunc": {
+      "na": 14,
+      "nb": 5,
+      "nb_extra": 1,
+      "na_taper": 1.92
+     },
+     "dim": 72,
+     "wall_s": 0.22
+    },
+    {
+     "alpha": 1.0,
+     "gamma_x": 0.03502630671431225,
+     "trunc": {
+      "na": 15,
+      "nb": 5,
+      "nb_extra": 1,
+      "na_taper": 3.0
+     },
+     "dim": 78,
+     "wall_s": 0.27
+    },
+    {
+     "alpha": 1.2,
+     "gamma_x": 0.02312721634694708,
+     "trunc": {
+      "na": 18,
+      "nb": 5,
+      "nb_extra": 1,
+      "na_taper": 4.32
+     },
+     "dim": 95,
+     "wall_s": 0.74
+    },
+    {
+     "alpha": 1.4,
+     "gamma_x": 0.013051300738897155,
+     "trunc": {
+      "na": 20,
+      "nb": 5,
+      "nb_extra": 2,
+      "na_taper": 5.88
+     },
+     "dim": 109,
+     "wall_s": 1.42
+    },
+    {
+     "alpha": 1.6,
+     "gamma_x": 0.006073736416982338,
+     "trunc": {
+      "na": 22,
+      "nb": 5,
+      "nb_extra": 3,
+      "na_taper": 7.68
+     },
+     "dim": 127,
+     "wall_s": 3.18
+    },
+    {
+     "alpha": 1.8,
+     "gamma_x": 0.002313536101185877,
+     "trunc": {
+      "na": 24,
+      "nb": 5,
+      "nb_extra": 4,
+      "na_taper": 9.72
+     },
+     "dim": 146,
+     "wall_s": 6.37
+    },
+    {
+     "alpha": 1.9,
+     "gamma_x": 0.0013289047124817204,
+     "trunc": {
+      "na": 25,
+      "nb": 5,
+      "nb_extra": 5,
+      "na_taper": 10.83
+     },
+     "dim": 160,
+     "wall_s": 6.86
+    },
+    {
+     "alpha": 2.0,
+     "gamma_x": 0.0007284104512277833,
+     "trunc": {
+      "na": 26,
+      "nb": 5,
+      "nb_extra": 6,
+      "na_taper": 12.0
+     },
+     "dim": 172,
+     "wall_s": 8.51
+    },
+    {
+     "alpha": 2.1,
+     "gamma_x": 0.0003819114864789057,
+     "trunc": {
+      "na": 28,
+      "nb": 5,
+      "nb_extra": 7,
+      "na_taper": 13.23
+     },
+     "dim": 196,
+     "wall_s": 30.43
+    }
+   ]
+  },
+  {
+   "n_th_a": 0.0,
+   "n_th_b": 0.011,
+   "points": [
+    {
+     "alpha": 1.4,
+     "gamma_x": 0.012710254199748845,
+     "trunc": {
+      "na": 20,
+      "nb": 5,
+      "nb_extra": 2,
+      "na_taper": 5.88
+     },
+     "dim": 109,
+     "wall_s": 1.27
+    },
+    {
+     "alpha": 1.8,
+     "gamma_x": 0.002261968132301073,
+     "trunc": {
+      "na": 24,
+      "nb": 5,
+      "nb_extra": 4,
+      "na_taper": 9.72
+     },
+     "dim": 146,
+     "wall_s": 7.49
+    },
+    {
+     "alpha": 2.1,
+     "gamma_x": 0.00037336690106778644,
+     "trunc": {
+      "na": 28,
+      "nb": 5,
+      "nb_extra": 7,
+      "na_taper": 13.23
+     },
+     "dim": 196,
+     "wall_s": 34.35
+    }
+   ]
+  },
+  {
+   "n_th_a": 0.1,
+   "n_th_b": 0.0,
+   "points": [
+    {
+     "alpha": 1.4,
+     "gamma_x": 0.0007619872734437822,
+     "trunc": {
+      "na": 20,
+      "nb": 5,
+      "nb_extra": 2,
+      "na_taper": 5.88
+     },
+     "dim": 109,
+     "wall_s": 2.88
+    },
+    {
+     "alpha": 1.8,
+     "gamma_x": 8.511217576645394e-05,
+     "trunc": {
+      "na": 24,
+      "nb": 5,
+      "nb_extra": 4,
+      "na_taper": 9.72
+     },
+     "dim": 146,
+     "wall_s": 6.27
+    },
+    {
+     "alpha": 2.1,
+     "gamma_x": 1.1064085962277023e-05,
+     "trunc": {
+      "na": 28,
+      "nb": 5,
+      "nb_extra": 7,
+      "na_taper": 13.23
+     },
+     "dim": 196,
+     "wall_s": 32.17
+    }
+   ]
+  }
+ ],
+ "source": "R\u00e9glade et al. 2024, Table S2 / Sec. S5"
+}

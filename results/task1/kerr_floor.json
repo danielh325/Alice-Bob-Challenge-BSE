@@ -1,0 +1,54 @@
+{
+ "terms_rad_per_us": {
+  "kerr_a": -0.03103784647998964,
+  "kerr_a_floquet": -0.07968613060675378,
+  "kerr_b": -16.789395622977054,
+  "chi_ab": -1.253086900176413
+ },
+ "rows": [
+  {
+   "case": "none",
+   "error": 8.406479279465806e-06
+  },
+  {
+   "case": "kerr_a only",
+   "error": 4.199779385205549e-05
+  },
+  {
+   "case": "kerr_b only",
+   "error": 7.056157239171412e-06
+  },
+  {
+   "case": "chi_ab only",
+   "error": 7.995793419590669e-06
+  },
+  {
+   "case": "all (2.4a)",
+   "error": 5.367091275509939e-05
+  },
+  {
+   "case": "all, kerr_a Floquet",
+   "error": 0.00032830574486208963
+  },
+  {
+   "case": "kerr_a only + correction",
+   "error": 8.400104681616227e-06
+  },
+  {
+   "case": "all + correction",
+   "error": 7.484046538053235e-06
+  },
+  {
+   "case": "all, kerr_a Floquet + correction",
+   "error": 7.25678249546835e-06
+  },
+  {
+   "case": "all, kerr_a Floquet + correction for 2nd order",
+   "error": 0.00012429872178776336
+  },
+  {
+   "case": "all + correction for Floquet",
+   "error": 0.00012617401968462172
+  }
+ ]
+}

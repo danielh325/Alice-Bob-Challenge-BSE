@@ -1,0 +1,15 @@
+# Environment and caches
+.venv*/
+__pycache__/
+.pytest_cache/
+.ruff_cache/
+.coverage
+.ipynb_checkpoints/
+.DS_Store
+.claude/
+
+# Local knowledge graph (graphify)
+graphify-out/
+
+# Animation frame data (23 MB); rebuild with studies/task13_*_animation.py
+results/task1/*_animation.npz

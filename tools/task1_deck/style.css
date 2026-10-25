@@ -1,0 +1,417 @@
+/* === TOKENS ===
+   Swiss Modern: white page, black ink, one red accent, a visible column grid. */
+:root {
+    --ink: #0b0b0b;
+    --ink-2: #2a2a2a;
+    --grey: #6b6b6b;
+    --rule: #d9d9d9;
+    --grid: #f1f1f1;
+    --red: #ff3300;
+    --stage-bg: #dcdcdc;
+    --slide-bg: #ffffff;
+    --display: "Archivo", sans-serif;
+    --text: "Nunito", sans-serif;
+    --margin: 160px;
+    --col: 160px;
+}
+
+/* === SLIDE CANVAS ===
+   Faint vertical lines every 160 px: the grid every block snaps to. */
+.slide {
+    color: var(--ink);
+    font-family: var(--text);
+}
+
+.slide::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(90deg,
+            transparent 0 calc(var(--col) - 1px),
+            var(--grid) calc(var(--col) - 1px) var(--col));
+    pointer-events: none;
+}
+
+sub,
+sup {
+    font-size: .62em;
+    line-height: 0;
+}
+
+/* === HEADER ===
+   Red square, letter-spaced task tag, heavy headline. */
+.hd {
+    position: absolute;
+    left: var(--margin);
+    top: 80px;
+    width: 1600px;
+}
+
+.tag {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font: 800 18px/1 var(--display);
+    letter-spacing: .22em;
+    text-transform: uppercase;
+}
+
+.tag::before {
+    content: "";
+    width: 14px;
+    height: 14px;
+    background: var(--red);
+}
+
+.tag .dim {
+    color: var(--grey);
+}
+
+h2 {
+    margin: 22px 0 0;
+    max-width: 1560px;
+    font: 800 58px/1.04 var(--display);
+    letter-spacing: -.02em;
+}
+
+h2 em {
+    font-style: normal;
+    color: var(--red);
+}
+
+/* === BODY AREA ===
+   Everything between the headline and the footer lives in .body. */
+.body {
+    position: absolute;
+    left: var(--margin);
+    top: 290px;
+    width: 1600px;
+    height: 640px;
+}
+
+.cols {
+    display: grid;
+    gap: 64px;
+    height: 100%;
+    align-items: start;
+}
+
+.stack {
+    display: flex;
+    flex-direction: column;
+    gap: 26px;
+}
+
+/* === TEXT ===
+   Reading-first density, but never below 20 px on a 1920 stage. */
+.lede {
+    margin: 0;
+    font: 400 26px/1.45 var(--text);
+    color: var(--ink-2);
+}
+
+.lede b,
+.note b {
+    font-weight: 800;
+    color: var(--ink);
+}
+
+.note {
+    margin: 0;
+    font: 400 21px/1.45 var(--text);
+    color: #444;
+}
+
+.kicker {
+    margin: 0 0 6px;
+    font: 800 15px/1 var(--display);
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--grey);
+}
+
+.eq {
+    font: 600 26px/1.3 var(--display);
+    color: var(--ink);
+}
+
+/* === STATS ===
+   Big numbers with a heavy top rule; the red one is the headline result. */
+.stats {
+    display: grid;
+    gap: 30px 40px;
+}
+
+.stat {
+    border-top: 6px solid var(--ink);
+    padding-top: 14px;
+}
+
+.stat.hot {
+    border-color: var(--red);
+}
+
+.stat .n {
+    font: 800 62px/1 var(--display);
+    letter-spacing: -.02em;
+    white-space: nowrap;
+}
+
+.stat .n small {
+    margin-left: 6px;
+    font-size: .42em;
+    font-weight: 700;
+    letter-spacing: 0;
+}
+
+.stat .l {
+    margin-top: 10px;
+    font: 400 21px/1.35 var(--text);
+    color: #333;
+}
+
+/* === TABLES ===
+   Tabular numerals, heavy header rule, hairline rows, red for the chosen row. */
+.tbl {
+    width: 100%;
+    border-collapse: collapse;
+    font: 600 22px/1.2 var(--display);
+    font-variant-numeric: tabular-nums;
+}
+
+.tbl th {
+    padding: 0 18px 12px 0;
+    border-bottom: 3px solid var(--ink);
+    font: 800 14px/1.2 var(--display);
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--grey);
+    text-align: left;
+    vertical-align: bottom;
+}
+
+.tbl td {
+    padding: 11px 18px 11px 0;
+    border-bottom: 1px solid var(--rule);
+}
+
+.tbl td.r,
+.tbl th.r {
+    text-align: right;
+}
+
+.tbl tr.hi td {
+    color: var(--red);
+}
+
+.tbl.compact td {
+    padding: 8px 14px 8px 0;
+    font-size: 20px;
+}
+
+/* === FIGURES ===
+   Real notebook plots on white plates; caption names the cell that drew them. */
+figure.plot {
+    margin: 0;
+}
+
+figure.plot img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+figure.plot figcaption {
+    margin-top: 10px;
+    font: 400 17px/1.4 var(--text);
+    color: var(--grey);
+}
+
+/* === FOOTER ===
+   Section name, the cells every number on the slide came from, page number. */
+.ft {
+    position: absolute;
+    left: var(--margin);
+    right: var(--margin);
+    bottom: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 40px;
+    padding-top: 14px;
+    border-top: 1px solid var(--rule);
+    font: 700 15px/1.3 var(--display);
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--grey);
+}
+
+.ft .src {
+    flex: 1;
+    font: 400 16px/1.3 var(--text);
+    letter-spacing: 0;
+    text-transform: none;
+}
+
+/* === COVER === */
+.cover h1 {
+    position: absolute;
+    left: var(--margin);
+    top: 200px;
+    width: 1120px;
+    margin: 0;
+    font: 800 132px/.94 var(--display);
+    letter-spacing: -.035em;
+}
+
+.cover h1 em {
+    font-style: normal;
+    color: var(--red);
+}
+
+.cover .sub {
+    position: absolute;
+    left: var(--margin);
+    top: 740px;
+    width: 880px;
+}
+
+.cover .stats {
+    position: absolute;
+    left: 1440px;
+    top: 200px;
+    width: 320px;
+}
+
+/* === PIPELINE ===
+   Provenance chain drawn as numbered blocks on the grid. */
+.chain {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0;
+    border-top: 6px solid var(--ink);
+}
+
+.chain>div {
+    padding: 22px 28px 0 0;
+    border-right: 1px solid var(--rule);
+    margin-right: 28px;
+    min-height: 250px;
+}
+
+.chain>div:last-child {
+    border-right: 0;
+}
+
+.chain .k {
+    font: 800 15px/1 var(--display);
+    letter-spacing: .18em;
+    color: var(--red);
+}
+
+.chain .t {
+    margin: 14px 0 10px;
+    font: 800 28px/1.1 var(--display);
+}
+
+.chain code {
+    font: 600 17px/1.4 var(--display);
+    color: var(--ink-2);
+    word-break: break-all;
+}
+
+/* === MOTION ===
+   One staggered reveal per slide; disabled by prefers-reduced-motion. */
+.reveal {
+    opacity: 1;
+}
+
+.slide.active .reveal {
+    animation: rise .7s cubic-bezier(.2, .7, .2, 1) both;
+}
+
+.slide.active .d1 { animation-delay: .06s; }
+.slide.active .d2 { animation-delay: .16s; }
+.slide.active .d3 { animation-delay: .26s; }
+.slide.active .d4 { animation-delay: .36s; }
+.slide.active .d5 { animation-delay: .46s; }
+
+@keyframes rise {
+    from {
+        opacity: 0;
+        transform: translateY(22px);
+    }
+
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+/* === PROVENANCE HOVER ===
+   Hovering a number shows the exact line the notebook printed. */
+[data-claim],
+[data-derived] {
+    cursor: help;
+}
+
+/* === CHROME OUTSIDE THE STAGE === */
+.progress {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 4px;
+    background: var(--red);
+    z-index: 1001;
+    transition: width .3s ease;
+}
+
+.edit-hotzone {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 80px;
+    height: 80px;
+    z-index: 1002;
+}
+
+#editToggle {
+    position: fixed;
+    left: 16px;
+    top: 16px;
+    z-index: 1003;
+    padding: 10px 16px;
+    border: 2px solid var(--ink);
+    background: #fff;
+    font: 800 13px/1 var(--display);
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .2s ease;
+    cursor: pointer;
+}
+
+#editToggle.show,
+#editToggle.on {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+#editToggle.on {
+    background: var(--red);
+    border-color: var(--red);
+    color: #fff;
+}
+
+body.editing [contenteditable="true"] {
+    outline: 1px dashed rgba(255, 51, 0, .5);
+    outline-offset: 4px;
+}
+
+/* === CASE GUARDS: keep task codes (1.3(a)) and Greek symbols as typed === */
+.tbl th { text-transform: none; letter-spacing: .04em; }
+.tag .code, .kicker .set, .kicker .math { text-transform: none; }
+
+/* === TAKEAWAYS: larger reading size for the closing slide === */
+.takeaways .lede { font-size: 34px; line-height: 1.4; }

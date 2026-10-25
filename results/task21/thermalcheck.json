@@ -1,0 +1,20 @@
+{
+ "params": {
+  "g2": 4.7940703893780245,
+  "kappa_b": 16.336281798666924,
+  "kappa_a": 0.058433623356770145,
+  "kappa2": 5.627501087839128,
+  "units": "rad/us",
+  "source": "R\u00e9glade et al. 2024, Table S2"
+ },
+ "convention": "$\\Gamma_X$ = decay rate of Re$\\langle a\\rangle$ ($= 2\\times$ one-way jump rate)",
+ "alpha": 1.4,
+ "n_th_a": 0.1,
+ "n_th_b": 0.011,
+ "na": 21,
+ "nb": 6,
+ "fit_start_us": 20.0,
+ "gamma_x_time_domain": 0.013395702601045441,
+ "gamma_x_spectral_same_trunc": 0.013395702600851827,
+ "rel_diff": 1.4453549468385063e-11
+}

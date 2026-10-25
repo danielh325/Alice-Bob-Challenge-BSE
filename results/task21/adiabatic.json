@@ -1,0 +1,796 @@
+{
+ "params": {
+  "g2": 4.7940703893780245,
+  "kappa_b": 16.336281798666924,
+  "kappa_a": 0.058433623356770145,
+  "kappa2": 5.627501087839128,
+  "units": "rad/us",
+  "source": "R\u00e9glade et al. 2024, Table S2"
+ },
+ "convention": "$\\Gamma_X$ = decay rate of Re$\\langle a\\rangle$ ($= 2\\times$ one-way jump rate)",
+ "scan": "g2 -> s g2, kappa_b -> s^2 kappa_b (kappa2, kappa_a fixed)",
+ "grid": [
+  {
+   "alpha": 1.2,
+   "s": 2.0,
+   "g2": 9.588140778756049,
+   "kappa_b": 65.3451271946677,
+   "barrier_photons": 0.17857775715976332,
+   "adiabatic_parameter": 0.17607692307692308,
+   "gamma_x": 0.0005856355529657533,
+   "trunc": {
+    "na": 18,
+    "nb": 5,
+    "nb_extra": 1,
+    "na_taper": 4.32
+   },
+   "dim": 95,
+   "wall_s": 0.72,
+   "gamma_x_refined": 0.0005856355582913011,
+   "trunc_refined": {
+    "na": 18,
+    "nb": 5,
+    "nb_extra": 4,
+    "na_taper": 4.32
+   },
+   "gamma_x_effective": 0.000580545775164601,
+   "excess": 0.008767229078032956
+  },
+  {
+   "alpha": 1.4,
+   "s": 2.0,
+   "g2": 9.588140778756049,
+   "kappa_b": 65.3451271946677,
+   "barrier_photons": 0.33083734177514795,
+   "adiabatic_parameter": 0.20542307692307693,
+   "gamma_x": 0.00011096662459020869,
+   "trunc": {
+    "na": 20,
+    "nb": 5,
+    "nb_extra": 1,
+    "na_taper": 5.88
+   },
+   "dim": 106,
+   "wall_s": 1.11,
+   "gamma_x_refined": 0.00011096665229668017,
+   "trunc_refined": {
+    "na": 20,
+    "nb": 5,
+    "nb_extra": 4,
+    "na_taper": 5.88
+   },
+   "gamma_x_effective": 0.00010744396831419077,
+   "excess": 0.0327859844651015
+  },
+  {
+   "alpha": 1.6,
+   "s": 2.0,
+   "g2": 9.588140778756049,
+   "kappa_b": 65.3451271946677,
+   "barrier_photons": 0.5643938991715979,
+   "adiabatic_parameter": 0.23476923076923079,
+   "gamma_x": 1.727924811430781e-05,
+   "trunc": {
+    "na": 22,
+    "nb": 5,
+    "nb_extra": 1,
+    "na_taper": 7.68
+   },
+   "dim": 118,
+   "wall_s": 1.51,
+   "gamma_x_refined": 1.7279287059053423e-05,
+   "trunc_refined": {
+    "na": 22,
+    "nb": 5,
+    "nb_extra": 4,
+    "na_taper": 7.68
+   },
+   "gamma_x_effective": 1.5587073866607538e-05,
+   "excess": 0.10856266302333029
+  },
+  {
+   "alpha": 1.8,
+   "s": 2.0,
+   "g2": 9.588140778756049,
+   "kappa_b": 65.3451271946677,
+   "barrier_photons": 0.904049895621302,
+   "adiabatic_parameter": 0.26411538461538464,
+   "gamma_x": 2.6658206041823176e-06,
+   "trunc": {
+    "na": 24,
+    "nb": 5,
+    "nb_extra": 1,
+    "na_taper": 9.72
+   },
+   "dim": 130,
+   "wall_s": 2.32,
+   "gamma_x_refined": 2.6657769772715623e-06,
+   "trunc_refined": {
+    "na": 24,
+    "nb": 5,
+    "nb_extra": 4,
+    "na_taper": 9.72
+   },
+   "gamma_x_effective": 2.0692554081578186e-06,
+   "excess": 0.2882994499724898
+  },
+  {
+   "alpha": 2.0,
+   "s": 2.0,
+   "g2": 9.588140778756049,
+   "kappa_b": 65.3451271946677,
+   "barrier_photons": 1.3779147928994084,
+   "adiabatic_parameter": 0.2934615384615385,
+   "gamma_x": 4.6030535575920226e-07,
+   "trunc": {
+    "na": 26,
+    "nb": 5,
+    "nb_extra": 2,
+    "na_taper": 12.0
+   },
+   "dim": 148,
+   "wall_s": 2.61,
+   "gamma_x_refined": 4.602715745063787e-07,
+   "trunc_refined": {
+    "na": 26,
+    "nb": 5,
+    "nb_extra": 5,
+    "na_taper": 12.0
+   },
+   "gamma_x_effective": 2.9740406250020966e-07,
+   "excess": 0.5477440082341771
+  },
+  {
+   "alpha": 2.2,
+   "s": 2.0,
+   "g2": 9.588140778756049,
+   "kappa_b": 65.3451271946677,
+   "barrier_photons": 2.017405048284025,
+   "adiabatic_parameter": 0.32280769230769235,
+   "gamma_x": 8.222688551336555e-08,
+   "trunc": {
+    "na": 29,
+    "nb": 5,
+    "nb_extra": 3,
+    "na_taper": 14.52
+   },
+   "dim": 175,
+   "wall_s": 6.84,
+   "gamma_x_refined": 8.220983260652601e-08,
+   "trunc_refined": {
+    "na": 29,
+    "nb": 5,
+    "nb_extra": 6,
+    "na_taper": 14.52
+   },
+   "gamma_x_effective": 4.625158911174517e-08,
+   "excess": 0.7778175213548453
+  },
+  {
+   "alpha": 1.2,
+   "s": 4.0,
+   "g2": 19.176281557512098,
+   "kappa_b": 261.3805087786708,
+   "barrier_photons": 0.04464443928994083,
+   "adiabatic_parameter": 0.08803846153846154,
+   "gamma_x": 0.0005818455635783962,
+   "trunc": {
+    "na": 18,
+    "nb": 5,
+    "nb_extra": 1,
+    "na_taper": 4.32
+   },
+   "dim": 95,
+   "wall_s": 0.5,
+   "gamma_x_refined": 0.0005818455635787342,
+   "trunc_refined": {
+    "na": 18,
+    "nb": 5,
+    "nb_extra": 4,
+    "na_taper": 4.32
+   },
+   "gamma_x_effective": 0.0005805457751646,
+   "excess": 0.0022389077130526847
+  },
+  {
+   "alpha": 1.4,
+   "s": 4.0,
+   "g2": 19.176281557512098,
+   "kappa_b": 261.3805087786708,
+   "barrier_photons": 0.08270933544378699,
+   "adiabatic_parameter": 0.10271153846153847,
+   "gamma_x": 0.00010837122920870961,
+   "trunc": {
+    "na": 20,
+    "nb": 5,
+    "nb_extra": 1,
+    "na_taper": 5.88
+   },
+   "dim": 106,
+   "wall_s": 0.86,
+   "gamma_x_refined": 0.0001083712292700702,
+   "trunc_refined": {
+    "na": 20,
+    "nb": 5,
+    "nb_extra": 4,
+    "na_taper": 5.88
+   },
+   "gamma_x_effective": 0.00010744396831419077,
+   "excess": 0.008630181005669035
+  },
+  {
+   "alpha": 1.6,
+   "s": 4.0,
+   "g2": 19.176281557512098,
+   "kappa_b": 261.3805087786708,
+   "barrier_photons": 0.14109847479289947,
+   "adiabatic_parameter": 0.11738461538461539,
+   "gamma_x": 1.605503002731491e-05,
+   "trunc": {
+    "na": 22,
+    "nb": 5,
+    "nb_extra": 1,
+    "na_taper": 7.68
+   },
+   "dim": 118,
+   "wall_s": 0.76,
+   "gamma_x_refined": 1.6055030173253034e-05,
+   "trunc_refined": {
+    "na": 22,
+    "nb": 5,
+    "nb_extra": 4,
+    "na_taper": 7.68
+   },
+   "gamma_x_effective": 1.5587073866607545e-05,
+   "excess": 0.030022066021633043
+  },
+  {
+   "alpha": 1.8,
+   "s": 4.0,
+   "g2": 19.176281557512098,
+   "kappa_b": 261.3805087786708,
+   "barrier_photons": 0.2260124739053255,
+   "adiabatic_parameter": 0.13205769230769232,
+   "gamma_x": 2.2446602415537664e-06,
+   "trunc": {
+    "na": 24,
+    "nb": 5,
+    "nb_extra": 1,
+    "na_taper": 9.72
+   },
+   "dim": 130,
+   "wall_s": 1.04,
+   "gamma_x_refined": 2.244660258013301e-06,
+   "trunc_refined": {
+    "na": 24,
+    "nb": 5,
+    "nb_extra": 4,
+    "na_taper": 9.72
+   },
+   "gamma_x_effective": 2.069255408157818e-06,
+   "excess": 0.08476712575182033
+  },
+  {
+   "alpha": 2.0,
+   "s": 4.0,
+   "g2": 19.176281557512098,
+   "kappa_b": 261.3805087786708,
+   "barrier_photons": 0.3444786982248521,
+   "adiabatic_parameter": 0.14673076923076925,
+   "gamma_x": 3.4820708423770516e-07,
+   "trunc": {
+    "na": 26,
+    "nb": 5,
+    "nb_extra": 1,
+    "na_taper": 12.0
+   },
+   "dim": 142,
+   "wall_s": 2.67,
+   "gamma_x_refined": 3.4820662024336256e-07,
+   "trunc_refined": {
+    "na": 26,
+    "nb": 5,
+    "nb_extra": 4,
+    "na_taper": 12.0
+   },
+   "gamma_x_effective": 2.974040625002098e-07,
+   "excess": 0.17082154598160382
+  },
+  {
+   "alpha": 2.2,
+   "s": 4.0,
+   "g2": 19.176281557512098,
+   "kappa_b": 261.3805087786708,
+   "barrier_photons": 0.5043512620710062,
+   "adiabatic_parameter": 0.16140384615384618,
+   "gamma_x": 5.797659908592805e-08,
+   "trunc": {
+    "na": 29,
+    "nb": 5,
+    "nb_extra": 1,
+    "na_taper": 14.52
+   },
+   "dim": 160,
+   "wall_s": 3.69,
+   "gamma_x_refined": 5.797593407280934e-08,
+   "trunc_refined": {
+    "na": 29,
+    "nb": 5,
+    "nb_extra": 4,
+    "na_taper": 14.52
+   },
+   "gamma_x_effective": 4.625158911174519e-08,
+   "excess": 0.253505018948752
+  }
+ ],
+ "collapse": [
+  {
+   "alpha": 1.4,
+   "s": 1.0,
+   "g2": 4.7940703893780245,
+   "kappa_b": 16.336281798666924,
+   "barrier_photons": 1.3233493671005918,
+   "adiabatic_parameter": 0.41084615384615386,
+   "gamma_x": 0.00012020595052941453,
+   "trunc": {
+    "na": 20,
+    "nb": 5,
+    "nb_extra": 2,
+    "na_taper": 5.88
+   },
+   "dim": 109,
+   "wall_s": 1.06,
+   "gamma_x_refined": 0.00012020543282184525,
+   "trunc_refined": {
+    "na": 20,
+    "nb": 5,
+    "nb_extra": 5,
+    "na_taper": 5.88
+   },
+   "gamma_x_effective": 0.0001074439683141908,
+   "excess": 0.11877802370352475
+  },
+  {
+   "alpha": 1.4,
+   "s": 1.5,
+   "g2": 7.191105584067037,
+   "kappa_b": 36.75663404700058,
+   "barrier_photons": 0.5881552742669296,
+   "adiabatic_parameter": 0.2738974358974359,
+   "gamma_x": 0.00011345546818716204,
+   "trunc": {
+    "na": 20,
+    "nb": 5,
+    "nb_extra": 1,
+    "na_taper": 5.88
+   },
+   "dim": 106,
+   "wall_s": 1.16,
+   "gamma_x_refined": 0.00011345572705035188,
+   "trunc_refined": {
+    "na": 20,
+    "nb": 5,
+    "nb_extra": 4,
+    "na_taper": 5.88
+   },
+   "gamma_x_effective": 0.00010744396831419077,
+   "excess": 0.055950091636528754
+  },
+  {
+   "alpha": 1.4,
+   "s": 2.0,
+   "g2": 9.588140778756049,
+   "kappa_b": 65.3451271946677,
+   "barrier_photons": 0.33083734177514795,
+   "adiabatic_parameter": 0.20542307692307693,
+   "gamma_x": 0.00011096662459020869,
+   "trunc": {
+    "na": 20,
+    "nb": 5,
+    "nb_extra": 1,
+    "na_taper": 5.88
+   },
+   "dim": 106,
+   "wall_s": 1.34,
+   "gamma_x_refined": 0.00011096665229668017,
+   "trunc_refined": {
+    "na": 20,
+    "nb": 5,
+    "nb_extra": 4,
+    "na_taper": 5.88
+   },
+   "gamma_x_effective": 0.00010744396831419068,
+   "excess": 0.03278598446510239
+  },
+  {
+   "alpha": 1.4,
+   "s": 3.0,
+   "g2": 14.382211168134074,
+   "kappa_b": 147.02653618800232,
+   "barrier_photons": 0.1470388185667324,
+   "adiabatic_parameter": 0.13694871794871796,
+   "gamma_x": 0.00010906918962521028,
+   "trunc": {
+    "na": 20,
+    "nb": 5,
+    "nb_extra": 1,
+    "na_taper": 5.88
+   },
+   "dim": 106,
+   "wall_s": 1.07,
+   "gamma_x_refined": 0.00010906919049919133,
+   "trunc_refined": {
+    "na": 20,
+    "nb": 5,
+    "nb_extra": 4,
+    "na_taper": 5.88
+   },
+   "gamma_x_effective": 0.00010744396831419076,
+   "excess": 0.01512622194171942
+  },
+  {
+   "alpha": 1.4,
+   "s": 4.0,
+   "g2": 19.176281557512098,
+   "kappa_b": 261.3805087786708,
+   "barrier_photons": 0.08270933544378699,
+   "adiabatic_parameter": 0.10271153846153847,
+   "gamma_x": 0.00010837122920870961,
+   "trunc": {
+    "na": 20,
+    "nb": 5,
+    "nb_extra": 1,
+    "na_taper": 5.88
+   },
+   "dim": 106,
+   "wall_s": 1.33,
+   "gamma_x_refined": 0.0001083712292700702,
+   "trunc_refined": {
+    "na": 20,
+    "nb": 5,
+    "nb_extra": 4,
+    "na_taper": 5.88
+   },
+   "gamma_x_effective": 0.00010744396831419076,
+   "excess": 0.008630181005669257
+  },
+  {
+   "alpha": 1.4,
+   "s": 8.0,
+   "g2": 38.352563115024196,
+   "kappa_b": 1045.5220351146831,
+   "barrier_photons": 0.020677333860946747,
+   "adiabatic_parameter": 0.05135576923076923,
+   "gamma_x": 0.0001076789983054911,
+   "trunc": {
+    "na": 20,
+    "nb": 5,
+    "nb_extra": 1,
+    "na_taper": 5.88
+   },
+   "dim": 106,
+   "wall_s": 1.21,
+   "gamma_x_refined": 0.00010767899831623168,
+   "trunc_refined": {
+    "na": 20,
+    "nb": 5,
+    "nb_extra": 4,
+    "na_taper": 5.88
+   },
+   "gamma_x_effective": 0.0001074439683141908,
+   "excess": 0.0021874656622231647
+  },
+  {
+   "alpha": 1.8,
+   "s": 1.0,
+   "g2": 4.7940703893780245,
+   "kappa_b": 16.336281798666924,
+   "barrier_photons": 3.616199582485208,
+   "adiabatic_parameter": 0.5282307692307693,
+   "gamma_x": 4.066496128738301e-06,
+   "trunc": {
+    "na": 24,
+    "nb": 5,
+    "nb_extra": 4,
+    "na_taper": 9.72
+   },
+   "dim": 146,
+   "wall_s": 6.01,
+   "gamma_x_refined": 4.067218703469025e-06,
+   "trunc_refined": {
+    "na": 24,
+    "nb": 5,
+    "nb_extra": 7,
+    "na_taper": 9.72
+   },
+   "gamma_x_effective": 2.069255408157818e-06,
+   "excess": 0.9651977772809366
+  },
+  {
+   "alpha": 1.8,
+   "s": 1.5,
+   "g2": 7.191105584067037,
+   "kappa_b": 36.75663404700058,
+   "barrier_photons": 1.6071998144378699,
+   "adiabatic_parameter": 0.35215384615384615,
+   "gamma_x": 3.032915262298414e-06,
+   "trunc": {
+    "na": 24,
+    "nb": 5,
+    "nb_extra": 2,
+    "na_taper": 9.72
+   },
+   "dim": 135,
+   "wall_s": 2.26,
+   "gamma_x_refined": 3.032892431123966e-06,
+   "trunc_refined": {
+    "na": 24,
+    "nb": 5,
+    "nb_extra": 5,
+    "na_taper": 9.72
+   },
+   "gamma_x_effective": 2.0692554081578216e-06,
+   "excess": 0.4657036779227275
+  },
+  {
+   "alpha": 1.8,
+   "s": 2.0,
+   "g2": 9.588140778756049,
+   "kappa_b": 65.3451271946677,
+   "barrier_photons": 0.904049895621302,
+   "adiabatic_parameter": 0.26411538461538464,
+   "gamma_x": 2.6658206041823176e-06,
+   "trunc": {
+    "na": 24,
+    "nb": 5,
+    "nb_extra": 1,
+    "na_taper": 9.72
+   },
+   "dim": 130,
+   "wall_s": 1.9,
+   "gamma_x_refined": 2.6657769772715623e-06,
+   "trunc_refined": {
+    "na": 24,
+    "nb": 5,
+    "nb_extra": 4,
+    "na_taper": 9.72
+   },
+   "gamma_x_effective": 2.06925540815782e-06,
+   "excess": 0.28829944997248913
+  },
+  {
+   "alpha": 1.8,
+   "s": 3.0,
+   "g2": 14.382211168134074,
+   "kappa_b": 147.02653618800232,
+   "barrier_photons": 0.40179995360946746,
+   "adiabatic_parameter": 0.17607692307692308,
+   "gamma_x": 2.365856985918645e-06,
+   "trunc": {
+    "na": 24,
+    "nb": 5,
+    "nb_extra": 1,
+    "na_taper": 9.72
+   },
+   "dim": 130,
+   "wall_s": 2.11,
+   "gamma_x_refined": 2.365858599815865e-06,
+   "trunc_refined": {
+    "na": 24,
+    "nb": 5,
+    "nb_extra": 4,
+    "na_taper": 9.72
+   },
+   "gamma_x_effective": 2.0692554081578186e-06,
+   "excess": 0.14333734569039014
+  },
+  {
+   "alpha": 1.8,
+   "s": 4.0,
+   "g2": 19.176281557512098,
+   "kappa_b": 261.3805087786708,
+   "barrier_photons": 0.2260124739053255,
+   "adiabatic_parameter": 0.13205769230769232,
+   "gamma_x": 2.2446602415537664e-06,
+   "trunc": {
+    "na": 24,
+    "nb": 5,
+    "nb_extra": 1,
+    "na_taper": 9.72
+   },
+   "dim": 130,
+   "wall_s": 2.0,
+   "gamma_x_refined": 2.244660258013301e-06,
+   "trunc_refined": {
+    "na": 24,
+    "nb": 5,
+    "nb_extra": 4,
+    "na_taper": 9.72
+   },
+   "gamma_x_effective": 2.0692554081578173e-06,
+   "excess": 0.08476712575182077
+  },
+  {
+   "alpha": 1.8,
+   "s": 8.0,
+   "g2": 38.352563115024196,
+   "kappa_b": 1045.5220351146831,
+   "barrier_photons": 0.056503118476331375,
+   "adiabatic_parameter": 0.06602884615384616,
+   "gamma_x": 2.115531207490816e-06,
+   "trunc": {
+    "na": 24,
+    "nb": 5,
+    "nb_extra": 1,
+    "na_taper": 9.72
+   },
+   "dim": 130,
+   "wall_s": 2.06,
+   "gamma_x_refined": 2.115531198873952e-06,
+   "trunc_refined": {
+    "na": 24,
+    "nb": 5,
+    "nb_extra": 4,
+    "na_taper": 9.72
+   },
+   "gamma_x_effective": 2.069255408157817e-06,
+   "excess": 0.022363502905712762
+  },
+  {
+   "alpha": 2.1,
+   "s": 1.0,
+   "g2": 4.7940703893780245,
+   "kappa_b": 16.336281798666924,
+   "barrier_photons": 6.699456170946748,
+   "adiabatic_parameter": 0.6162692307692308,
+   "gamma_x": 3.851071188478262e-07,
+   "trunc": {
+    "na": 28,
+    "nb": 5,
+    "nb_extra": 7,
+    "na_taper": 13.23
+   },
+   "dim": 196,
+   "wall_s": 28.22,
+   "gamma_x_refined": 3.854930666718146e-07,
+   "trunc_refined": {
+    "na": 28,
+    "nb": 5,
+    "nb_extra": 10,
+    "na_taper": 13.23
+   },
+   "gamma_x_effective": 1.1699057656708527e-07,
+   "excess": 2.2917789632996324
+  },
+  {
+   "alpha": 2.1,
+   "s": 1.5,
+   "g2": 7.191105584067037,
+   "kappa_b": 36.75663404700058,
+   "barrier_photons": 2.977536075976332,
+   "adiabatic_parameter": 0.41084615384615386,
+   "gamma_x": 2.4191473186876615e-07,
+   "trunc": {
+    "na": 28,
+    "nb": 5,
+    "nb_extra": 3,
+    "na_taper": 13.23
+   },
+   "dim": 168,
+   "wall_s": 8.39,
+   "gamma_x_refined": 2.4170097236628085e-07,
+   "trunc_refined": {
+    "na": 28,
+    "nb": 5,
+    "nb_extra": 6,
+    "na_taper": 13.23
+   },
+   "gamma_x_effective": 1.1699057656708532e-07,
+   "excess": 1.0678138271251805
+  },
+  {
+   "alpha": 2.1,
+   "s": 2.0,
+   "g2": 9.588140778756049,
+   "kappa_b": 65.3451271946677,
+   "barrier_photons": 1.674864042736687,
+   "adiabatic_parameter": 0.3081346153846154,
+   "gamma_x": 1.9544642316782805e-07,
+   "trunc": {
+    "na": 28,
+    "nb": 5,
+    "nb_extra": 2,
+    "na_taper": 13.23
+   },
+   "dim": 161,
+   "wall_s": 4.94,
+   "gamma_x_refined": 1.9540701084411982e-07,
+   "trunc_refined": {
+    "na": 28,
+    "nb": 5,
+    "nb_extra": 5,
+    "na_taper": 13.23
+   },
+   "gamma_x_effective": 1.1699057656708521e-07,
+   "excess": 0.6706168043864145
+  },
+  {
+   "alpha": 2.1,
+   "s": 3.0,
+   "g2": 14.382211168134074,
+   "kappa_b": 147.02653618800232,
+   "barrier_photons": 0.744384018994083,
+   "adiabatic_parameter": 0.20542307692307693,
+   "gamma_x": 1.5790015991046272e-07,
+   "trunc": {
+    "na": 28,
+    "nb": 5,
+    "nb_extra": 1,
+    "na_taper": 13.23
+   },
+   "dim": 154,
+   "wall_s": 4.61,
+   "gamma_x_refined": 1.5789577864078857e-07,
+   "trunc_refined": {
+    "na": 28,
+    "nb": 5,
+    "nb_extra": 4,
+    "na_taper": 13.23
+   },
+   "gamma_x_effective": 1.1699057656708524e-07,
+   "excess": 0.34968272269278833
+  },
+  {
+   "alpha": 2.1,
+   "s": 4.0,
+   "g2": 19.176281557512098,
+   "kappa_b": 261.3805087786708,
+   "barrier_photons": 0.41871601068417175,
+   "adiabatic_parameter": 0.1540673076923077,
+   "gamma_x": 1.420200997440001e-07,
+   "trunc": {
+    "na": 28,
+    "nb": 5,
+    "nb_extra": 1,
+    "na_taper": 13.23
+   },
+   "dim": 154,
+   "wall_s": 3.6,
+   "gamma_x_refined": 1.4201967476713236e-07,
+   "trunc_refined": {
+    "na": 28,
+    "nb": 5,
+    "nb_extra": 4,
+    "na_taper": 13.23
+   },
+   "gamma_x_effective": 1.1699057656708532e-07,
+   "excess": 0.21394478009570483
+  },
+  {
+   "alpha": 2.1,
+   "s": 8.0,
+   "g2": 38.352563115024196,
+   "kappa_b": 1045.5220351146831,
+   "barrier_photons": 0.10467900267104294,
+   "adiabatic_parameter": 0.07703365384615385,
+   "gamma_x": 1.2392751765696745e-07,
+   "trunc": {
+    "na": 28,
+    "nb": 5,
+    "nb_extra": 1,
+    "na_taper": 13.23
+   },
+   "dim": 154,
+   "wall_s": 2.74,
+   "gamma_x_refined": 1.2392748831459187e-07,
+   "trunc_refined": {
+    "na": 28,
+    "nb": 5,
+    "nb_extra": 4,
+    "na_taper": 13.23
+   },
+   "gamma_x_effective": 1.1699057656708529e-07,
+   "excess": 0.05929487052236504
+  }
+ ]
+}

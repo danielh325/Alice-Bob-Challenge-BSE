@@ -1,0 +1,267 @@
+{
+ "truncation": [
+  28,
+  12
+ ],
+ "t_hold_us": 2.0,
+ "stark_a_rad_per_us": {
+  "second_order": 5.8358825050274845,
+  "floquet": 5.619405783964528
+ },
+ "defaults": {
+  "start": "push",
+  "duration": 0.05,
+  "detuning": 0.0,
+  "calibration": "none",
+  "extra": 0.0,
+  "n_th": 0.0,
+  "tau": 0.0,
+  "echo": [
+   0.0,
+   0.0
+  ],
+  "guard": 0.0,
+  "circuit": false
+ },
+ "precision": "double",
+ "rows": [
+  {
+   "effect": "reference",
+   "error": 8.410013501047864e-06
+  },
+  {
+   "effect": "detuning",
+   "duration": 0.05,
+   "detuning": -5.619405783964528,
+   "calibration": "none",
+   "error": 0.00010157813879640987
+  },
+  {
+   "effect": "detuning",
+   "duration": 0.05,
+   "detuning": -5.619405783964528,
+   "calibration": "second_order",
+   "error": 8.524871565551706e-06
+  },
+  {
+   "effect": "detuning",
+   "duration": 0.05,
+   "detuning": -5.619405783964528,
+   "calibration": "floquet",
+   "error": 8.410048860540975e-06
+  },
+  {
+   "effect": "detuning",
+   "duration": 0.2,
+   "detuning": -5.619405783964528,
+   "calibration": "none",
+   "error": 0.006751128392813888
+  },
+  {
+   "effect": "detuning",
+   "duration": 0.2,
+   "detuning": -5.619405783964528,
+   "calibration": "second_order",
+   "error": 1.0320056626711427e-05
+  },
+  {
+   "effect": "detuning",
+   "duration": 0.2,
+   "detuning": -5.619405783964528,
+   "calibration": "floquet",
+   "error": 8.408082520006133e-06
+  },
+  {
+   "effect": "heat_loss",
+   "start": "push",
+   "extra": 0.0,
+   "n_th": 0.001,
+   "error": 1.3021436666593722e-05
+  },
+  {
+   "effect": "heat_loss",
+   "start": "instant_A",
+   "extra": 0.0,
+   "n_th": 0.001,
+   "error": 0.0012220292780305009
+  },
+  {
+   "effect": "heat_loss",
+   "start": "push",
+   "extra": 0.0,
+   "n_th": 0.01,
+   "error": 5.4523910735904124e-05
+  },
+  {
+   "effect": "heat_loss",
+   "start": "instant_A",
+   "extra": 0.0,
+   "n_th": 0.01,
+   "error": 0.0012642520930986612
+  },
+  {
+   "effect": "heat_loss",
+   "start": "push",
+   "extra": 0.1,
+   "n_th": 0.0,
+   "error": 1.0173161756554805e-05
+  },
+  {
+   "effect": "heat_loss",
+   "start": "instant_A",
+   "extra": 0.1,
+   "n_th": 0.0,
+   "error": 0.0012222277304946294
+  },
+  {
+   "effect": "heat_loss",
+   "start": "push",
+   "extra": 0.1,
+   "n_th": 0.001,
+   "error": 1.5244906082512166e-05
+  },
+  {
+   "effect": "heat_loss",
+   "start": "instant_A",
+   "extra": 0.1,
+   "n_th": 0.001,
+   "error": 0.0012273876075231671
+  },
+  {
+   "effect": "heat_loss",
+   "start": "push",
+   "extra": 0.1,
+   "n_th": 0.01,
+   "error": 6.0890202555063944e-05
+  },
+  {
+   "effect": "heat_loss",
+   "start": "instant_A",
+   "extra": 0.1,
+   "n_th": 0.01,
+   "error": 0.0012738261959748254
+  },
+  {
+   "effect": "heat_loss",
+   "start": "push",
+   "extra": 1.0,
+   "n_th": 0.0,
+   "error": 3.3557685324092645e-05
+  },
+  {
+   "effect": "heat_loss",
+   "start": "instant_A",
+   "extra": 1.0,
+   "n_th": 0.0,
+   "error": 0.0012740593411668666
+  },
+  {
+   "effect": "heat_loss",
+   "start": "push",
+   "extra": 1.0,
+   "n_th": 0.001,
+   "error": 4.276573306516429e-05
+  },
+  {
+   "effect": "heat_loss",
+   "start": "instant_A",
+   "extra": 1.0,
+   "n_th": 0.001,
+   "error": 0.0012834295440088406
+  },
+  {
+   "effect": "heat_loss",
+   "start": "push",
+   "extra": 1.0,
+   "n_th": 0.01,
+   "error": 0.00012563689795241917
+  },
+  {
+   "effect": "heat_loss",
+   "start": "instant_A",
+   "extra": 1.0,
+   "n_th": 0.01,
+   "error": 0.001367760484062952
+  },
+  {
+   "effect": "lowpass",
+   "tau": 0.002,
+   "guard": 0.0,
+   "error": 8.398574033119388e-06
+  },
+  {
+   "effect": "lowpass",
+   "tau": 0.002,
+   "guard": 0.01,
+   "error": 8.408055122588465e-06
+  },
+  {
+   "effect": "lowpass",
+   "tau": 0.005,
+   "guard": 0.0,
+   "error": 8.638776408886883e-06
+  },
+  {
+   "effect": "lowpass",
+   "tau": 0.005,
+   "guard": 0.025,
+   "error": 8.407813562483213e-06
+  },
+  {
+   "effect": "lowpass",
+   "tau": 0.01,
+   "guard": 0.0,
+   "error": 1.2786049149227097e-05
+  },
+  {
+   "effect": "lowpass",
+   "tau": 0.01,
+   "guard": 0.05,
+   "error": 8.404229936420649e-06
+  },
+  {
+   "effect": "lowpass",
+   "duration": 0.2,
+   "tau": 0.01,
+   "guard": 0.0,
+   "error": 8.629469850029992e-06
+  },
+  {
+   "effect": "echo",
+   "echo": [
+    0.1,
+    0.02
+   ],
+   "guard": 0.0,
+   "error": 8.51207758034711e-06
+  },
+  {
+   "effect": "echo",
+   "echo": [
+    0.1,
+    0.02
+   ],
+   "guard": 0.02,
+   "error": 8.408426611761222e-06
+  },
+  {
+   "effect": "combined",
+   "extra": 0.1,
+   "n_th": 0.001,
+   "circuit": true,
+   "detuning": -5.619405783964528,
+   "calibration": "second_order",
+   "tau": 0.005,
+   "guard": 0.025,
+   "error": 6.632883429458225e-05
+  },
+  {
+   "effect": "combined",
+   "start": "instant_A",
+   "extra": 0.1,
+   "n_th": 0.001,
+   "circuit": true,
+   "error": 0.0013106378083775905
+  }
+ ]
+}

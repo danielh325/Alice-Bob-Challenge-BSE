@@ -1,0 +1,211 @@
+{
+ "truncation": [
+  28,
+  12
+ ],
+ "t_hold_us": 2.0,
+ "kerr_a_rad_per_us": -0.03103784647998964,
+ "precision": "double",
+ "rows": [
+  {
+   "kind": "ideal",
+   "error": 8.406479279465806e-06
+  },
+  {
+   "kind": "ideal",
+   "circuit": true,
+   "error": 5.367091275509939e-05
+  },
+  {
+   "kind": "ideal",
+   "circuit": true,
+   "correct_hold": true,
+   "error": 7.484046538053235e-06
+  },
+  {
+   "kind": "pump_off",
+   "duration": 0.05,
+   "error": 8.410157631977278e-06
+  },
+  {
+   "kind": "pump_off",
+   "duration": 0.05,
+   "circuit": true,
+   "error": 5.3699012751873276e-05
+  },
+  {
+   "kind": "pump_off",
+   "duration": 0.2,
+   "error": 8.408862920972204e-06
+  },
+  {
+   "kind": "pump_off",
+   "duration": 0.2,
+   "circuit": true,
+   "error": 5.405872522845634e-05
+  },
+  {
+   "kind": "pump_off",
+   "duration": 1.0,
+   "error": 8.40873729834879e-06
+  },
+  {
+   "kind": "pump_off",
+   "duration": 1.0,
+   "circuit": true,
+   "error": 6.25847374737809e-05
+  },
+  {
+   "kind": "pump_on",
+   "duration": 0.05,
+   "error": 0.0004838989165604213
+  },
+  {
+   "kind": "pump_on",
+   "duration": 0.05,
+   "circuit": true,
+   "error": 0.00042424163907028856
+  },
+  {
+   "kind": "pump_on",
+   "duration": 0.2,
+   "error": 0.02725531322280461
+  },
+  {
+   "kind": "pump_on",
+   "duration": 0.2,
+   "circuit": true,
+   "error": 0.03006490373238413
+  },
+  {
+   "kind": "pump_on",
+   "duration": 1.0,
+   "error": 0.31861829376827877
+  },
+  {
+   "kind": "pump_on",
+   "duration": 1.0,
+   "circuit": true,
+   "error": 0.3038451502031314
+  },
+  {
+   "kind": "moving",
+   "duration": 0.05,
+   "error": 8.407909690033577e-06
+  },
+  {
+   "kind": "moving",
+   "duration": 0.05,
+   "circuit": true,
+   "error": 5.366295264974674e-05
+  },
+  {
+   "kind": "moving",
+   "duration": 0.2,
+   "error": 8.407601352899974e-06
+  },
+  {
+   "kind": "moving",
+   "duration": 0.2,
+   "circuit": true,
+   "error": 5.361240094359232e-05
+  },
+  {
+   "kind": "moving",
+   "duration": 1.0,
+   "error": 8.405894133867164e-06
+  },
+  {
+   "kind": "moving",
+   "duration": 1.0,
+   "circuit": true,
+   "error": 5.465122494230368e-05
+  },
+  {
+   "kind": "moving",
+   "duration": 0.05,
+   "circuit": true,
+   "correct_prep": true,
+   "error": 5.367256714416957e-05
+  },
+  {
+   "kind": "moving",
+   "duration": 0.05,
+   "circuit": true,
+   "correct_prep": true,
+   "correct_hold": true,
+   "error": 7.48576424447478e-06
+  },
+  {
+   "kind": "moving",
+   "duration": 0.2,
+   "circuit": true,
+   "correct_prep": true,
+   "error": 5.3672026418150054e-05
+  },
+  {
+   "kind": "moving",
+   "duration": 0.2,
+   "circuit": true,
+   "correct_prep": true,
+   "correct_hold": true,
+   "error": 7.485166175658087e-06
+  },
+  {
+   "kind": "moving",
+   "duration": 1.0,
+   "circuit": true,
+   "correct_prep": true,
+   "error": 5.367052498417291e-05
+  },
+  {
+   "kind": "moving",
+   "duration": 1.0,
+   "circuit": true,
+   "correct_prep": true,
+   "correct_hold": true,
+   "error": 7.483658717277741e-06
+  },
+  {
+   "kind": "pump_off",
+   "duration": 0.2,
+   "circuit": true,
+   "correct_hold": true,
+   "error": 7.90258816485423e-06
+  },
+  {
+   "kind": "pump_off",
+   "duration": 0.2,
+   "circuit": true,
+   "correct_hold": true,
+   "phase_deg": 22.5,
+   "error": 0.0015049987849033997
+  },
+  {
+   "kind": "moving",
+   "duration": 0.2,
+   "circuit": true,
+   "correct_prep": true,
+   "correct_hold": true,
+   "phase_deg": 22.5,
+   "error": 0.0013181070934357164
+  },
+  {
+   "kind": "pump_off",
+   "duration": 0.2,
+   "circuit": true,
+   "correct_hold": true,
+   "amplitude": 0.9,
+   "error": 5.582856541519465e-05
+  },
+  {
+   "kind": "moving",
+   "duration": 0.2,
+   "circuit": true,
+   "correct_prep": true,
+   "correct_hold": true,
+   "amplitude": 0.9,
+   "error": 5.779168961705938e-05
+  }
+ ]
+}

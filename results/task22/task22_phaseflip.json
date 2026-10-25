@@ -1,0 +1,695 @@
+{
+  "params_rad_per_us": {
+    "g2": 4.7940703893780245,
+    "kappa_b": 16.336281798666924,
+    "kappa_a": 0.058433623356770145
+  },
+  "convention": "Gamma_Z = decay rate of <P> (rad/us); one-way flip rate = Gamma_Z / 2",
+  "solver": "dynamiqs mesolve Tsit5 rtol=atol=1e-9, double precision; spectral: scipy splu (COLAMD) + eigs shift-invert on the parity-even block",
+  "convergence_rule": "na + 4 and nb + 2 separately, rtol 0.0001",
+  "thermal": {
+    "n_th_a": 0.1,
+    "n_th_b": 0.011,
+    "source": "R\u00e9glade 2024 Table S2"
+  },
+  "rows": [
+    {
+      "alpha": 1.0,
+      "alpha2": 1.0,
+      "spectral": {
+        "rate": 0.12056830280487983,
+        "na": 15,
+        "nb": 5,
+        "rel_change_na_plus_4": 1.705134922147522e-10,
+        "rel_change_nb_plus_2": 7.936397738994572e-08
+      },
+      "time_domain": {
+        "na": 15,
+        "nb": 5,
+        "t_max_us": 25.882161647867033,
+        "fit": {
+          "rate": 0.12056828685484627,
+          "rate_stderr": 1.1214591236268577e-09,
+          "offset": 0.2708406412149672
+        },
+        "fit_window_start_us": 1.0,
+        "fit_late": {
+          "rate": 0.12056830272321276,
+          "rate_stderr": 7.868954554951809e-12,
+          "offset": 0.2708406593906977
+        },
+        "fit_late_window_start_us": 2.0,
+        "fit_rel_change_bigger_trunc": 7.907723298394842e-08,
+        "identity": {
+          "rate_median": 0.1205683025947438,
+          "rate_min": 0.1205682148750981,
+          "rate_max": 0.1205683879170193,
+          "raw_at_t0": 0.08900541212213016,
+          "raw_at_window_start": 0.0818647034464357,
+          "window_start_us": 2.0
+        },
+        "identity_rel_change_bigger_trunc": 7.599775559974375e-07,
+        "steady_state_parity": 0.27084065947278796
+      },
+      "analytic": {
+        "two_kappa_alpha2": 0.11686724671354029,
+        "even_cat_initial": 0.08900541211967285,
+        "cat_manifold_coth": 0.1212281153868535,
+        "cat_manifold_offset": 0.2658022288340797,
+        "thermal": 0.15192742072760237
+      },
+      "thermal_spectral": {
+        "rate": 0.1578427454473419,
+        "na": 15,
+        "nb": 5,
+        "rel_change_na_plus_4": 5.0937157825003965e-09,
+        "rel_change_nb_plus_2": 1.5648988949124032e-06
+      }
+    },
+    {
+      "alpha": 1.2,
+      "alpha2": 1.44,
+      "spectral": {
+        "rate": 0.16853528534472967,
+        "na": 17,
+        "nb": 5,
+        "rel_change_na_plus_4": 1.5136003561622147e-10,
+        "rel_change_nb_plus_2": 6.02514613534666e-07
+      },
+      "time_domain": {
+        "na": 17,
+        "nb": 5,
+        "t_max_us": 18.800426740689137,
+        "fit": {
+          "rate": 0.1685352880821927,
+          "rate_stderr": 4.214529836183126e-10,
+          "offset": 0.11496237666840639
+        },
+        "fit_window_start_us": 1.0,
+        "fit_late": {
+          "rate": 0.16853528534953455,
+          "rate_stderr": 1.667795292207707e-12,
+          "offset": 0.11496237412998274
+        },
+        "fit_late_window_start_us": 2.0,
+        "fit_rel_change_bigger_trunc": 6.015271356574203e-07,
+        "identity": {
+          "rate_median": 0.1685352852211169,
+          "rate_min": 0.16853517281966987,
+          "rate_max": 0.16853541454941906,
+          "raw_at_t0": 0.1503993495960144,
+          "raw_at_window_start": 0.1425881235508808,
+          "window_start_us": 2.0
+        },
+        "identity_rel_change_bigger_trunc": 4.54893448242899e-06,
+        "steady_state_parity": 0.11496237412486188
+      },
+      "analytic": {
+        "two_kappa_alpha2": 0.16828883526749802,
+        "even_cat_initial": 0.15039934959234988,
+        "cat_manifold_coth": 0.16935278168278758,
+        "cat_manifold_offset": 0.1119168631427568,
+        "thermal": 0.21363332699235166
+      },
+      "thermal_spectral": {
+        "rate": 0.2148878092874538,
+        "na": 17,
+        "nb": 5,
+        "rel_change_na_plus_4": 4.247692753089893e-09,
+        "rel_change_nb_plus_2": 1.0698475642278993e-05
+      }
+    },
+    {
+      "alpha": 1.4,
+      "alpha2": 1.9599999999999997,
+      "spectral": {
+        "rate": 0.22838126873188216,
+        "na": 19,
+        "nb": 5,
+        "rel_change_na_plus_4": 3.324807096305449e-10,
+        "rel_change_nb_plus_2": 1.79810087441723e-06
+      },
+      "time_domain": {
+        "na": 19,
+        "nb": 5,
+        "t_max_us": 14.135928426433154,
+        "fit": {
+          "rate": 0.22838126658351096,
+          "rate_stderr": 3.97948258410729e-10,
+          "offset": 0.04108972270313529
+        },
+        "fit_window_start_us": 1.0,
+        "fit_late": {
+          "rate": 0.2283812687146428,
+          "rate_stderr": 2.14048519261423e-12,
+          "offset": 0.04108972420073865
+        },
+        "fit_late_window_start_us": 2.0,
+        "fit_rel_change_bigger_trunc": 1.7975303434614176e-06,
+        "identity": {
+          "rate_median": 0.22838126889370297,
+          "rate_min": 0.22838110181397162,
+          "rate_max": 0.22838143473974482,
+          "raw_at_t0": 0.22014704786530798,
+          "raw_at_window_start": 0.21387900052925232,
+          "window_start_us": 2.0
+        },
+        "identity_rel_change_bigger_trunc": 1.2398027597004813e-05,
+        "steady_state_parity": 0.0410897242079734
+      },
+      "analytic": {
+        "two_kappa_alpha2": 0.22905980355853894,
+        "even_cat_initial": 0.2201470478597288,
+        "cat_manifold_coth": 0.2292402220899682,
+        "cat_manifold_offset": 0.039666573986613204,
+        "thermal": 0.28655848894160074
+      },
+      "thermal_spectral": {
+        "rate": 0.28644796362729785,
+        "na": 19,
+        "nb": 5,
+        "rel_change_na_plus_4": 4.199917746916526e-09,
+        "rel_change_nb_plus_2": 3.860185144732853e-05
+      }
+    },
+    {
+      "alpha": 1.6,
+      "alpha2": 2.5600000000000005,
+      "spectral": {
+        "rate": 0.2983494221255813,
+        "na": 21,
+        "nb": 5,
+        "rel_change_na_plus_4": 2.3051449637989663e-11,
+        "rel_change_nb_plus_2": 2.7504889728025006e-06
+      },
+      "time_domain": {
+        "na": 21,
+        "nb": 5,
+        "t_max_us": 11.055323649117843,
+        "fit": {
+          "rate": 0.29834943104968736,
+          "rate_stderr": 1.0038476807940971e-09,
+          "offset": 0.012492893788494382
+        },
+        "fit_window_start_us": 1.0,
+        "fit_late": {
+          "rate": 0.29834942218365335,
+          "rate_stderr": 6.808713537872384e-12,
+          "offset": 0.01249288918708471
+        },
+        "fit_late_window_start_us": 2.0,
+        "fit_rel_change_bigger_trunc": 2.7510398308283612e-06,
+        "identity": {
+          "rate_median": 0.29834942227261835,
+          "rate_min": 0.2983492629379017,
+          "rate_max": 0.2983495766931522,
+          "raw_at_t0": 0.2956255789319401,
+          "raw_at_window_start": 0.29163075613615574,
+          "window_start_us": 2.0
+        },
+        "identity_rel_change_bigger_trunc": 1.8228511704299066e-05,
+        "steady_state_parity": 0.01249288917028648
+      },
+      "analytic": {
+        "two_kappa_alpha2": 0.2991801515866632,
+        "even_cat_initial": 0.2956255789230564,
+        "cat_manifold_coth": 0.2992015215013825,
+        "cat_manifold_offset": 0.011951618963640852,
+        "thermal": 0.3707029065753499
+      },
+      "thermal_spectral": {
+        "rate": 0.37039080204486835,
+        "na": 21,
+        "nb": 5,
+        "rel_change_na_plus_4": 4.537440423391104e-09,
+        "rel_change_nb_plus_2": 7.632227873521913e-05
+      }
+    },
+    {
+      "alpha": 1.8,
+      "alpha2": 3.24,
+      "spectral": {
+        "rate": 0.3778125170102386,
+        "na": 23,
+        "nb": 5,
+        "rel_change_na_plus_4": 2.493465434127984e-10,
+        "rel_change_nb_plus_2": 2.7084482980832547e-06
+      },
+      "time_domain": {
+        "na": 23,
+        "nb": 5,
+        "t_max_us": 8.94044629262164,
+        "fit": {
+          "rate": 0.37781251890127604,
+          "rate_stderr": 4.22054728618759e-09,
+          "offset": 0.0032385954635140595
+        },
+        "fit_window_start_us": 1.0,
+        "fit_late": {
+          "rate": 0.3778125171559552,
+          "rate_stderr": 2.1602959791110433e-11,
+          "offset": 0.003238594634082048
+        },
+        "fit_late_window_start_us": 2.0,
+        "fit_rel_change_bigger_trunc": 2.7032320377706753e-06,
+        "identity": {
+          "rate_median": 0.37781251715860587,
+          "rate_min": 0.3778121996282987,
+          "rate_max": 0.37781280816957025,
+          "raw_at_t0": 0.37749010378563763,
+          "raw_at_window_start": 0.3752169918319384,
+          "window_start_us": 2.0
+        },
+        "identity_rel_change_bigger_trunc": 1.6594133722680482e-05,
+        "steady_state_parity": 0.003238594581682161
+      },
+      "analytic": {
+        "two_kappa_alpha2": 0.37864987935187056,
+        "even_cat_initial": 0.3774901037706929,
+        "cat_manifold_coth": 0.37865166096069325,
+        "cat_manifold_offset": 0.003067614141855973,
+        "thermal": 0.4660665798935987
+      },
+      "thermal_spectral": {
+        "rate": 0.4658293419947504,
+        "na": 23,
+        "nb": 5,
+        "rel_change_na_plus_4": 5.169923267267507e-09,
+        "rel_change_nb_plus_2": 9.237973308073855e-05
+      }
+    },
+    {
+      "alpha": 2.0,
+      "alpha2": 4.0,
+      "spectral": {
+        "rate": 0.46663919617133204,
+        "na": 24,
+        "nb": 5,
+        "rel_change_na_plus_4": 1.559940177031649e-09,
+        "rel_change_nb_plus_2": 2.080640885138152e-06
+      },
+      "time_domain": {
+        "na": 24,
+        "nb": 5,
+        "t_max_us": 7.428949870937363,
+        "fit": {
+          "rate": 0.46663914887881386,
+          "rate_stderr": 1.0628148539520986e-08,
+          "offset": 0.0007162012314516705
+        },
+        "fit_window_start_us": 1.0,
+        "fit_late": {
+          "rate": 0.4666391957536415,
+          "rate_stderr": 1.0021608736104801e-10,
+          "offset": 0.000716214882214737
+        },
+        "fit_late_window_start_us": 2.0,
+        "fit_rel_change_bigger_trunc": 2.0753706124754245e-06,
+        "identity": {
+          "rate_median": 0.46663918066703536,
+          "rate_min": 0.46663897733362325,
+          "rate_max": 0.46663932902245375,
+          "raw_at_t0": 0.46715545512631435,
+          "raw_at_window_start": 0.46578646335157253,
+          "window_start_us": 2.0
+        },
+        "identity_rel_change_bigger_trunc": 1.0504467695682251e-05,
+        "steady_state_parity": 0.0007162149713824269
+      },
+      "analytic": {
+        "two_kappa_alpha2": 0.46746898685416116,
+        "even_cat_initial": 0.4671554552827,
+        "cat_manifold_coth": 0.46746909206758125,
+        "cat_manifold_offset": 0.0006709251803023413,
+        "thermal": 0.5726495088963474
+      },
+      "thermal_spectral": {
+        "rate": 0.5725141641471719,
+        "na": 24,
+        "nb": 5,
+        "rel_change_na_plus_4": 2.366445550627816e-08,
+        "rel_change_nb_plus_2": 7.785060868847893e-05
+      }
+    },
+    {
+      "alpha": 2.1,
+      "alpha2": 4.41,
+      "spectral": {
+        "rate": 0.5145579475694851,
+        "na": 26,
+        "nb": 5,
+        "rel_change_na_plus_4": 5.907485611800212e-11,
+        "rel_change_nb_plus_2": 1.7323971299720853e-06
+      },
+      "time_domain": {
+        "na": 26,
+        "nb": 5,
+        "t_max_us": 6.830247135760904,
+        "fit": {
+          "rate": 0.5145579487959564,
+          "rate_stderr": 1.3279443098296474e-08,
+          "offset": 0.0003173559211216742
+        },
+        "fit_window_start_us": 1.0,
+        "fit_late": {
+          "rate": 0.5145579486227136,
+          "rate_stderr": 1.4110852290513021e-10,
+          "offset": 0.00031735614388871385
+        },
+        "fit_late_window_start_us": 2.0,
+        "fit_rel_change_bigger_trunc": 1.7336935580480883e-06,
+        "identity": {
+          "rate_median": 0.5145579488217547,
+          "rate_min": 0.5145576085370135,
+          "rate_max": 0.5145582753420617,
+          "raw_at_t0": 0.5152322860214452,
+          "raw_at_window_start": 0.514101130883319,
+          "window_start_us": 2.0
+        },
+        "identity_rel_change_bigger_trunc": 7.506175150773231e-06,
+        "steady_state_parity": 0.00031735598125204713
+      },
+      "analytic": {
+        "two_kappa_alpha2": 0.5153845580067127,
+        "even_cat_initial": 0.5152322860579746,
+        "cat_manifold_coth": 0.515384580507968,
+        "cat_manifold_offset": 0.00029549671401349873,
+        "thermal": 0.6301481942794092
+      },
+      "thermal_spectral": {
+        "rate": 0.6300560800335515,
+        "na": 26,
+        "nb": 5,
+        "rel_change_na_plus_4": 6.079846182061033e-09,
+        "rel_change_nb_plus_2": 6.481434834926247e-05
+      }
+    },
+    {
+      "alpha": 2.2,
+      "alpha2": 4.840000000000001,
+      "spectral": {
+        "rate": 0.5648134362649418,
+        "na": 27,
+        "nb": 5,
+        "rel_change_na_plus_4": 5.399398705918657e-10,
+        "rel_change_nb_plus_2": 1.422018350849541e-06
+      },
+      "time_domain": {
+        "na": 27,
+        "nb": 5,
+        "t_max_us": 6.311488373645496,
+        "fit": {
+          "rate": 0.5648135325689115,
+          "rate_stderr": 1.612684906731244e-08,
+          "offset": 0.00013517844103972843
+        },
+        "fit_window_start_us": 1.0,
+        "fit_late": {
+          "rate": 0.5648134362102939,
+          "rate_stderr": 2.3017144364581894e-10,
+          "offset": 0.0001351578679699487
+        },
+        "fit_late_window_start_us": 2.0,
+        "fit_rel_change_bigger_trunc": 1.4221263651137406e-06,
+        "identity": {
+          "rate_median": 0.5648134374851073,
+          "rate_min": 0.5648128987541294,
+          "rate_max": 0.5648139741474063,
+          "raw_at_t0": 0.565566749554162,
+          "raw_at_window_start": 0.5645772633672702,
+          "window_start_us": 2.0
+        },
+        "identity_rel_change_bigger_trunc": 5.072778645143217e-06,
+        "steady_state_parity": 0.00013515786162462636
+      },
+      "analytic": {
+        "two_kappa_alpha2": 0.565637474093535,
+        "even_cat_initial": 0.5655667495043993,
+        "cat_manifold_coth": 0.5656374785156192,
+        "cat_manifold_offset": 0.0001250430070608549,
+        "thermal": 0.690451693583596
+      },
+      "thermal_spectral": {
+        "rate": 0.6903960546734604,
+        "na": 27,
+        "nb": 5,
+        "rel_change_na_plus_4": 6.316151157648164e-09,
+        "rel_change_nb_plus_2": 5.2135941816855436e-05
+      }
+    },
+    {
+      "alpha": 2.4,
+      "alpha2": 5.76,
+      "spectral": {
+        "rate": 0.6723350182468824,
+        "na": 29,
+        "nb": 5,
+        "rel_change_na_plus_4": 1.1399268196043977e-09,
+        "rel_change_nb_plus_2": 9.401881215787e-07
+      },
+      "time_domain": {
+        "na": 29,
+        "nb": 5,
+        "t_max_us": 5.462061202497704,
+        "fit": {
+          "rate": 0.6723350419951263,
+          "rate_stderr": 2.9235373314950365e-08,
+          "offset": 2.1774447580644834e-05
+        },
+        "fit_window_start_us": 1.0,
+        "fit_late": {
+          "rate": 0.6723350200705297,
+          "rate_stderr": 4.0985301951611e-10,
+          "offset": 2.1770372845837385e-05
+        },
+        "fit_late_window_start_us": 2.0,
+        "fit_rel_change_bigger_trunc": 9.359021451160743e-07,
+        "identity": {
+          "rate_median": 0.6723350188700291,
+          "rate_min": 0.6723343806844474,
+          "rate_max": 0.6723356061926044,
+          "raw_at_t0": 0.6731419731025657,
+          "raw_at_window_start": 0.672278715734149,
+          "window_start_us": 2.0
+        },
+        "identity_rel_change_bigger_trunc": 2.15534469782952e-06,
+        "steady_state_parity": 2.1770178278648642e-05
+      },
+      "analytic": {
+        "two_kappa_alpha2": 0.6731553410699921,
+        "even_cat_initial": 0.673141973005015,
+        "cat_manifold_coth": 0.6731553412027317,
+        "cat_manifold_offset": 1.985900860974416e-05,
+        "thermal": 0.8194731339553445
+      },
+      "thermal_spectral": {
+        "rate": 0.8194715938815265,
+        "na": 29,
+        "nb": 5,
+        "rel_change_na_plus_4": 4.170989220675381e-09,
+        "rel_change_nb_plus_2": 3.2064807414577956e-05
+      }
+    },
+    {
+      "alpha": 2.6,
+      "alpha2": 6.760000000000001,
+      "spectral": {
+        "rate": 0.789204675956612,
+        "na": 31,
+        "nb": 5,
+        "rel_change_na_plus_4": 4.875727155351228e-09,
+        "rel_change_nb_plus_2": 6.172122106740119e-07
+      },
+      "time_domain": {
+        "na": 31,
+        "nb": 5,
+        "t_max_us": 4.801295267749947,
+        "fit": {
+          "rate": 0.7892044581734593,
+          "rate_stderr": 4.56944026146938e-08,
+          "offset": 2.9673148882273447e-06
+        },
+        "fit_window_start_us": 1.0,
+        "fit_late": {
+          "rate": 0.7892046706549084,
+          "rate_stderr": 8.387365978287964e-10,
+          "offset": 2.9938644307124125e-06
+        },
+        "fit_late_window_start_us": 2.0,
+        "fit_rel_change_bigger_trunc": 6.180609017913952e-07,
+        "identity": {
+          "rate_median": 0.7892046750494304,
+          "rate_min": 0.7892040676104394,
+          "rate_max": 0.7892053114648465,
+          "raw_at_t0": 0.7900204647012955,
+          "raw_at_window_start": 0.7891934506403044,
+          "window_start_us": 2.0
+        },
+        "identity_rel_change_bigger_trunc": 8.800731114977367e-07,
+        "steady_state_parity": 2.9941967807637813e-06
+      },
+      "analytic": {
+        "two_kappa_alpha2": 0.7900225877835324,
+        "even_cat_initial": 0.7900204645022796,
+        "cat_manifold_coth": 0.7900225877863857,
+        "cat_manifold_offset": 2.6876245552581847e-06,
+        "thermal": 0.9597138300115928
+      },
+      "thermal_spectral": {
+        "rate": 0.9597466960596682,
+        "na": 31,
+        "nb": 5,
+        "rel_change_na_plus_4": 7.82583409186799e-09,
+        "rel_change_nb_plus_2": 1.949923347388527e-05
+      }
+    }
+  ],
+  "thermal_time_domain": [
+    {
+      "alpha": 1.4,
+      "na": 19,
+      "nb": 5,
+      "t_max_us": 11.473106396048077,
+      "fit": {
+        "rate": 0.2864481810194575,
+        "rate_stderr": 1.0826560243127834e-08,
+        "offset": 0.04231066956919234
+      },
+      "fit_window_start_us": 1.0,
+      "fit_late": {
+        "rate": 0.2864479648098649,
+        "rate_stderr": 6.527581226581123e-11,
+        "offset": 0.042310556639013695
+      },
+      "fit_late_window_start_us": 2.0,
+      "fit_rel_change_bigger_trunc": 3.857239554072578e-05,
+      "identity": {
+        "rate_median": 0.2864479652289813,
+        "rate_min": 0.2864477440897836,
+        "rate_max": 0.2864481817792657,
+        "raw_at_t0": 0.2758631821076145,
+        "raw_at_window_start": 0.2656272613187364,
+        "window_start_us": 2.0
+      },
+      "identity_rel_change_bigger_trunc": 0.0003184308146668702,
+      "steady_state_parity": 0.042310556115490575
+    },
+    {
+      "alpha": 2.1,
+      "na": 26,
+      "nb": 5,
+      "t_max_us": 5.76148091427075,
+      "fit": {
+        "rate": 0.6300561584196646,
+        "rate_stderr": 2.137014159608125e-08,
+        "offset": 0.0004472093386262003
+      },
+      "fit_window_start_us": 1.0,
+      "fit_late": {
+        "rate": 0.6300560819341268,
+        "rate_stderr": 2.5216613908697514e-10,
+        "offset": 0.00044719698321746385
+      },
+      "fit_late_window_start_us": 2.0,
+      "fit_rel_change_bigger_trunc": 6.458048244262216e-05,
+      "identity": {
+        "rate_median": 0.6300560807736882,
+        "rate_min": 0.6300555945814634,
+        "rate_max": 0.6300565633817565,
+        "raw_at_t0": 0.6299654678970883,
+        "raw_at_window_start": 0.6290635225239958,
+        "window_start_us": 2.0
+      },
+      "identity_rel_change_bigger_trunc": 0.0004969521791136078,
+      "steady_state_parity": 0.00044719675299665273
+    }
+  ],
+  "slopes": {
+    "spectral": {
+      "slope": 0.11642605686960995,
+      "slope_stderr": 0.00021607450614580988,
+      "intercept": 0.001335180462669572,
+      "slope_over_2kappa_a": 0.9962248631987389,
+      "alpha_range": [
+        1.0,
+        2.6
+      ]
+    },
+    "spectral_alpha_ge_1.4": {
+      "slope": 0.11685184221855054,
+      "slope_stderr": 1.1816356436591522e-05,
+      "intercept": -0.0007435984388804761,
+      "slope_over_2kappa_a": 0.9998681880901369,
+      "alpha_range": [
+        1.4,
+        2.6
+      ]
+    },
+    "fit": {
+      "slope": 0.11642604119647013,
+      "slope_stderr": 0.0002160707616504825,
+      "intercept": 0.0013352220046751906,
+      "slope_over_2kappa_a": 0.9962247290881112,
+      "alpha_range": [
+        1.0,
+        2.6
+      ]
+    },
+    "fit_alpha_ge_1.4": {
+      "slope": 0.11685181670937039,
+      "slope_stderr": 1.1811430892720534e-05,
+      "intercept": -0.0007435084148060172,
+      "slope_over_2kappa_a": 0.999867969815292,
+      "alpha_range": [
+        1.4,
+        2.6
+      ]
+    },
+    "identity": {
+      "slope": 0.11642605671826983,
+      "slope_stderr": 0.00021607458507107025,
+      "intercept": 0.0013351796877981515,
+      "slope_over_2kappa_a": 0.9962248619037644,
+      "alpha_range": [
+        1.0,
+        2.6
+      ]
+    },
+    "identity_alpha_ge_1.4": {
+      "slope": 0.11685184232545269,
+      "slope_stderr": 1.1816619213591164e-05,
+      "intercept": -0.0007436004942682203,
+      "slope_over_2kappa_a": 0.9998681890048684,
+      "alpha_range": [
+        1.4,
+        2.6
+      ]
+    },
+    "thermal_spectral": {
+      "slope": 0.1396970508233328,
+      "slope_stderr": 0.0003000724836383091,
+      "intercept": 0.014268033308181216,
+      "slope_over_2kappa_a": 1.1953481813921047,
+      "alpha_range": [
+        1.0,
+        2.6
+      ]
+    },
+    "thermal_spectral_alpha_ge_1.4": {
+      "slope": 0.14029774201692444,
+      "slope_stderr": 1.7708003609721826e-05,
+      "intercept": 0.011333675829352349,
+      "slope_over_2kappa_a": 1.2004881261626357,
+      "alpha_range": [
+        1.4,
+        2.6
+      ]
+    }
+  },
+  "thermal_hypothesis_R6": {
+    "predicted_slope_excess_1_plus_2n": 0.2,
+    "measured_slope_excess_spectral": 0.19534818139210475,
+    "reglade_reported_excess": 0.25,
+    "reglade_attribution": "interplay of the strong two-photon pump and uncontrolled parametric processes (R\u00e9glade 2024, main text)"
+  }
+}

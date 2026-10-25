@@ -1,0 +1,735 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cat Qubit 1.3 Pitch</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+/* === VIEWPORT BASE (frontend-slides, included in full) === */
+/* ===========================================
+   FIXED 16:9 STAGE: MANDATORY BASE STYLES
+   Include this ENTIRE file in every presentation.
+   Slides are authored at 1920×1080 and scaled as a whole.
+   =========================================== */
+
+/* 1. Lock the browser viewport */
+html,
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    overflow: hidden;
+    background: var(--stage-bg, #000);
+}
+
+/* 2. Full-window deck viewport */
+.deck-viewport {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    background: var(--stage-bg, #000);
+}
+
+/* 3. Fixed 16:9 design canvas.
+   JavaScript sets transform: translate(...) scale(...). */
+.deck-stage {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 1920px;
+    height: 1080px;
+    overflow: hidden;
+    transform-origin: 0 0;
+    background: var(--slide-bg, #fff);
+}
+
+/* 4. Slides stack inside the fixed stage.
+   Content must be laid out at 1920×1080, not reflowed per device. */
+.slide {
+    position: absolute;
+    inset: 0;
+    width: 1920px;
+    height: 1080px;
+    overflow: hidden;
+    display: block;
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+    background: var(--slide-bg, #fff);
+}
+
+.slide.active,
+.slide.visible {
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+    z-index: 1;
+}
+
+/* 5. Keep media inside authored slide bounds */
+img,
+video,
+canvas,
+svg {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+/* 6. Presentation chrome stays outside the slide design system */
+.deck-controls {
+    position: fixed;
+    left: 50%;
+    bottom: 22px;
+    transform: translateX(-50%);
+    z-index: 1000;
+}
+
+/* 7. Print one fixed-size slide per page */
+@media print {
+    html,
+    body {
+        width: 1920px;
+        height: auto;
+        overflow: visible;
+        background: #fff;
+    }
+
+    .deck-viewport {
+        position: static;
+        overflow: visible;
+        background: #fff;
+    }
+
+    .deck-stage {
+        position: static;
+        width: auto;
+        height: auto;
+        transform: none !important;
+        background: none;
+    }
+
+    .slide {
+        position: relative;
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        pointer-events: auto !important;
+        width: 1920px;
+        height: 1080px;
+        break-after: page;
+        page-break-after: always;
+    }
+
+    .slide:last-child {
+        break-after: auto;
+        page-break-after: auto;
+    }
+
+    .deck-controls {
+        display: none !important;
+    }
+}
+
+/* 8. Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.2s !important;
+    }
+}
+
+/* === DECK STYLE (Swiss Modern) === */
+/* === TOKENS ===
+   Swiss Modern: white page, black ink, one red accent, a visible column grid. */
+:root {
+    --ink: #0b0b0b;
+    --ink-2: #2a2a2a;
+    --grey: #6b6b6b;
+    --rule: #d9d9d9;
+    --grid: #f1f1f1;
+    --red: #ff3300;
+    --stage-bg: #dcdcdc;
+    --slide-bg: #ffffff;
+    --display: "Archivo", sans-serif;
+    --text: "Nunito", sans-serif;
+    --margin: 160px;
+    --col: 160px;
+}
+
+/* === SLIDE CANVAS ===
+   Faint vertical lines every 160 px: the grid every block snaps to. */
+.slide {
+    color: var(--ink);
+    font-family: var(--text);
+}
+
+.slide::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(90deg,
+            transparent 0 calc(var(--col) - 1px),
+            var(--grid) calc(var(--col) - 1px) var(--col));
+    pointer-events: none;
+}
+
+sub,
+sup {
+    font-size: .62em;
+    line-height: 0;
+}
+
+/* === HEADER ===
+   Red square, letter-spaced task tag, heavy headline. */
+.hd {
+    position: absolute;
+    left: var(--margin);
+    top: 80px;
+    width: 1600px;
+}
+
+.tag {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font: 800 18px/1 var(--display);
+    letter-spacing: .22em;
+    text-transform: uppercase;
+}
+
+.tag::before {
+    content: "";
+    width: 14px;
+    height: 14px;
+    background: var(--red);
+}
+
+.tag .dim {
+    color: var(--grey);
+}
+
+h2 {
+    margin: 22px 0 0;
+    max-width: 1560px;
+    font: 800 58px/1.04 var(--display);
+    letter-spacing: -.02em;
+}
+
+h2 em {
+    font-style: normal;
+    color: var(--red);
+}
+
+/* === BODY AREA ===
+   Everything between the headline and the footer lives in .body. */
+.body {
+    position: absolute;
+    left: var(--margin);
+    top: 290px;
+    width: 1600px;
+    height: 640px;
+}
+
+.cols {
+    display: grid;
+    gap: 64px;
+    height: 100%;
+    align-items: start;
+}
+
+.stack {
+    display: flex;
+    flex-direction: column;
+    gap: 26px;
+}
+
+/* === TEXT ===
+   Reading-first density, but never below 20 px on a 1920 stage. */
+.lede {
+    margin: 0;
+    font: 400 26px/1.45 var(--text);
+    color: var(--ink-2);
+}
+
+.lede b,
+.note b {
+    font-weight: 800;
+    color: var(--ink);
+}
+
+.note {
+    margin: 0;
+    font: 400 21px/1.45 var(--text);
+    color: #444;
+}
+
+.kicker {
+    margin: 0 0 6px;
+    font: 800 15px/1 var(--display);
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--grey);
+}
+
+.eq {
+    font: 600 26px/1.3 var(--display);
+    color: var(--ink);
+}
+
+/* === STATS ===
+   Big numbers with a heavy top rule; the red one is the headline result. */
+.stats {
+    display: grid;
+    gap: 30px 40px;
+}
+
+.stat {
+    border-top: 6px solid var(--ink);
+    padding-top: 14px;
+}
+
+.stat.hot {
+    border-color: var(--red);
+}
+
+.stat .n {
+    font: 800 62px/1 var(--display);
+    letter-spacing: -.02em;
+    white-space: nowrap;
+}
+
+.stat .n small {
+    margin-left: 6px;
+    font-size: .42em;
+    font-weight: 700;
+    letter-spacing: 0;
+}
+
+.stat .l {
+    margin-top: 10px;
+    font: 400 21px/1.35 var(--text);
+    color: #333;
+}
+
+/* === TABLES ===
+   Tabular numerals, heavy header rule, hairline rows, red for the chosen row. */
+.tbl {
+    width: 100%;
+    border-collapse: collapse;
+    font: 600 22px/1.2 var(--display);
+    font-variant-numeric: tabular-nums;
+}
+
+.tbl th {
+    padding: 0 18px 12px 0;
+    border-bottom: 3px solid var(--ink);
+    font: 800 14px/1.2 var(--display);
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--grey);
+    text-align: left;
+    vertical-align: bottom;
+}
+
+.tbl td {
+    padding: 11px 18px 11px 0;
+    border-bottom: 1px solid var(--rule);
+}
+
+.tbl td.r,
+.tbl th.r {
+    text-align: right;
+}
+
+.tbl tr.hi td {
+    color: var(--red);
+}
+
+.tbl.compact td {
+    padding: 8px 14px 8px 0;
+    font-size: 20px;
+}
+
+/* === FIGURES ===
+   Real notebook plots on white plates; caption names the cell that drew them. */
+figure.plot {
+    margin: 0;
+}
+
+figure.plot img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+figure.plot figcaption {
+    margin-top: 10px;
+    font: 400 17px/1.4 var(--text);
+    color: var(--grey);
+}
+
+/* === FOOTER ===
+   Section name, the cells every number on the slide came from, page number. */
+.ft {
+    position: absolute;
+    left: var(--margin);
+    right: var(--margin);
+    bottom: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 40px;
+    padding-top: 14px;
+    border-top: 1px solid var(--rule);
+    font: 700 15px/1.3 var(--display);
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--grey);
+}
+
+.ft .src {
+    flex: 1;
+    font: 400 16px/1.3 var(--text);
+    letter-spacing: 0;
+    text-transform: none;
+}
+
+/* === COVER === */
+.cover h1 {
+    position: absolute;
+    left: var(--margin);
+    top: 200px;
+    width: 1120px;
+    margin: 0;
+    font: 800 132px/.94 var(--display);
+    letter-spacing: -.035em;
+}
+
+.cover h1 em {
+    font-style: normal;
+    color: var(--red);
+}
+
+.cover .sub {
+    position: absolute;
+    left: var(--margin);
+    top: 740px;
+    width: 880px;
+}
+
+.cover .stats {
+    position: absolute;
+    left: 1440px;
+    top: 200px;
+    width: 320px;
+}
+
+/* === PIPELINE ===
+   Provenance chain drawn as numbered blocks on the grid. */
+.chain {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0;
+    border-top: 6px solid var(--ink);
+}
+
+.chain>div {
+    padding: 22px 28px 0 0;
+    border-right: 1px solid var(--rule);
+    margin-right: 28px;
+    min-height: 250px;
+}
+
+.chain>div:last-child {
+    border-right: 0;
+}
+
+.chain .k {
+    font: 800 15px/1 var(--display);
+    letter-spacing: .18em;
+    color: var(--red);
+}
+
+.chain .t {
+    margin: 14px 0 10px;
+    font: 800 28px/1.1 var(--display);
+}
+
+.chain code {
+    font: 600 17px/1.4 var(--display);
+    color: var(--ink-2);
+    word-break: break-all;
+}
+
+/* === MOTION ===
+   One staggered reveal per slide; disabled by prefers-reduced-motion. */
+.reveal {
+    opacity: 1;
+}
+
+.slide.active .reveal {
+    animation: rise .7s cubic-bezier(.2, .7, .2, 1) both;
+}
+
+.slide.active .d1 { animation-delay: .06s; }
+.slide.active .d2 { animation-delay: .16s; }
+.slide.active .d3 { animation-delay: .26s; }
+.slide.active .d4 { animation-delay: .36s; }
+.slide.active .d5 { animation-delay: .46s; }
+
+@keyframes rise {
+    from {
+        opacity: 0;
+        transform: translateY(22px);
+    }
+
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+/* === PROVENANCE HOVER ===
+   Hovering a number shows the exact line the notebook printed. */
+[data-claim],
+[data-derived] {
+    cursor: help;
+}
+
+/* === CHROME OUTSIDE THE STAGE === */
+.progress {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 4px;
+    background: var(--red);
+    z-index: 1001;
+    transition: width .3s ease;
+}
+
+.edit-hotzone {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 80px;
+    height: 80px;
+    z-index: 1002;
+}
+
+#editToggle {
+    position: fixed;
+    left: 16px;
+    top: 16px;
+    z-index: 1003;
+    padding: 10px 16px;
+    border: 2px solid var(--ink);
+    background: #fff;
+    font: 800 13px/1 var(--display);
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .2s ease;
+    cursor: pointer;
+}
+
+#editToggle.show,
+#editToggle.on {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+#editToggle.on {
+    background: var(--red);
+    border-color: var(--red);
+    color: #fff;
+}
+
+body.editing [contenteditable="true"] {
+    outline: 1px dashed rgba(255, 51, 0, .5);
+    outline-offset: 4px;
+}
+
+/* === CASE GUARDS: keep task codes (1.3(a)) and Greek symbols as typed === */
+.tbl th { text-transform: none; letter-spacing: .04em; }
+.tag .code, .kicker .set, .kicker .math { text-transform: none; }
+
+/* === TAKEAWAYS: larger reading size for the closing slide === */
+.takeaways .lede { font-size: 34px; line-height: 1.4; }
+
+/* === PITCH 1.3 ACCENT ===
+   The pitch deck's accent is rgb(204, 217, 245) in place of the red; white page kept. */
+:root { --red: rgb(204, 217, 245); }
+
+/* === PITCH 1.3 === */
+.pitch-eq { font-family: var(--display); font-size: 84px; font-weight: 800; color: var(--red);
+  margin: 28px 0; }
+.pitch-costs { display: grid; grid-template-columns: 1fr 1fr; gap: 28px 64px; }
+.pitch-cost { border-top: 4px solid var(--ink); padding-top: 18px; }
+.pitch-cost b { display: block; font-family: var(--display); font-size: 40px; font-weight: 800; }
+.pitch-cost > span { display: block; font-size: 28px; color: var(--grey); margin-top: 8px; }
+.slide .lede { font-size: 30px; line-height: 1.4; }
+.slide figcaption { font-size: 20px; }
+
+</style>
+</head>
+<body>
+<div class="edit-hotzone" aria-hidden="true"></div>
+<button id="editToggle" type="button" aria-label="Toggle text editing">Edit</button>
+<div class="progress" aria-hidden="true"></div>
+<main class="deck-viewport">
+<div class="deck-stage">
+<section class="slide " aria-label="Even cat"><header class="hd reveal d1"><div class="tag"><span class="code">1.3(a)</span></div><h2>Vacuum can only become the <em>even cat</em></h2></header><div class="body"><div class="cols" style="grid-template-columns:700px 1fr"><figure class="plot reveal d2" style="width:700px"><img src="pitch13-assets/1_3a_observables.png" alt="Parity, coherence, fidelities and purity versus time" width="700" height="490"><figcaption>Two-mode model: <span class="math">⟨P⟩</span>, fidelity with <span class="math">|C₊⟩</span> and purity over time.</figcaption></figure><div class="stack reveal d2"><p class="lede">Vacuum has <span class="math">⟨P⟩ = +1</span>. The drive, buffer loss and <span class="math">a²b†</span> change the memory photon number by two <span class="set">(1.0(b))</span>, so parity is conserved and <span class="math">|0⟩</span> can only grow <span class="math">|C₊⟩ ∝ |+α⟩ + |−α⟩</span>.</p><div class="stats reveal d3" style="grid-template-columns:repeat(1,1fr)"><div class="stat hot"><div class="n"><span class="num" data-claim="parity_control" data-cell="22" data-line="kappa_a = 0 control: max |&lt;P&gt; - 1| over 6 us = 2.4e-15">2.4&#8239;&times;&#8239;10<sup>−15</sup></span></div><div class="l">drift of <span class="math">⟨P⟩</span> with <span class="set">κ<sub>a</sub> = 0</span></div></div><div class="stat"><div class="n"><span class="num" data-claim="cat_t.1.fid_cat" data-cell="22" data-line="t = 1 us: &lt;P&gt; = 0.629, F(C+) = 0.811, F(+alpha) = 0.498, purity = 0.692, coherence = 0.626">0.811</span></div><div class="l"><span class="math">F(C₊)</span> at <span class="set">1 µs</span>: memory loss sets in</div></div><div class="stat"><div class="n"><span class="num" data-claim="cat_t.6.purity" data-cell="22" data-line="t = 6 us: &lt;P&gt; = 0.048, F(C+) = 0.524, F(+alpha) = 0.500, purity = 0.501, coherence = 0.048">0.501</span></div><div class="l">purity at <span class="set">6 µs</span>: an equal mixture of the two codewords</div></div></div></div></div></div><footer class="ft"><span class="sec">Task 1.3</span><span class="src ref">Numbers: intro_track.ipynb cell 22</span><span class="pg">01 / 08</span></footer></section>
+<section class="slide " aria-label="Superposition"><header class="hd reveal d1"><div class="tag"><span class="code">1.3(a)</span> <span class='dim'>· not a mixture</span></div><h2>A superposition, <em>not a mixture</em></h2></header><div class="body"><div class="stack reveal d2"><figure class="plot reveal d2" style="width:1500px"><img src="pitch13-assets/1_3a_superposition_vs_mixture.png" alt="Wigner functions: superposition with fringes, mixture without" width="1500" height="445"><figcaption>Same photon number, same overlap with |+α⟩. Only the superposition has fringes.</figcaption></figure><div class="stats reveal d3" style="grid-template-columns:repeat(4,1fr)"><div class="stat hot"><div class="n"><span class="num" data-claim="lifetime_us" data-cell="22" data-line="prediction 2 kappa_a alpha^2   = 0.5154 /us  -&gt;  superposition lifetime 1/Gamma = 1.95 us">1.95</span><small>µs</small></div><div class="l">superposition lifetime, from the fringe decay</div></div><div class="stat"><div class="n"><span class="num" data-claim="coh_decay" data-cell="22" data-line="fitted decay of cat coherence = 0.5126 /us">0.5126</span><small>/µs</small></div><div class="l">fringe decay rate, measured</div></div><div class="stat"><div class="n"><span class="num" data-claim="gamma_pred" data-cell="22" data-line="prediction 2 kappa_a alpha^2   = 0.5154 /us  -&gt;  superposition lifetime 1/Gamma = 1.95 us">0.5154</span><small>/µs</small></div><div class="l">predicted <span class="math">2κ<sub>a</sub>α²</span></div></div><div class="stat"><div class="n"><span class="num" data-claim="liou_lifetime" data-cell="22" data-line="Liouvillian, (N_a, N_b) = (32, 10): Gamma = 0.514559 /us, lifetime 1.9434 us">1.9434</span><small>µs</small></div><div class="l">independent check (Liouvillian gap)</div></div></div></div></div><footer class="ft"><span class="sec">Task 1.3</span><span class="src ref">Numbers: intro_track.ipynb cell 22</span><span class="pg">02 / 08</span></footer></section>
+<section class="slide " aria-label="Dark state"><header class="hd reveal d1"><div class="tag"><span class="code">1.3(b)</span> <span class='dim'>· the idea</span></div><h2>Don't roll into the valley. <em>Start at the bottom.</em></h2></header><div class="body"><div class="cols" style="grid-template-columns:960px 1fr"><figure class="plot reveal d2" style="width:960px"><img src="pitch13-assets/pitch13_idea.gif" alt="Animated Wigner functions: vacuum, displaced start and method D" width="960" height="540"><figcaption>Simulated, stabilization on for <span class="set">2 µs</span>: vacuum, a short push <span class="math">β = 1.5</span>, and a push to exactly <span class="math">β = α</span>.</figcaption></figure><div class="stack reveal d2"><p class="lede">Push the memory to exactly <span class="math">β = α</span> with the pump off. On <span class="math">|α, 0⟩</span> the pair exchange cancels the buffer drive, so the codeword is a <b>dark state</b>:</p><p class="pitch-eq reveal d2"><span class="math">g₂α² − ε<sub>d</sub> = 0</span></p><div class="stats reveal d3" style="grid-template-columns:repeat(1,1fr)"><div class="stat hot"><div class="n"><span class="num" data-claim="d_err" data-cell="43" data-line="method D: error 8.41e-06 -&gt; 5.37e-05 with circuit terms">8.41&#8239;&times;&#8239;10<sup>−6</sup></span></div><div class="l">error, two-mode model</div></div><div class="stat"><div class="n"><span class="num" data-claim="d_err_lossless" data-cell="43" data-line="method D with kappa_a = 0: error 9.3e-12">9.3&#8239;&times;&#8239;10<sup>−12</sup></span></div><div class="l">with <span class="set">κ<sub>a</sub> = 0</span>: the error is all memory loss</div></div></div></div></div></div><footer class="ft"><span class="sec">Task 1.3</span><span class="src ref">Numbers: intro_track.ipynb cell 43 · studies/task13_idea_animation.py</span><span class="pg">03 / 08</span></footer></section>
+<section class="slide " aria-label="Protocol"><header class="hd reveal d1"><div class="tag"><span class="code">1.3(b)</span> <span class='dim'>· the protocol</span></div><h2>Push with the pump off, <em>then</em> stabilize</h2></header><div class="body"><div class="stack reveal d2"><figure class="plot reveal d2" style="width:1140px"><img src="pitch13-assets/pitch13_protocol.gif" alt="Animated protocol: stabilization off, microwave push, pump on, hold" width="1140" height="641"><figcaption>Every frame is a saved two-mode state. Time axis stretched during the <span class="set">50 ns</span> push.</figcaption></figure></div></div><footer class="ft"><span class="sec">Task 1.3</span><span class="src ref">studies/task13_protocol_animation.py</span><span class="pg">04 / 08</span></footer></section>
+<section class="slide " aria-label="Result"><header class="hd reveal d1"><div class="tag"><span class="code">1.3(b)</span> <span class='dim'>· result</span></div><h2>Lowest error of every preparation we tested</h2></header><div class="body"><div class="stack reveal d2"><figure class="plot reveal d2" style="width:1060px"><img src="pitch13-assets/pitch13_ladder.png" alt="Preparation error on a log scale for four starts" width="1060" height="469"><figcaption><span class="math">1 − F(|+α⟩)</span> after <span class="set">2 µs</span> of stabilization, two-mode model.</figcaption></figure><div class="stats reveal d3" style="grid-template-columns:repeat(3,1fr)"><div class="stat hot"><div class="n"><span class="num" data-claim="d_vs_c" data-cell="43" data-line="method D vs method C: 68x lower error, 14x lower with circuit terms">68</span><small>×</small></div><div class="l">lower than the best ramped push</div></div><div class="stat"><div class="n"><span class="num" data-claim="d_err_circuit" data-cell="43" data-line="method D: error 8.41e-06 -&gt; 5.37e-05 with circuit terms">5.37&#8239;&times;&#8239;10<sup>−5</sup></span></div><div class="l">with real-circuit Kerr terms</div></div><div class="stat"><div class="n"><span class="num" data-claim="d_vs_c_circuit" data-cell="43" data-line="method D vs method C: 68x lower error, 14x lower with circuit terms">14</span><small>×</small></div><div class="l">lower, with circuit terms</div></div></div></div></div><footer class="ft"><span class="sec">Task 1.3</span><span class="src ref">Numbers: intro_track.ipynb cells 40, 43 · studies/task13_baseline_compare.py</span><span class="pg">05 / 08</span></footer></section>
+<section class="slide " aria-label="Finite push"><header class="hd reveal d1"><div class="tag"><span class="code">1.3(b)</span> <span class='dim'>· a real push</span></div><h2>Turn the pump <em>off</em> while you push</h2></header><div class="body"><div class="cols" style="grid-template-columns:1.45fr 1fr"><figure class="plot reveal d2" style="width:1050px"><img src="pitch13-assets/pitch13_push.png" alt="Preparation error against push duration, pump off and pump on" width="1050" height="465"><figcaption>Dashed line: the ideal, instantaneous push.</figcaption></figure><div class="stats reveal d3" style="grid-template-columns:repeat(1,1fr)"><div class="stat hot"><div class="n"><span class="num" data-study="finite_push" data-match="{&quot;duration&quot;: 0.05, &quot;kind&quot;: &quot;pump_off&quot;}" title="results/task1/finite_push.json">8.4&#8239;&times;&#8239;10<sup>−6</sup></span></div><div class="l">pump off, <span class="set">50 ns</span> push</div></div><div class="stat"><div class="n"><span class="num" data-study="finite_push" data-match="{&quot;duration&quot;: 1.0, &quot;kind&quot;: &quot;pump_off&quot;}" title="results/task1/finite_push.json">8.4&#8239;&times;&#8239;10<sup>−6</sup></span></div><div class="l">pump off, <span class="set">1 µs</span> push</div></div><div class="stat"><div class="n"><span class="num" data-study="finite_push" data-match="{&quot;duration&quot;: 0.05, &quot;kind&quot;: &quot;pump_on&quot;}" title="results/task1/finite_push.json">4.8&#8239;&times;&#8239;10<sup>−4</sup></span></div><div class="l">pump on, <span class="set">50 ns</span> push</div></div><div class="stat"><div class="n"><span class="num" data-study="finite_push" data-match="{&quot;duration&quot;: 1.0, &quot;kind&quot;: &quot;pump_on&quot;}" title="results/task1/finite_push.json">3.2&#8239;&times;&#8239;10<sup>−1</sup></span></div><div class="l">pump on, <span class="set">1 µs</span> push</div></div></div></div></div><footer class="ft"><span class="sec">Task 1.3</span><span class="src ref">Numbers: studies/task13_finite_push.py</span><span class="pg">06 / 08</span></footer></section>
+<section class="slide " aria-label="Real hardware"><header class="hd reveal d1"><div class="tag"><span class="code">1.3(c)</span> <span class='dim'>· real hardware</span></div><h2>It survives the effects the ideal model <em>leaves out</em></h2></header><div class="body"><div class="stack reveal d2"><p class="lede">Simulated in the same two-mode model: <span class="math">1 − F(|+α⟩)</span> after <span class="set">2 µs</span>. Each effect costs one calibration step.</p><div class="cols" style="grid-template-columns:1.35fr 1fr"><table class="tbl reveal d3"><thead><tr><th>effect</th><th class="r">ignored</th><th class="r">handled</th><th class="r">fix</th></tr></thead><tbody><tr><td>Memory frequency shift with the pump off, <span class="set">200 ns</span> push</td><td class="r"><span class="num" data-study="push_realism" data-match="{&quot;calibration&quot;: &quot;none&quot;, &quot;detuning&quot;: -5.619405783964528, &quot;duration&quot;: 0.2, &quot;effect&quot;: &quot;detuning&quot;}" title="results/task1/push_realism.json">6.8&#8239;&times;&#8239;10<sup>−3</sup></span></td><td class="r"><span class="num" data-study="push_realism" data-match="{&quot;calibration&quot;: &quot;second_order&quot;, &quot;detuning&quot;: -5.619405783964528, &quot;duration&quot;: 0.2, &quot;effect&quot;: &quot;detuning&quot;}" title="results/task1/push_realism.json">1.0&#8239;&times;&#8239;10<sup>−5</sup></span></td><td class="r">calibrate the push frequency</td></tr><tr><td>Pulse smoothing in the wiring, <span class="set">τ = 10 ns</span></td><td class="r"><span class="num" data-study="push_realism" data-match="{&quot;effect&quot;: &quot;lowpass&quot;, &quot;guard&quot;: 0.0, &quot;tau&quot;: 0.01}" title="results/task1/push_realism.json">1.3&#8239;&times;&#8239;10<sup>−5</sup></span></td><td class="r"><span class="num" data-study="push_realism" data-match="{&quot;effect&quot;: &quot;lowpass&quot;, &quot;guard&quot;: 0.05, &quot;tau&quot;: 0.01}" title="results/task1/push_realism.json">8.4&#8239;&times;&#8239;10<sup>−6</sup></span></td><td class="r">switch the pump on <span class="set">5τ</span> later</td></tr><tr><td>Reflected echo, <span class="set">10%</span> arriving <span class="set">20 ns</span> later</td><td class="r"><span class="num" data-study="push_realism" data-match="{&quot;echo&quot;: [0.1, 0.02], &quot;effect&quot;: &quot;echo&quot;, &quot;guard&quot;: 0.0}" title="results/task1/push_realism.json">8.5&#8239;&times;&#8239;10<sup>−6</sup></span></td><td class="r"><span class="num" data-study="push_realism" data-match="{&quot;echo&quot;: [0.1, 0.02], &quot;effect&quot;: &quot;echo&quot;, &quot;guard&quot;: 0.02}" title="results/task1/push_realism.json">8.4&#8239;&times;&#8239;10<sup>−6</sup></span></td><td class="r">the same delayed pump switch</td></tr></tbody></table><div class="stats reveal d4" style="grid-template-columns:repeat(1,1fr)"><div class="stat hot"><div class="n"><span class="num" data-study="push_realism" data-match="{&quot;calibration&quot;: &quot;second_order&quot;, &quot;circuit&quot;: true, &quot;detuning&quot;: -5.619405783964528, &quot;effect&quot;: &quot;combined&quot;, &quot;extra&quot;: 0.1, &quot;guard&quot;: 0.025, &quot;n_th&quot;: 0.001, &quot;tau&quot;: 0.005}" title="results/task1/push_realism.json">6.6&#8239;&times;&#8239;10<sup>−5</sup></span></div><div class="l">method D, all effects at once plus circuit terms (<span class="set">+10%</span> <span class="math">κ<sub>a</sub></span>, <span class="set">10⁻³</span> thermal photons)</div></div><div class="stat"><div class="n"><span class="num" data-study="push_realism" data-match="{&quot;circuit&quot;: true, &quot;effect&quot;: &quot;combined&quot;, &quot;extra&quot;: 0.1, &quot;n_th&quot;: 0.001, &quot;start&quot;: &quot;instant_A&quot;}" title="results/task1/push_realism.json">1.3&#8239;&times;&#8239;10<sup>−3</sup></span></div><div class="l">method A under the same conditions</div></div><div class="stat"><div class="n"><span class="num" data-study="push_realism" data-match="{&quot;effect&quot;: &quot;heat_loss&quot;, &quot;extra&quot;: 1.0, &quot;n_th&quot;: 0.01, &quot;start&quot;: &quot;push&quot;}" title="results/task1/push_realism.json">1.3&#8239;&times;&#8239;10<sup>−4</sup></span></div><div class="l">method D with a very hot drive line (<span class="set">2</span><span class="math">κ<sub>a</sub></span>, <span class="set">10⁻²</span> thermal photons)</div></div></div></div></div></div><footer class="ft"><span class="sec">Task 1.3</span><span class="src ref">Numbers: studies/task13_push_realism.py</span><span class="pg">07 / 08</span></footer></section>
+<section class="slide " aria-label="Costs"><header class="hd reveal d1"><div class="tag"><span class="code">1.3(c)</span></div><h2>What it costs</h2></header><div class="body"><div class="stack reveal d2"><div class="pitch-costs reveal d2"><div class="pitch-cost"><b>One memory drive line</b><span>the same line any displacement needs</span></div><div class="pitch-cost"><b>A fast pump switch</b><span>pump off during the push</span></div><div class="pitch-cost"><b>Phase calibration</b><span><span class="set">22.5°</span> off → <span class="num" data-claim="d_phase.22.5.err" data-cell="43" data-line="method D phase error 22.5 deg: error 1.69e-03">1.69&#8239;&times;&#8239;10<sup>−3</sup></span></span></div><div class="pitch-cost"><b>Amplitude is forgiving</b><span>±<span class="set">10%</span> → <span class="num" data-claim="d_amp.0.9.err" data-cell="43" data-line="method D amplitude 0.9 alpha: error 5.85e-05">5.85&#8239;&times;&#8239;10<sup>−5</sup></span>, <span class="num" data-claim="d_amp.1.1.err" data-cell="43" data-line="method D amplitude 1.1 alpha: error 5.06e-05">5.06&#8239;&times;&#8239;10<sup>−5</sup></span></span></div></div><p class="lede">Real circuit: the memory Kerr sets the floor at <span class="num" data-claim="d_err_circuit" data-cell="43" data-line="method D: error 8.41e-06 -&gt; 5.37e-05 with circuit terms">5.37&#8239;&times;&#8239;10<sup>−5</sup></span>. Removing it needs a drive we have not shown the device can make, so we report it as an extension, not a result.</p></div></div><footer class="ft"><span class="sec">Task 1.3</span><span class="src ref">Numbers: intro_track.ipynb cell 43</span><span class="pg">08 / 08</span></footer></section>
+</div>
+</main>
+<script>
+/* === SLIDE PRESENTATION ===
+   Fixed 1920x1080 stage scaled to the window; keyboard, wheel, swipe and
+   #N hash navigation; .active toggles visibility (never display:none). */
+class SlidePresentation {
+    constructor() {
+        this.stage = document.querySelector(".deck-stage");
+        this.slides = [...document.querySelectorAll(".slide")];
+        this.progress = document.querySelector(".progress");
+        this.index = this.fromHash();
+        this.locked = false;
+        this.fit = this.fit.bind(this);
+        window.addEventListener("resize", this.fit);
+        window.addEventListener("hashchange", () => this.show(this.fromHash(), false));
+        document.addEventListener("keydown", (e) => this.onKey(e));
+        window.addEventListener("wheel", (e) => this.onWheel(e), { passive: true });
+        this.bindTouch();
+        this.fit();
+        this.show(this.index, false);
+    }
+
+    fromHash() {
+        const n = parseInt(location.hash.slice(1), 10);
+        return Number.isFinite(n) ? Math.min(Math.max(n - 1, 0), this.slides.length - 1) : 0;
+    }
+
+    fit() {
+        const s = Math.min(innerWidth / 1920, innerHeight / 1080);
+        const x = (innerWidth - 1920 * s) / 2;
+        const y = (innerHeight - 1080 * s) / 2;
+        this.stage.style.transform = `translate(${x}px, ${y}px) scale(${s})`;
+    }
+
+    show(i, push = true) {
+        this.index = Math.min(Math.max(i, 0), this.slides.length - 1);
+        this.slides.forEach((el, k) => {
+            const on = k === this.index;
+            el.classList.toggle("active", on);
+            el.classList.toggle("visible", on);
+            el.setAttribute("aria-hidden", on ? "false" : "true");
+        });
+        this.progress.style.width = `${((this.index + 1) / this.slides.length) * 100}%`;
+        if (push) history.replaceState(null, "", `#${this.index + 1}`);
+    }
+
+    onKey(e) {
+        if (document.body.classList.contains("editing")) return;
+        const next = ["ArrowRight", "ArrowDown", " ", "PageDown"];
+        const prev = ["ArrowLeft", "ArrowUp", "PageUp"];
+        if (next.includes(e.key)) { e.preventDefault(); this.show(this.index + 1); }
+        else if (prev.includes(e.key)) { e.preventDefault(); this.show(this.index - 1); }
+        else if (e.key === "Home") this.show(0);
+        else if (e.key === "End") this.show(this.slides.length - 1);
+    }
+
+    onWheel(e) {
+        if (this.locked || Math.abs(e.deltaY) < 30 || document.body.classList.contains("editing")) return;
+        this.locked = true;
+        this.show(this.index + (e.deltaY > 0 ? 1 : -1));
+        setTimeout(() => { this.locked = false; }, 700);
+    }
+
+    bindTouch() {
+        let x0 = null;
+        document.addEventListener("touchstart", (e) => { x0 = e.touches[0].clientX; }, { passive: true });
+        document.addEventListener("touchend", (e) => {
+            if (x0 === null) return;
+            const dx = e.changedTouches[0].clientX - x0;
+            if (Math.abs(dx) > 50) this.show(this.index + (dx < 0 ? 1 : -1));
+            x0 = null;
+        });
+    }
+}
+
+/* === INLINE EDITOR ===
+   Hover the top-left corner or press E; edits auto-save to this browser only.
+   Saved edits are ignored if the slide count changed since they were saved. */
+class InlineEditor {
+    constructor(key) {
+        this.key = key;
+        this.button = document.getElementById("editToggle");
+        this.zone = document.querySelector(".edit-hotzone");
+        this.targets = [...document.querySelectorAll(".slide h1, .slide h2, .slide .lede, .slide .note")];
+        this.hideTimer = null;
+        this.restore();
+        this.zone.addEventListener("mouseenter", () => this.reveal());
+        this.zone.addEventListener("mouseleave", () => this.hideSoon());
+        this.button.addEventListener("mouseenter", () => this.reveal());
+        this.button.addEventListener("mouseleave", () => this.hideSoon());
+        this.button.addEventListener("click", () => this.toggle());
+        document.addEventListener("keydown", (e) => this.onKey(e));
+    }
+
+    reveal() { clearTimeout(this.hideTimer); this.button.classList.add("show"); }
+    hideSoon() { this.hideTimer = setTimeout(() => this.button.classList.remove("show"), 400); }
+
+    toggle() {
+        const on = !document.body.classList.contains("editing");
+        document.body.classList.toggle("editing", on);
+        this.button.classList.toggle("on", on);
+        this.button.textContent = on ? "Editing · E to stop" : "Edit text";
+        this.targets.forEach((el) => { el.contentEditable = on ? "true" : "false"; });
+        if (!on) this.save();
+    }
+
+    onKey(e) {
+        const typing = document.activeElement && document.activeElement.isContentEditable;
+        if ((e.ctrlKey || e.metaKey) && e.key === "s") { e.preventDefault(); this.save(); return; }
+        if (!typing && (e.key === "e" || e.key === "E")) this.toggle();
+    }
+
+    save() {
+        try {
+            const data = { count: this.targets.length, html: this.targets.map((el) => el.innerHTML) };
+            localStorage.setItem(this.key, JSON.stringify(data));
+        } catch (err) { console.warn("edit save failed", err); }
+    }
+
+    restore() {
+        try {
+            const data = JSON.parse(localStorage.getItem(this.key) || "null");
+            if (!data || data.count !== this.targets.length) return;
+            this.targets.forEach((el, i) => { el.innerHTML = data.html[i]; });
+        } catch (err) { console.warn("edit restore failed", err); }
+    }
+}
+
+/* === PROVENANCE TOOLTIPS ===
+   Each sourced number carries the printed notebook line as its title. */
+document.querySelectorAll("[data-line]").forEach((el) => {
+    el.title = `intro_track.ipynb cell ${el.dataset.cell}: ${el.dataset.line}`;
+});
+
+new SlidePresentation();
+new InlineEditor("task1-deck-edits-v3");
+
+</script>
+</body>
+</html>

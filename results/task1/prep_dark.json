@@ -1,0 +1,232 @@
+{
+ "truncation": [
+  28,
+  12
+ ],
+ "t_hold_us": 2.0,
+ "t_ramped_us": 2.5,
+ "methods": [
+  {
+   "model": "model",
+   "method": "A",
+   "beta": 1.5,
+   "error": 0.0012165307998657227
+  },
+  {
+   "model": "model",
+   "method": "A",
+   "beta": 2.0,
+   "error": 1.7583370208740234e-05
+  },
+  {
+   "model": "model",
+   "method": "A",
+   "beta": 2.1,
+   "error": 6.735324859619141e-06
+  },
+  {
+   "model": "model",
+   "method": "A",
+   "beta": 2.3,
+   "error": 4.649162292480469e-05
+  },
+  {
+   "model": "model",
+   "method": "A+C",
+   "beta": 0.5,
+   "target": 1.5,
+   "push_over_g2": 0.9110399924449257,
+   "error": 0.0002643465995788574
+  },
+  {
+   "model": "model",
+   "method": "A+C",
+   "beta": 0.5,
+   "target": 2.0,
+   "push_over_g2": 1.2147199899265675,
+   "error": 0.000783383846282959
+  },
+  {
+   "model": "model",
+   "method": "A+C",
+   "beta": 1.0,
+   "target": 1.5,
+   "push_over_g2": 0.9110399924449257,
+   "error": 0.0032619833946228027
+  },
+  {
+   "model": "model",
+   "method": "C",
+   "beta": 0.0,
+   "target": 1.5,
+   "push_over_g2": 0.9110399924449257,
+   "error": 0.000573575496673584
+  },
+  {
+   "model": "circuit",
+   "method": "A",
+   "beta": 1.5,
+   "error": 0.0013023018836975098
+  },
+  {
+   "model": "circuit",
+   "method": "A",
+   "beta": 2.0,
+   "error": 6.467103958129883e-05
+  },
+  {
+   "model": "circuit",
+   "method": "A",
+   "beta": 2.1,
+   "error": 5.239248275756836e-05
+  },
+  {
+   "model": "circuit",
+   "method": "A",
+   "beta": 2.3,
+   "error": 8.273124694824219e-05
+  },
+  {
+   "model": "circuit",
+   "method": "A+C",
+   "beta": 0.5,
+   "target": 1.5,
+   "push_over_g2": 0.9110399924449257,
+   "error": 0.0006062984466552734
+  },
+  {
+   "model": "circuit",
+   "method": "A+C",
+   "beta": 0.5,
+   "target": 2.0,
+   "push_over_g2": 1.2147199899265675,
+   "error": 0.0021520256996154785
+  },
+  {
+   "model": "circuit",
+   "method": "A+C",
+   "beta": 1.0,
+   "target": 1.5,
+   "push_over_g2": 0.9110399924449257,
+   "error": 0.0033516883850097656
+  },
+  {
+   "model": "circuit",
+   "method": "C",
+   "beta": 0.0,
+   "target": 1.5,
+   "push_over_g2": 0.9110399924449257,
+   "error": 0.0007764697074890137
+  }
+ ],
+ "robustness": [
+  {
+   "model": "model",
+   "amplitude": 1.0,
+   "phase_deg": 0.0,
+   "error": 6.735324859619141e-06
+  },
+  {
+   "model": "model",
+   "amplitude": 1.0,
+   "phase_deg": 22.5,
+   "error": 0.001687169075012207
+  },
+  {
+   "model": "model",
+   "amplitude": 1.0,
+   "phase_deg": 45.0,
+   "error": 0.02733433246612549
+  },
+  {
+   "model": "model",
+   "amplitude": 0.9,
+   "phase_deg": 0.0,
+   "error": 5.841255187988281e-05
+  },
+  {
+   "model": "model",
+   "amplitude": 0.9,
+   "phase_deg": 22.5,
+   "error": 0.00199127197265625
+  },
+  {
+   "model": "model",
+   "amplitude": 0.9,
+   "phase_deg": 45.0,
+   "error": 0.029638469219207764
+  },
+  {
+   "model": "model",
+   "amplitude": 1.1,
+   "phase_deg": 0.0,
+   "error": 4.8100948333740234e-05
+  },
+  {
+   "model": "model",
+   "amplitude": 1.1,
+   "phase_deg": 22.5,
+   "error": 0.0018620491027832031
+  },
+  {
+   "model": "model",
+   "amplitude": 1.1,
+   "phase_deg": 45.0,
+   "error": 0.027051031589508057
+  },
+  {
+   "model": "circuit",
+   "amplitude": 1.0,
+   "phase_deg": 0.0,
+   "error": 5.239248275756836e-05
+  },
+  {
+   "model": "circuit",
+   "amplitude": 1.0,
+   "phase_deg": 22.5,
+   "error": 0.0014249682426452637
+  },
+  {
+   "model": "circuit",
+   "amplitude": 1.0,
+   "phase_deg": 45.0,
+   "error": 0.015050172805786133
+  },
+  {
+   "model": "circuit",
+   "amplitude": 0.9,
+   "phase_deg": 0.0,
+   "error": 0.00010126829147338867
+  },
+  {
+   "model": "circuit",
+   "amplitude": 0.9,
+   "phase_deg": 22.5,
+   "error": 0.0016517043113708496
+  },
+  {
+   "model": "circuit",
+   "amplitude": 0.9,
+   "phase_deg": 45.0,
+   "error": 0.015713036060333252
+  },
+  {
+   "model": "circuit",
+   "amplitude": 1.1,
+   "phase_deg": 0.0,
+   "error": 8.678436279296875e-05
+  },
+  {
+   "model": "circuit",
+   "amplitude": 1.1,
+   "phase_deg": 22.5,
+   "error": 0.0016552209854125977
+  },
+  {
+   "model": "circuit",
+   "amplitude": 1.1,
+   "phase_deg": 45.0,
+   "error": 0.01712048053741455
+  }
+ ]
+}

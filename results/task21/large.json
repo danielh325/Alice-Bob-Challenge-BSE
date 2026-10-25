@@ -1,0 +1,112 @@
+{
+ "params": {
+  "g2": 4.7940703893780245,
+  "kappa_b": 16.336281798666924,
+  "kappa_a": 0.058433623356770145,
+  "kappa2": 5.627501087839128,
+  "units": "rad/us",
+  "source": "R\u00e9glade et al. 2024, Table S2"
+ },
+ "convention": "$\\Gamma_X$ = decay rate of Re$\\langle a\\rangle$ ($= 2\\times$ one-way jump rate)",
+ "truncation_rule": {
+  "na": "ceil(alpha^2 + 8 alpha + 6)",
+  "nb": 5,
+  "nb_max": "max(5, ceil(4 g2^2 alpha^4 / kappa_b^2) + 5)",
+  "na_taper": "3.0 alpha^2",
+  "refinements": {
+   "na": "+6",
+   "nb": "+1",
+   "nb_extra": "+3",
+   "na_taper": "x1.3333"
+  },
+  "rel_uncertainty": "sum of |relative shift| over the four single-knob refinements"
+ },
+ "knobs": [
+  "nb_extra",
+  "na_taper"
+ ],
+ "points": [
+  {
+   "alpha": 2.3,
+   "base": {
+    "gamma_x": 7.46895405179578e-08,
+    "trunc": {
+     "na": 30,
+     "nb": 5,
+     "nb_extra": 10,
+     "na_taper": 15.87
+    },
+    "dim": 242,
+    "wall_s": 89.5
+   },
+   "refined": {
+    "nb_extra": {
+     "gamma_x": 7.511258620618444e-08,
+     "trunc": {
+      "na": 30,
+      "nb": 5,
+      "nb_extra": 13,
+      "na_taper": 15.87
+     },
+     "dim": 267,
+     "wall_s": 133.3,
+     "rel_shift": 0.005664055305373283
+    },
+    "na_taper": {
+     "gamma_x": 7.442402486128929e-08,
+     "trunc": {
+      "na": 30,
+      "nb": 5,
+      "nb_extra": 10,
+      "na_taper": 21.16
+     },
+     "dim": 272,
+     "wall_s": 181.35,
+     "rel_shift": -0.0035549242213462895
+    }
+   },
+   "rel_uncertainty": 0.009218979526719573
+  },
+  {
+   "alpha": 2.5,
+   "base": {
+    "gamma_x": 1.3243026991295225e-08,
+    "trunc": {
+     "na": 33,
+     "nb": 5,
+     "nb_extra": 14,
+     "na_taper": 18.75
+    },
+    "dim": 314,
+    "wall_s": 710.21
+   },
+   "refined": {
+    "nb_extra": {
+     "gamma_x": 1.3251049215842188e-08,
+     "trunc": {
+      "na": 33,
+      "nb": 5,
+      "nb_extra": 17,
+      "na_taper": 18.75
+     },
+     "dim": 343,
+     "wall_s": 454.27,
+     "rel_shift": 0.0006057697044818955
+    },
+    "na_taper": {
+     "gamma_x": 1.2690527577137424e-08,
+     "trunc": {
+      "na": 33,
+      "nb": 5,
+      "nb_extra": 14,
+      "na_taper": 25.0
+     },
+     "dim": 359,
+     "wall_s": 677.8,
+     "rel_shift": -0.04172002477386505
+    }
+   },
+   "rel_uncertainty": 0.042325794478346945
+  }
+ ]
+}

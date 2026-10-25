@@ -1,0 +1,1880 @@
+{
+  "conventions": {
+    "units": "angular rad/us (divide by 2 pi for MHz); value_khz = value / (2 pi 1e-3)",
+    "frame": "rotating at (5u, 6u), u/2pi = 0.8 GHz; bare pump w_p = 4u exactly",
+    "hamiltonian": "rates angular, rad/us (value / 2 pi = MHz). Effective Hamiltonian in the frame rotating\nat (5u, 6u), u / 2 pi = 0.8 GHz:\n  H_eff = stark_a a^dag a + stark_b b^dag b + (kerr_a/2) a^dag^2 a^2 + (kerr_b/2) b^dag^2 b^2\n          + chi_ab a^dag a b^dag b + [g2(n_a, n_b) a^2 b^dag + c_a4b2 a^4 b^dag^2 + h.c.] + const.",
+    "floquet_fitted": "2nd-order coefficient + correction fitted to exact quasi-energies"
+  },
+  "parameters": {
+    "omega_a": 25132.741228718347,
+    "omega_b": 30159.289474462013,
+    "omega_p": 20106.192982974677,
+    "e_j": 251327.41228718346,
+    "phi_a": 0.06,
+    "phi_b": 0.3,
+    "eps_p": 0.03532407407407408,
+    "g2_formula": 4.7940703893780245,
+    "floquet_truncation": [
+      9,
+      8
+    ]
+  },
+  "terms": {
+    "stark_a": {
+      "value_rad_per_us": 5.8358825050274845,
+      "value_khz": 928.8095479786368,
+      "operator": "a^dag a",
+      "formula": "phi^4: (A^2 E^2 phi_a^2/2)(phi_a^2 S_a + phi_b^2 S_b); E_J' = (A^2 E/2) sum_k phi_k^2 S_k; A = 4 E_J J1(eps_p) ~ 2 E_J eps_p, E = exp(-Phi^2/2), S_k = 1/(w_k - w_p) + 1/(w_k + w_p); full formulas: symbolic_terms.json",
+      "verified_numerically": true,
+      "note": "2nd-order value matches the independent normal-ordered expansion (symbolic_terms.json) to ~1e-5; exact Floquet differs by the eps_p^4 error shown in floquet_fitted / eigenvalue_check",
+      "method": "time-averaged 2nd order in eps_p, all orders in phi (Fock-matrix sin phi)",
+      "floquet_fitted_rad_per_us": 5.619405783964528,
+      "eigenvalue_check_khz": {
+        "floquet": 883.2860215916496,
+        "effective": 928.8095479792883
+      }
+    },
+    "stark_b": {
+      "value_rad_per_us": 144.82161209521223,
+      "value_khz": 23049.075431490044,
+      "operator": "b^dag b",
+      "formula": "phi^4: (A^2 E^2 phi_b^2/2)(phi_a^2 S_a + phi_b^2 S_b); E_J' = (A^2 E/2) sum_k phi_k^2 S_k; A = 4 E_J J1(eps_p) ~ 2 E_J eps_p, E = exp(-Phi^2/2), S_k = 1/(w_k - w_p) + 1/(w_k + w_p); full formulas: symbolic_terms.json",
+      "verified_numerically": true,
+      "note": "2nd-order value matches the independent normal-ordered expansion (symbolic_terms.json) to ~1e-5; exact Floquet differs by the eps_p^4 error shown in floquet_fitted / eigenvalue_check",
+      "method": "time-averaged 2nd order in eps_p, all orders in phi (Fock-matrix sin phi)",
+      "floquet_fitted_rad_per_us": 141.98660555426272,
+      "eigenvalue_check_khz": {
+        "floquet": 22631.82269886171,
+        "effective": 23098.965098775523
+      }
+    },
+    "kerr_a": {
+      "value_rad_per_us": -0.03103784647998964,
+      "value_khz": -4.939826690217735,
+      "operator": "(K/2) a^dag^2 a^2",
+      "formula": "A^2 E^2 phi_a^4 {phi_a^2[-(5/8)S_a - (1/8)S_3a] + phi_b^2[-(3/4)S_b + 1/(8(2w_a-w_b+w_p)) - 1/(8(2w_a+w_b-w_p)) - 1/(8(2w_a+w_b+w_p))]}, S_3a with 3w_a",
+      "verified_numerically": false,
+      "note": "2nd-order value confirmed by the independent normal-ordered expansion (1e-5), but NOT resolved by Floquet: on |2,0> it is masked by the g2^2/detuning shift (~50 kHz) and the Floquet fit residual (38 kHz) exceeds it; treat |K_a| <~ 15 kHz",
+      "method": "time-averaged 2nd order in eps_p, all orders in phi (Fock-matrix sin phi)",
+      "floquet_fitted_rad_per_us": -0.07968613060675378,
+      "eigenvalue_check_khz": {
+        "floquet": -46.95430713561471,
+        "effective": -54.829493977976306
+      }
+    },
+    "kerr_b": {
+      "value_rad_per_us": -16.789395622977054,
+      "value_khz": -2672.1153049222294,
+      "operator": "(K/2) b^dag^2 b^2",
+      "formula": "displacement part -E_J' phi_b^4/2 + quantum part",
+      "verified_numerically": true,
+      "note": "2nd-order value matches the independent normal-ordered expansion (symbolic_terms.json) to ~1e-5; exact Floquet differs by the eps_p^4 error shown in floquet_fitted / eigenvalue_check",
+      "method": "time-averaged 2nd order in eps_p, all orders in phi (Fock-matrix sin phi)",
+      "floquet_fitted_rad_per_us": -16.052375889464255,
+      "eigenvalue_check_khz": {
+        "floquet": -2541.5256836389217,
+        "effective": -2669.407073004109
+      }
+    },
+    "chi_ab": {
+      "value_rad_per_us": -1.253086900176413,
+      "value_khz": -199.43497428677657,
+      "operator": "a^dag a b^dag b",
+      "formula": "displacement part -E_J' phi_a^2 phi_b^2 + quantum part",
+      "verified_numerically": true,
+      "note": "2nd-order value matches the independent normal-ordered expansion (symbolic_terms.json) to ~1e-5; exact Floquet differs by the eps_p^4 error shown in floquet_fitted / eigenvalue_check",
+      "method": "time-averaged 2nd order in eps_p, all orders in phi (Fock-matrix sin phi)",
+      "floquet_fitted_rad_per_us": -1.1899502292378654,
+      "eigenvalue_check_khz": {
+        "floquet": -93.90080599801043,
+        "effective": -99.38283974748344
+      }
+    },
+    "g2_vacuum": {
+      "value_rad_per_us": -4.574163501831165,
+      "value_khz": -728.0007318269637,
+      "operator": "a^2 b^dag + h.c. (coefficient on |2,0>)",
+      "formula": "-(1/2) E_J [2 J1(eps_p)] phi_a^2 phi_b exp(-(phi_a^2+phi_b^2)/2)",
+      "verified_numerically": true,
+      "prompt_formula_rad_per_us": 4.7940703893780245,
+      "ratio_to_prompt_formula": 0.9541293995110927,
+      "floquet_avoided_crossing_abs": 4.202561323465981,
+      "effective_avoided_crossing_abs": 4.574165332125951,
+      "third_order_relative_correction": -0.08123974139064571,
+      "classical_displacement_estimate": -0.01432990741126711
+    },
+    "g2_dressing": {
+      "operator": "g2(n_a, n_b) a^2 b^dag, n_a, n_b = photons before the exchange",
+      "formula": "g2(n_a,n_b) = g2_vacuum L_{n_a-2}^{(2)}(phi_a^2)/C(n_a,2) L_{n_b}^{(1)}(phi_b^2)/(n_b+1) ~ g2_vacuum [1 - (n_a-2) phi_a^2/3 - n_b phi_b^2/2]",
+      "slope_per_memory_photon": -0.0011999999995455255,
+      "slope_per_buffer_photon": -0.04499999999964762,
+      "closed_form_slopes": [
+        -0.0012,
+        -0.045
+      ],
+      "table_abs_rad_per_us": {
+        "2,0": 4.574163501831165,
+        "2,1": 4.368326144250374,
+        "2,2": 4.1686639073950005,
+        "2,3": 3.975037851050812,
+        "3,0": 4.568674505631046,
+        "3,1": 4.363084152877622,
+        "3,2": 4.163661510705889,
+        "3,3": 3.970267805631029,
+        "4,0": 4.563190449525476,
+        "4,1": 4.357846879296319,
+        "4,2": 4.158663616175095,
+        "4,3": 3.965502053250532,
+        "5,0": 4.5577113299596554,
+        "5,1": 4.3526143201114,
+        "5,2": 4.1536702205585225,
+        "5,3": 3.960740590820311,
+        "6,0": 4.552237143378281,
+        "6,1": 4.347386471926298,
+        "6,2": 4.148681320618013,
+        "6,3": 3.955983415250097,
+        "7,0": 4.546767886230437,
+        "7,1": 4.342163331349784,
+        "7,2": 4.143696913115795,
+        "7,3": 3.95123052345364,
+        "8,0": 4.541303554962837,
+        "8,1": 4.336944894989823,
+        "8,2": 4.13871699481571,
+        "8,3": 3.9464819123453605,
+        "9,0": 4.5358441460303185,
+        "9,1": 4.3317311594589825,
+        "9,2": 4.133741562484634,
+        "9,3": 3.94173757884158,
+        "10,0": 4.530389655884424,
+        "10,1": 4.326522121369711,
+        "10,2": 4.12877061289035,
+        "10,3": 3.936997519860651,
+        "11,0": 4.524940080982072,
+        "11,1": 4.3213177773379865,
+        "11,2": 4.1238041428030785,
+        "11,3": 3.9322617323225595
+      },
+      "verified_numerically": true
+    },
+    "a4b2": {
+      "value_rad_per_us": 0.0002905250001956416,
+      "value_khz": 0.04623848987291022,
+      "operator": "a^4 b^dag^2 + h.c.",
+      "formula": "second order, 2 w_p resonance (abs value)",
+      "verified_numerically": false
+    },
+    "two_photon_detuning": {
+      "value_rad_per_us": -133.14984708515726,
+      "value_khz": -21191.45633553277,
+      "operator": "2 stark_a - stark_b (+ kerr_a on |2,0>)",
+      "formula": "pump must be retuned to w_p' = w_p + 2 stark_a - stark_b",
+      "verified_numerically": true,
+      "floquet_rad_per_us": -131.10023635037783,
+      "ratio_to_kappa_b": 8.150560129051065
+    },
+    "pump_displacement": {
+      "beta_a": -0.11234579194865743,
+      "beta_b": -0.3033336382613751
+    },
+    "calibrated_pump": {
+      "note": "eps_p at which the exact Floquet |g2| equals 2pi x 0.763 MHz; Stark/Kerr there (kHz): Floquet eigenvalue differences and 2nd-order operator coefficients",
+      "eps_p": 0.041657871736486975,
+      "g2_floquet": 4.793974008271523,
+      "ratio_to_prompt_eps_p": 1.1793054121993691,
+      "floquet_khz": {
+        "stark_a": 1205.3479911611396,
+        "stark_b": 31212.961075421135,
+        "kerr_a": -45.85755649611701,
+        "kerr_b": -3470.743771282658,
+        "chi_ab": -159.1743842744245
+      },
+      "effective_khz": {
+        "stark_a": 1291.5948718837283,
+        "stark_b": 32101.776111331583,
+        "kerr_a": -56.79182052359396,
+        "kerr_b": -3713.264100857497,
+        "chi_ab": -177.01580573347368
+      },
+      "second_order_operator_khz": {
+        "stark_a": 1291.5948718824618,
+        "stark_b": 32051.85357293208,
+        "kerr_a": -6.869282119115953,
+        "kerr_b": -3715.8214323156335,
+        "chi_ab": -277.3326249974507
+      }
+    },
+    "readout_flux_tone": {
+      "description": "phi_Sigma += eps_z cos(w_a t); values for eps_Z/2pi = 0.2 MHz; 2nd-order terms scale as eps_Z (pump x tone) or eps_Z^2",
+      "eps_Z": {
+        "value_rad_per_us": 1.25624508752347,
+        "value_khz": 199.93761541427097,
+        "operator": "a + a^dag",
+        "formula": "E_J [2 J1(eps_z)] phi_a exp(-Phi^2/2)",
+        "verified_numerically": true
+      },
+      "drive_dressing_per_memory_photon": -0.001799999999995583,
+      "drive_dressing_per_buffer_photon": -0.09000000000000175,
+      "beam_splitter": {
+        "value_rad_per_us": 0.09735143273339775,
+        "value_khz": 15.493961736598395,
+        "operator": "a b^dag + h.c.",
+        "formula": "pump x tone second order; g_bs / eps_Z = 0.0775",
+        "verified_numerically": true,
+        "crossing_total_abs": {
+          "floquet": 0.1708342391313681,
+          "effective": 0.1883917847221629
+        },
+        "induced_memory_loss_rate": 0.002320552882729688
+      },
+      "a_dag3_b": {
+        "value_rad_per_us": -0.00017291445838093052,
+        "value_khz": -0.0275201907833829,
+        "operator": "a^dag^3 b + h.c.",
+        "formula": "pump x tone second order",
+        "verified_numerically": false
+      },
+      "a_dag2": {
+        "value_rad_per_us": 1.5356406546872945e-05,
+        "value_khz": 0.0024440480100635727,
+        "operator": "a^dag^2 + h.c.",
+        "formula": "tone x tone second order",
+        "verified_numerically": false
+      },
+      "stark_changes_rad_per_us": {
+        "stark_a": 6.0833940324300784e-05,
+        "stark_b": 0.0015075795054144692,
+        "kerr_a": -3.790459004449076e-07,
+        "kerr_b": -0.000170397542660794,
+        "chi_ab": -1.2406483847371419e-05
+      },
+      "off_resonant_buffer_displacement": 0.0012500000000000007
+    },
+    "capacitive_memory_drive": {
+      "operator": "eps_Z (a + a^dag)",
+      "note": "linear drive: no new resonant term at first order; cross terms with the pump need counter-rotating components and are suppressed by w_a and high phi order",
+      "verified_numerically": false
+    }
+  },
+  "symbolic_cross_check": {
+    "conventions": {
+      "hamiltonian": "H = w_a a^dag a + w_b b^dag b + A cos(w_p t) sin(phihat) [+ A_z cos(w_a t + theta) sin(phihat)], phihat = phi_a(a+a^dag) + phi_b(b+b^dag)",
+      "amplitudes": "A = 2 E_J eps_p (pump, phi_Delta = pi/2, phi_Sigma = -pi/2 + eps_p cos w_p t, first order in eps_p); A_z = 2 E_J eps_z (readout flux tone)",
+      "E": "E = exp(-Phi^2/2), Phi^2 = phi_a^2 + phi_b^2, kept exact (H1 ~ E, H2 ~ E^2)",
+      "frame": "interaction picture of w_a a^dag a + w_b b^dag b; a^dag^p a^q b^dag^r b^s rotates as exp(i[(p-q)w_a + (r-s)w_b]t)",
+      "H_eff": "H1 + H2 with H1 = zero-frequency part of V_I(t) (RWA), H2 = sum_{nu != 0} V(nu)V(-nu)/nu (van Vleck / time-averaging, second order); checked on the beam-splitter AC Stark shift (a-like level shifts by +g^2/(w_a - w_b))",
+      "operator_basis": "all coefficients multiply normal-ordered monomials; H_eff = Delta_a a^dag a + Delta_b b^dag b + (K_a/2) a^dag^2 a^2 + (K_b/2) b^dag^2 b^2 + chi_ab a^dag a b^dag b + [g2 a^2 b^dag + g2_na a^dag a^3 b^dag + g2_nb a^2 b^dag^2 b + c_a4b2 a^4 b^dag^2 + h.c.] + c_number",
+      "frequencies": "'formula' keeps w_a, w_b, w_p independent (valid for a detuned pump; tone w_z = w_a folded into w_a); 'formula_reduced_wp_eq_2wa_minus_wb' substitutes w_p = 2 w_a - w_b (exact cancellations, leading order decided there). Zero frequency decided at w_a : w_b : w_p = 5 : 6 : 4. Pairs with nu1 + nu2 = 0 only through the resonance condition use the Hermitian form (1/2) V(nu1) V(nu2) [1/nu1 - 1/nu2]",
+      "phi_degree": "total power of phi_a and phi_b in the polynomial prefactor (E excluded); H1 exact to degree D, H2 exact to degree D+1",
+      "disp_vs_quantum": "disp_part = pairs with at least one linear factor (a, a^dag, b, b^dag) in V(nu)V(-nu): the classical pump-displacement contribution; quantum_part = nonlinear x nonlinear",
+      "sign_of_g2": "g2 (coefficient of a^2 b^dag) is negative in this convention: -(1/2) E_J eps_p phi_a^2 phi_b E; |g2| matches the prompt formula times E",
+      "tone_terms": "readout entries are divided by eps_Z^k with eps_Z = (A_z/2) phi_a E e^{-i theta} the first-order coefficient of a^dag; theta = 0 numerically; k = tone power. Phase law: a^dag, a^dag^2 a, a^dag b^dag b, a b^dag, a^dag^3 b ~ e^{-i theta}; a^dag^2 ~ e^{-2 i theta}; Stark/Kerr ~ |eps_Z|^2",
+      "units": "rad/us (angular); MHz = rad/us / 2pi"
+    },
+    "parameters": {
+      "w_a_rad_per_us": 25132.741228718343,
+      "w_b_rad_per_us": 30159.28947446201,
+      "w_p_rad_per_us": 20106.192982974677,
+      "E_J_rad_per_us": 251327.41228718343,
+      "phi_a": 0.06,
+      "phi_b": 0.3,
+      "eps_p": 0.035324074074074084,
+      "A_rad_per_us": 17755.816256955648,
+      "E": 0.9542782341529094,
+      "g2_prompt_formula_mhz": 0.763,
+      "eps_z_for_unit_eps_Z": 6.949184970197812e-05
+    },
+    "degree_D": 9,
+    "degrees_compared": [
+      5,
+      7,
+      9
+    ],
+    "first_order_notes": "H1 (pump only) contains no number-conserving term (no Stark shift, Kerr, chi, c-number): every term carries exp(+-i w_p t), and a monomial is resonant only if 5 dn_a + 6 dn_b = -+4 with dn = p - q, r - s. Solutions are (dn_a, dn_b) = (-2 + 6k, 1 - 5k); sin is odd so p+q+r+s is odd, which forces dn_a + dn_b = k - 1 odd, i.e. k even. k = 0 gives a^2 b^dag and its number dressings; k = +-2 needs degree >= 19. So a^dag^4 b^4 (k=1, degree 8) is excluded by parity. With the tone (np = 0, nz = +-1) the resonant monomials are a^dag dressings only (dn_a, dn_b) = (+-1, 0).",
+    "other_second_order_ops_phi_le_6": {
+      "pump_x_pump": [],
+      "pump_x_tone": [
+        [
+          0,
+          1,
+          2,
+          1
+        ],
+        [
+          0,
+          3,
+          1,
+          0
+        ],
+        [
+          1,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          1,
+          2
+        ],
+        [
+          1,
+          2,
+          1,
+          0
+        ],
+        [
+          2,
+          1,
+          0,
+          1
+        ]
+      ],
+      "tone_x_tone": [
+        [
+          0,
+          2,
+          0,
+          0
+        ],
+        [
+          0,
+          2,
+          1,
+          1
+        ],
+        [
+          1,
+          3,
+          0,
+          0
+        ],
+        [
+          2,
+          0,
+          1,
+          1
+        ],
+        [
+          3,
+          1,
+          0,
+          0
+        ]
+      ]
+    },
+    "terms": {
+      "g2": {
+        "operator": "a^2 b^dag",
+        "order": "H1",
+        "leading_phi_degree": 3,
+        "formula": "-1/4 * A phi_a^2 phi_b E",
+        "formula_next_order": "0",
+        "formula_reduced_wp_eq_2wa_minus_wb": "-1/4 * A phi_a^2 phi_b E",
+        "value_rad_per_us": -4.574877025580412,
+        "value_mhz": -0.72811429265867,
+        "value_khz": -728.11429265867,
+        "leading_order": {
+          "value_rad_per_us": -4.574877025580412,
+          "value_mhz": -0.72811429265867,
+          "value_khz": -728.11429265867
+        },
+        "with_next_order": {
+          "value_rad_per_us": -4.574877025580412,
+          "value_mhz": -0.72811429265867,
+          "value_khz": -728.11429265867
+        },
+        "by_phi_degree": {
+          "3": {
+            "value_rad_per_us": -4.574877025580412,
+            "value_mhz": -0.72811429265867,
+            "value_khz": -728.11429265867
+          }
+        },
+        "convergence_in_D": {
+          "5": {
+            "value_rad_per_us": -4.574877025580412,
+            "value_mhz": -0.72811429265867,
+            "value_khz": -728.11429265867
+          },
+          "7": {
+            "value_rad_per_us": -4.574877025580412,
+            "value_mhz": -0.72811429265867,
+            "value_khz": -728.11429265867
+          },
+          "9": {
+            "value_rad_per_us": -4.574877025580412,
+            "value_mhz": -0.72811429265867,
+            "value_khz": -728.11429265867
+          }
+        }
+      },
+      "g2_na": {
+        "operator": "a^dag a^3 b^dag (= a^dag a . a^2 b^dag)",
+        "order": "H1",
+        "leading_phi_degree": 5,
+        "formula": "1/12 * A phi_a^4 phi_b E",
+        "formula_next_order": "0",
+        "formula_reduced_wp_eq_2wa_minus_wb": "1/12 * A phi_a^4 phi_b E",
+        "value_rad_per_us": 0.005489852430696493,
+        "value_mhz": 0.0008737371511904037,
+        "value_khz": 0.8737371511904037,
+        "leading_order": {
+          "value_rad_per_us": 0.005489852430696493,
+          "value_mhz": 0.0008737371511904037,
+          "value_khz": 0.8737371511904037
+        },
+        "with_next_order": {
+          "value_rad_per_us": 0.005489852430696493,
+          "value_mhz": 0.0008737371511904037,
+          "value_khz": 0.8737371511904037
+        },
+        "by_phi_degree": {
+          "5": {
+            "value_rad_per_us": 0.005489852430696493,
+            "value_mhz": 0.0008737371511904037,
+            "value_khz": 0.8737371511904037
+          }
+        },
+        "convergence_in_D": {
+          "5": {
+            "value_rad_per_us": 0.005489852430696493,
+            "value_mhz": 0.0008737371511904037,
+            "value_khz": 0.8737371511904037
+          },
+          "7": {
+            "value_rad_per_us": 0.005489852430696493,
+            "value_mhz": 0.0008737371511904037,
+            "value_khz": 0.8737371511904037
+          },
+          "9": {
+            "value_rad_per_us": 0.005489852430696493,
+            "value_mhz": 0.0008737371511904037,
+            "value_khz": 0.8737371511904037
+          }
+        }
+      },
+      "g2_nb": {
+        "operator": "a^2 b^dag^2 b (= a^2 b^dag . b^dag b)",
+        "order": "H1",
+        "leading_phi_degree": 5,
+        "formula": "1/8 * A phi_a^2 phi_b^3 E",
+        "formula_next_order": "0",
+        "formula_reduced_wp_eq_2wa_minus_wb": "1/8 * A phi_a^2 phi_b^3 E",
+        "value_rad_per_us": 0.2058694661511185,
+        "value_mhz": 0.03276514316964014,
+        "value_khz": 32.76514316964014,
+        "leading_order": {
+          "value_rad_per_us": 0.2058694661511185,
+          "value_mhz": 0.03276514316964014,
+          "value_khz": 32.76514316964014
+        },
+        "with_next_order": {
+          "value_rad_per_us": 0.2058694661511185,
+          "value_mhz": 0.03276514316964014,
+          "value_khz": 32.76514316964014
+        },
+        "by_phi_degree": {
+          "5": {
+            "value_rad_per_us": 0.2058694661511185,
+            "value_mhz": 0.03276514316964014,
+            "value_khz": 32.76514316964014
+          }
+        },
+        "convergence_in_D": {
+          "5": {
+            "value_rad_per_us": 0.2058694661511185,
+            "value_mhz": 0.03276514316964014,
+            "value_khz": 32.76514316964014
+          },
+          "7": {
+            "value_rad_per_us": 0.2058694661511185,
+            "value_mhz": 0.03276514316964014,
+            "value_khz": 32.76514316964014
+          },
+          "9": {
+            "value_rad_per_us": 0.2058694661511185,
+            "value_mhz": 0.03276514316964014,
+            "value_khz": 32.76514316964014
+          }
+        }
+      },
+      "c_a4b2": {
+        "operator": "a^4 b^dag^2",
+        "order": "H2",
+        "leading_phi_degree": 8,
+        "formula": "(1/384/(- 4 w_a + 3 w_b + w_p) + 1/48/(- 3 w_a + 2 w_b + w_p) + 1/64/(- 2 w_a + 3 w_b + w_p) + 1/48/(- w_a + 2 w_b + w_p) + 1/384/(w_b - w_p) + 1/384/(3 w_b + w_p) + 1/48/(w_a - w_p) + 1/64/(2 w_a + w_b - w_p) + 1/48/(3 w_a - w_p) + 1/384/(4 w_a + w_b - w_p)) * A^2 phi_a^4 phi_b^4 E^2 + (-5/384/(- 3 w_a + 2 w_b + w_p) + 5/384/(- w_a + 2 w_b + w_p) + 1/48/(w_b + w_p) + -5/384/(w_a - w_p) + 1/384/(w_a + w_p) + 1/384/(w_a + 2 w_b + w_p) + 5/384/(3 w_a - w_p) + 1/48/(4 w_a - w_b - w_p) + 1/384/(5 w_a - 2 w_b - w_p) + 1/384/(5 w_a - w_p)) * A^2 phi_a^6 phi_b^2 E^2",
+        "formula_next_order": "(-1/384/(- 4 w_a + 3 w_b + w_p) + -1/192/(- 3 w_a + 2 w_b + w_p) + -1/192/(- 3 w_a + 4 w_b + w_p) + -1/64/(- 2 w_a + 3 w_b + w_p) + -1/192/(- w_a + 2 w_b + w_p) + -1/192/(- w_a + 4 w_b + w_p) + -1/384/(w_b - w_p) + -1/384/(3 w_b + w_p) + -1/192/(w_a - w_p) + -1/192/(w_a + 2 w_b - w_p) + -1/64/(2 w_a + w_b - w_p) + -1/192/(3 w_a - w_p) + -1/192/(3 w_a + 2 w_b - w_p) + -1/384/(4 w_a + w_b - w_p)) * A^2 phi_a^4 phi_b^6 E^2 + (-1/192/(- 3 w_a + 2 w_b + w_p) + -1/96/(- 2 w_a + 3 w_b + w_p) + -1/32/(- w_a + 2 w_b + w_p) + -1/96/(w_b + w_p) + -1/96/(3 w_b + w_p) + -1/192/(w_a - w_p) + -1/192/(w_a + 2 w_b + w_p) + -1/96/(2 w_a + w_b - w_p) + -1/32/(3 w_a - w_p) + -1/96/(4 w_a - w_b - w_p) + -1/96/(4 w_a + w_b - w_p) + -1/192/(5 w_a - w_p)) * A^2 phi_a^6 phi_b^4 E^2 + (1/192/(- 3 w_a + 2 w_b + w_p) + -1/192/(- w_a + 2 w_b + w_p) + -1/64/(w_b + w_p) + 1/192/(w_a - w_p) + -1/192/(w_a + w_p) + -1/192/(w_a + 2 w_b + w_p) + -1/384/(2 w_a + w_b + w_p) + -1/192/(3 w_a - w_p) + -1/64/(4 w_a - w_b - w_p) + -1/192/(5 w_a - 2 w_b - w_p) + -1/192/(5 w_a - w_p) + -1/384/(6 w_a - w_b - w_p)) * A^2 phi_a^8 phi_b^2 E^2",
+        "formula_reduced_wp_eq_2wa_minus_wb": "(1/192/(- 2 w_a + 2 w_b) + 1/24/(- w_a + w_b) + 1/32/(2 w_b) + 1/24/(w_a + w_b) + 1/192/(2 w_a + 2 w_b)) * A^2 phi_a^4 phi_b^4 E^2 + (-5/192/(- w_a + w_b) + 5/192/(w_a + w_b) + 1/24/(2 w_a) + 1/192/(3 w_a - w_b) + 1/192/(3 w_a + w_b)) * A^2 phi_a^6 phi_b^2 E^2",
+        "value_rad_per_us": 0.0002905022083434975,
+        "value_mhz": 4.623486243697927e-05,
+        "value_khz": 0.046234862436979274,
+        "leading_order": {
+          "value_rad_per_us": 0.00030070669236499593,
+          "value_mhz": 4.785895651070301e-05,
+          "value_khz": 0.04785895651070301
+        },
+        "with_next_order": {
+          "value_rad_per_us": 0.0002905022083434975,
+          "value_mhz": 4.623486243697927e-05,
+          "value_khz": 0.046234862436979274
+        },
+        "by_phi_degree": {
+          "8": {
+            "value_rad_per_us": 0.00030070669236499593,
+            "value_mhz": 4.785895651070301e-05,
+            "value_khz": 0.04785895651070301
+          },
+          "10": {
+            "value_rad_per_us": -1.0204484021498275e-05,
+            "value_mhz": -1.6240940737237132e-06,
+            "value_khz": -0.0016240940737237133
+          }
+        },
+        "convergence_in_D": {
+          "5": {
+            "value_rad_per_us": 0.0,
+            "value_mhz": 0.0,
+            "value_khz": 0.0
+          },
+          "7": {
+            "value_rad_per_us": 0.00030070669236499593,
+            "value_mhz": 4.785895651070301e-05,
+            "value_khz": 0.04785895651070301
+          },
+          "9": {
+            "value_rad_per_us": 0.0002905022083434975,
+            "value_mhz": 4.623486243697927e-05,
+            "value_khz": 0.046234862436979274
+          }
+        },
+        "disp_part": {
+          "formula_leading": "(1/384/(- 4 w_a + 3 w_b + w_p) + 1/384/(w_b - w_p) + 1/384/(w_b + w_p) + 1/384/(4 w_a - w_b - w_p)) * A^2 phi_a^4 phi_b^4 E^2 + (1/384/(- 3 w_a + 2 w_b + w_p) + 1/384/(w_a - w_p) + 1/384/(w_a + w_p) + 1/384/(5 w_a - 2 w_b - w_p)) * A^2 phi_a^6 phi_b^2 E^2",
+          "formula_leading_reduced": "(1/192/(- 2 w_a + 2 w_b) + 1/192/(2 w_a)) * A^2 phi_a^4 phi_b^4 E^2 + (1/192/(- w_a + w_b) + 1/192/(3 w_a - w_b)) * A^2 phi_a^6 phi_b^2 E^2",
+          "leading_order": {
+            "value_rad_per_us": 2.0124993153113666e-05,
+            "value_mhz": 3.202992140008589e-06,
+            "value_khz": 0.003202992140008589
+          },
+          "with_next_order": {
+            "value_rad_per_us": 2.0124993153113666e-05,
+            "value_mhz": 3.202992140008589e-06,
+            "value_khz": 0.003202992140008589
+          },
+          "all_degrees": {
+            "value_rad_per_us": 2.0124993153113666e-05,
+            "value_mhz": 3.202992140008589e-06,
+            "value_khz": 0.003202992140008589
+          }
+        },
+        "quantum_part": {
+          "formula_leading": "(1/48/(- 3 w_a + 2 w_b + w_p) + 1/64/(- 2 w_a + 3 w_b + w_p) + 1/48/(- w_a + 2 w_b + w_p) + -1/384/(w_b + w_p) + 1/384/(3 w_b + w_p) + 1/48/(w_a - w_p) + 1/64/(2 w_a + w_b - w_p) + 1/48/(3 w_a - w_p) + -1/384/(4 w_a - w_b - w_p) + 1/384/(4 w_a + w_b - w_p)) * A^2 phi_a^4 phi_b^4 E^2 + (-1/64/(- 3 w_a + 2 w_b + w_p) + 5/384/(- w_a + 2 w_b + w_p) + 1/48/(w_b + w_p) + -1/64/(w_a - w_p) + 1/384/(w_a + 2 w_b + w_p) + 5/384/(3 w_a - w_p) + 1/48/(4 w_a - w_b - w_p) + 1/384/(5 w_a - w_p)) * A^2 phi_a^6 phi_b^2 E^2",
+          "formula_leading_reduced": "(1/24/(- w_a + w_b) + 1/32/(2 w_b) + 1/24/(w_a + w_b) + -1/192/(2 w_a) + 1/192/(2 w_a + 2 w_b)) * A^2 phi_a^4 phi_b^4 E^2 + (-1/32/(- w_a + w_b) + 5/192/(w_a + w_b) + 1/24/(2 w_a) + 1/192/(3 w_a + w_b)) * A^2 phi_a^6 phi_b^2 E^2",
+          "leading_order": {
+            "value_rad_per_us": 0.0002805816992118822,
+            "value_mhz": 4.465596437069441e-05,
+            "value_khz": 0.04465596437069441
+          },
+          "with_next_order": {
+            "value_rad_per_us": 0.000270377215190384,
+            "value_mhz": 4.30318702969707e-05,
+            "value_khz": 0.043031870296970705
+          },
+          "all_degrees": {
+            "value_rad_per_us": 0.000270377215190384,
+            "value_mhz": 4.30318702969707e-05,
+            "value_khz": 0.043031870296970705
+          }
+        }
+      },
+      "Delta_a": {
+        "operator": "a^dag a",
+        "order": "H2",
+        "leading_phi_degree": 4,
+        "formula": "(1/2/(w_b - w_p) + 1/2/(w_b + w_p)) * A^2 phi_a^2 phi_b^2 E^2 + (1/2/(w_a - w_p) + 1/2/(w_a + w_p)) * A^2 phi_a^4 E^2",
+        "formula_next_order": "(-1/8/(- w_a + 2 w_b - w_p) + -1/8/(- w_a + 2 w_b + w_p) + -1/8/(w_a + 2 w_b - w_p) + -1/8/(w_a + 2 w_b + w_p)) * A^2 phi_a^2 phi_b^4 E^2 + (-1/4/(w_b - w_p) + -1/4/(w_b + w_p) + -1/4/(2 w_a + w_b - w_p) + -1/4/(2 w_a + w_b + w_p)) * A^2 phi_a^4 phi_b^2 E^2 + (-1/8/(w_a - w_p) + -1/8/(w_a + w_p) + -1/8/(3 w_a - w_p) + -1/8/(3 w_a + w_p)) * A^2 phi_a^6 E^2",
+        "formula_reduced_wp_eq_2wa_minus_wb": "(1/2/(- 2 w_a + 2 w_b) + 1/2/(2 w_a)) * A^2 phi_a^2 phi_b^2 E^2 + (1/2/(- w_a + w_b) + 1/2/(3 w_a - w_b)) * A^2 phi_a^4 E^2",
+        "value_rad_per_us": 5.837702910446258,
+        "value_mhz": 0.929099274499466,
+        "value_khz": 929.0992744994661,
+        "leading_order": {
+          "value_rad_per_us": 5.962960934255902,
+          "value_mhz": 0.9490347081506931,
+          "value_khz": 949.0347081506932
+        },
+        "with_next_order": {
+          "value_rad_per_us": 5.8360779895102946,
+          "value_mhz": 0.9288406603003739,
+          "value_khz": 928.8406603003739
+        },
+        "by_phi_degree": {
+          "4": {
+            "value_rad_per_us": 5.962960934255902,
+            "value_mhz": 0.9490347081506931,
+            "value_khz": 949.0347081506932
+          },
+          "6": {
+            "value_rad_per_us": -0.12688294474560732,
+            "value_mhz": -0.020194047850319235,
+            "value_khz": -20.194047850319233
+          },
+          "8": {
+            "value_rad_per_us": 0.0016548243711935072,
+            "value_mhz": 0.0002633734786243841,
+            "value_khz": 0.2633734786243841
+          },
+          "10": {
+            "value_rad_per_us": -2.9903435231241538e-05,
+            "value_mhz": -4.759279532480425e-06,
+            "value_khz": -0.004759279532480425
+          }
+        },
+        "convergence_in_D": {
+          "5": {
+            "value_rad_per_us": 5.8360779895102946,
+            "value_mhz": 0.9288406603003739,
+            "value_khz": 928.8406603003739
+          },
+          "7": {
+            "value_rad_per_us": 5.837732813881488,
+            "value_mhz": 0.9291040337789983,
+            "value_khz": 929.1040337789983
+          },
+          "9": {
+            "value_rad_per_us": 5.837702910446258,
+            "value_mhz": 0.929099274499466,
+            "value_khz": 929.0992744994661
+          }
+        },
+        "disp_part": {
+          "formula_leading": "(1/2/(w_b - w_p) + 1/2/(w_b + w_p)) * A^2 phi_a^2 phi_b^2 E^2 + (1/2/(w_a - w_p) + 1/2/(w_a + w_p)) * A^2 phi_a^4 E^2",
+          "formula_leading_reduced": "(1/2/(- 2 w_a + 2 w_b) + 1/2/(2 w_a)) * A^2 phi_a^2 phi_b^2 E^2 + (1/2/(- w_a + w_b) + 1/2/(3 w_a - w_b)) * A^2 phi_a^4 E^2",
+          "leading_order": {
+            "value_rad_per_us": 5.962960934255902,
+            "value_mhz": 0.9490347081506931,
+            "value_khz": 949.0347081506932
+          },
+          "with_next_order": {
+            "value_rad_per_us": 5.962960934255902,
+            "value_mhz": 0.9490347081506931,
+            "value_khz": 949.0347081506932
+          },
+          "all_degrees": {
+            "value_rad_per_us": 5.962960934255902,
+            "value_mhz": 0.9490347081506931,
+            "value_khz": 949.0347081506932
+          }
+        },
+        "quantum_part": {
+          "formula_leading": "0",
+          "formula_leading_reduced": "0",
+          "leading_order": {
+            "value_rad_per_us": 0.0,
+            "value_mhz": 0.0,
+            "value_khz": 0.0
+          },
+          "with_next_order": {
+            "value_rad_per_us": -0.12688294474560732,
+            "value_mhz": -0.020194047850319235,
+            "value_khz": -20.194047850319233
+          },
+          "all_degrees": {
+            "value_rad_per_us": -0.12525802380964512,
+            "value_mhz": -0.019935433651227342,
+            "value_khz": -19.935433651227342
+          }
+        }
+      },
+      "Delta_b": {
+        "operator": "b^dag b",
+        "order": "H2",
+        "leading_phi_degree": 4,
+        "formula": "(1/2/(w_b - w_p) + 1/2/(w_b + w_p)) * A^2 phi_b^4 E^2 + (1/2/(w_a - w_p) + 1/2/(w_a + w_p)) * A^2 phi_a^2 phi_b^2 E^2",
+        "formula_next_order": "(-1/8/(w_b - w_p) + -1/8/(w_b + w_p) + -1/8/(3 w_b - w_p) + -1/8/(3 w_b + w_p)) * A^2 phi_b^6 E^2 + (-1/4/(w_a - w_p) + -1/4/(w_a + w_p) + -1/4/(w_a + 2 w_b - w_p) + -1/4/(w_a + 2 w_b + w_p)) * A^2 phi_a^2 phi_b^4 E^2 + (-1/8/(2 w_a - w_b + w_p) + -1/8/(2 w_a + w_b - w_p) + -1/8/(2 w_a + w_b + w_p)) * A^2 phi_a^4 phi_b^2 E^2",
+        "formula_reduced_wp_eq_2wa_minus_wb": "(1/2/(- 2 w_a + 2 w_b) + 1/2/(2 w_a)) * A^2 phi_b^4 E^2 + (1/2/(- w_a + w_b) + 1/2/(3 w_a - w_b)) * A^2 phi_a^2 phi_b^2 E^2",
+        "value_rad_per_us": 144.86678668676447,
+        "value_mhz": 23.056265191037742,
+        "value_khz": 23056.265191037743,
+        "leading_order": {
+          "value_rad_per_us": 149.07402335639756,
+          "value_mhz": 23.72586770376733,
+          "value_khz": 23725.867703767333
+        },
+        "with_next_order": {
+          "value_rad_per_us": 144.8261818438294,
+          "value_mhz": 23.049802729571155,
+          "value_khz": 23049.802729571154
+        },
+        "by_phi_degree": {
+          "4": {
+            "value_rad_per_us": 149.07402335639756,
+            "value_mhz": 23.72586770376733,
+            "value_khz": 23725.867703767333
+          },
+          "6": {
+            "value_rad_per_us": -4.247841512568187,
+            "value_mhz": -0.6760649741961805,
+            "value_khz": -676.0649741961805
+          },
+          "8": {
+            "value_rad_per_us": 0.041370609279837676,
+            "value_mhz": 0.006584336965609602,
+            "value_khz": 6.5843369656096025
+          },
+          "10": {
+            "value_rad_per_us": -0.0007657663448308725,
+            "value_mhz": -0.00012187549903324621,
+            "value_khz": -0.12187549903324621
+          }
+        },
+        "convergence_in_D": {
+          "5": {
+            "value_rad_per_us": 144.8261818438294,
+            "value_mhz": 23.049802729571155,
+            "value_khz": 23049.802729571154
+          },
+          "7": {
+            "value_rad_per_us": 144.86755245310925,
+            "value_mhz": 23.056387066536768,
+            "value_khz": 23056.38706653677
+          },
+          "9": {
+            "value_rad_per_us": 144.86678668676447,
+            "value_mhz": 23.056265191037742,
+            "value_khz": 23056.265191037743
+          }
+        },
+        "disp_part": {
+          "formula_leading": "(1/2/(w_b - w_p) + 1/2/(w_b + w_p)) * A^2 phi_b^4 E^2 + (1/2/(w_a - w_p) + 1/2/(w_a + w_p)) * A^2 phi_a^2 phi_b^2 E^2",
+          "formula_leading_reduced": "(1/2/(- 2 w_a + 2 w_b) + 1/2/(2 w_a)) * A^2 phi_b^4 E^2 + (1/2/(- w_a + w_b) + 1/2/(3 w_a - w_b)) * A^2 phi_a^2 phi_b^2 E^2",
+          "leading_order": {
+            "value_rad_per_us": 149.07402335639756,
+            "value_mhz": 23.72586770376733,
+            "value_khz": 23725.867703767333
+          },
+          "with_next_order": {
+            "value_rad_per_us": 149.07402335639756,
+            "value_mhz": 23.72586770376733,
+            "value_khz": 23725.867703767333
+          },
+          "all_degrees": {
+            "value_rad_per_us": 149.07402335639756,
+            "value_mhz": 23.72586770376733,
+            "value_khz": 23725.867703767333
+          }
+        },
+        "quantum_part": {
+          "formula_leading": "0",
+          "formula_leading_reduced": "0",
+          "leading_order": {
+            "value_rad_per_us": 0.0,
+            "value_mhz": 0.0,
+            "value_khz": 0.0
+          },
+          "with_next_order": {
+            "value_rad_per_us": -4.247841512568187,
+            "value_mhz": -0.6760649741961805,
+            "value_khz": -676.0649741961805
+          },
+          "all_degrees": {
+            "value_rad_per_us": -4.207236669633179,
+            "value_mhz": -0.6696025127296039,
+            "value_khz": -669.6025127296039
+          }
+        }
+      },
+      "K_a": {
+        "operator": "(K_a/2) a^dag^2 a^2",
+        "order": "H2",
+        "leading_phi_degree": 6,
+        "formula": "(-3/4/(w_b - w_p) + -3/4/(w_b + w_p) + 1/8/(2 w_a - w_b + w_p) + -1/8/(2 w_a + w_b - w_p) + -1/8/(2 w_a + w_b + w_p)) * A^2 phi_a^4 phi_b^2 E^2 + (-5/8/(w_a - w_p) + -5/8/(w_a + w_p) + -1/8/(3 w_a - w_p) + -1/8/(3 w_a + w_p)) * A^2 phi_a^6 E^2",
+        "formula_next_order": "(1/4/(- w_a + 2 w_b - w_p) + 1/4/(- w_a + 2 w_b + w_p) + 1/4/(w_a + 2 w_b - w_p) + 1/4/(w_a + 2 w_b + w_p)) * A^2 phi_a^4 phi_b^4 E^2 + (1/2/(w_b - w_p) + 1/2/(w_b + w_p) + 1/2/(2 w_a + w_b - w_p) + 1/2/(2 w_a + w_b + w_p)) * A^2 phi_a^6 phi_b^2 E^2 + (1/4/(w_a - w_p) + 1/4/(w_a + w_p) + 1/4/(3 w_a - w_p) + 1/4/(3 w_a + w_p)) * A^2 phi_a^8 E^2",
+        "formula_reduced_wp_eq_2wa_minus_wb": "(-3/4/(- 2 w_a + 2 w_b) + -1/8/(2 w_b) + -3/4/(2 w_a) + 1/8/(4 w_a - 2 w_b) + -1/8/(4 w_a)) * A^2 phi_a^4 phi_b^2 E^2 + (-5/8/(- w_a + w_b) + -1/8/(w_a + w_b) + -5/8/(3 w_a - w_b) + -1/8/(5 w_a - w_b)) * A^2 phi_a^6 E^2",
+        "value_rad_per_us": -0.031047742634119083,
+        "value_mhz": -0.004941401712065035,
+        "value_khz": -4.941401712065035,
+        "leading_order": {
+          "value_rad_per_us": -0.03194708463231693,
+          "value_mhz": -0.005084536436608365,
+          "value_khz": -5.0845364366083645
+        },
+        "with_next_order": {
+          "value_rad_per_us": -0.031033527430148557,
+          "value_mhz": -0.004939139292086067,
+          "value_khz": -4.939139292086066
+        },
+        "by_phi_degree": {
+          "6": {
+            "value_rad_per_us": -0.03194708463231693,
+            "value_mhz": -0.005084536436608365,
+            "value_khz": -5.0845364366083645
+          },
+          "8": {
+            "value_rad_per_us": 0.0009135572021683728,
+            "value_mhz": 0.0001453971445222985,
+            "value_khz": 0.1453971445222985
+          },
+          "10": {
+            "value_rad_per_us": -1.4215203970534385e-05,
+            "value_mhz": -2.262419978970085e-06,
+            "value_khz": -0.0022624199789700846
+          }
+        },
+        "convergence_in_D": {
+          "5": {
+            "value_rad_per_us": -0.03194708463231693,
+            "value_mhz": -0.005084536436608365,
+            "value_khz": -5.0845364366083645
+          },
+          "7": {
+            "value_rad_per_us": -0.031033527430148557,
+            "value_mhz": -0.004939139292086067,
+            "value_khz": -4.939139292086066
+          },
+          "9": {
+            "value_rad_per_us": -0.031047742634119083,
+            "value_mhz": -0.004941401712065035,
+            "value_khz": -4.941401712065035
+          }
+        },
+        "disp_part": {
+          "formula_leading": "(-1/4/(w_b - w_p) + -1/4/(w_b + w_p)) * A^2 phi_a^4 phi_b^2 E^2 + (-1/4/(w_a - w_p) + -1/4/(w_a + w_p)) * A^2 phi_a^6 E^2",
+          "formula_leading_reduced": "(-1/4/(- 2 w_a + 2 w_b) + -1/4/(2 w_a)) * A^2 phi_a^4 phi_b^2 E^2 + (-1/4/(- w_a + w_b) + -1/4/(3 w_a - w_b)) * A^2 phi_a^6 E^2",
+          "leading_order": {
+            "value_rad_per_us": -0.01073332968166062,
+            "value_mhz": -0.001708262474671247,
+            "value_khz": -1.7082624746712471
+          },
+          "with_next_order": {
+            "value_rad_per_us": -0.01073332968166062,
+            "value_mhz": -0.001708262474671247,
+            "value_khz": -1.7082624746712471
+          },
+          "all_degrees": {
+            "value_rad_per_us": -0.01073332968166062,
+            "value_mhz": -0.001708262474671247,
+            "value_khz": -1.7082624746712471
+          }
+        },
+        "quantum_part": {
+          "formula_leading": "(-1/2/(w_b - w_p) + -1/2/(w_b + w_p) + 1/8/(2 w_a - w_b + w_p) + -1/8/(2 w_a + w_b - w_p) + -1/8/(2 w_a + w_b + w_p)) * A^2 phi_a^4 phi_b^2 E^2 + (-3/8/(w_a - w_p) + -3/8/(w_a + w_p) + -1/8/(3 w_a - w_p) + -1/8/(3 w_a + w_p)) * A^2 phi_a^6 E^2",
+          "formula_leading_reduced": "(-1/2/(- 2 w_a + 2 w_b) + -1/8/(2 w_b) + -1/2/(2 w_a) + 1/8/(4 w_a - 2 w_b) + -1/8/(4 w_a)) * A^2 phi_a^4 phi_b^2 E^2 + (-3/8/(- w_a + w_b) + -1/8/(w_a + w_b) + -3/8/(3 w_a - w_b) + -1/8/(5 w_a - w_b)) * A^2 phi_a^6 E^2",
+          "leading_order": {
+            "value_rad_per_us": -0.021213754950656305,
+            "value_mhz": -0.003376273961937117,
+            "value_khz": -3.376273961937117
+          },
+          "with_next_order": {
+            "value_rad_per_us": -0.02030019774848793,
+            "value_mhz": -0.0032308768174148187,
+            "value_khz": -3.230876817414819
+          },
+          "all_degrees": {
+            "value_rad_per_us": -0.020314412952458467,
+            "value_mhz": -0.003233139237393789,
+            "value_khz": -3.233139237393789
+          }
+        }
+      },
+      "K_b": {
+        "operator": "(K_b/2) b^dag^2 b^2",
+        "order": "H2",
+        "leading_phi_degree": 6,
+        "formula": "(-5/8/(w_b - w_p) + -5/8/(w_b + w_p) + -1/8/(3 w_b - w_p) + -1/8/(3 w_b + w_p)) * A^2 phi_b^6 E^2 + (1/8/(- w_a + 2 w_b - w_p) + 1/8/(- w_a + 2 w_b + w_p) + -3/4/(w_a - w_p) + -3/4/(w_a + w_p) + -1/8/(w_a + 2 w_b - w_p) + -1/8/(w_a + 2 w_b + w_p)) * A^2 phi_a^2 phi_b^4 E^2",
+        "formula_next_order": "(1/4/(w_b - w_p) + 1/4/(w_b + w_p) + 1/4/(3 w_b - w_p) + 1/4/(3 w_b + w_p)) * A^2 phi_b^8 E^2 + (1/2/(w_a - w_p) + 1/2/(w_a + w_p) + 1/2/(w_a + 2 w_b - w_p) + 1/2/(w_a + 2 w_b + w_p)) * A^2 phi_a^2 phi_b^6 E^2 + (1/4/(2 w_a - w_b + w_p) + 1/4/(2 w_a + w_b - w_p) + 1/4/(2 w_a + w_b + w_p)) * A^2 phi_a^4 phi_b^4 E^2",
+        "formula_reduced_wp_eq_2wa_minus_wb": "(-5/8/(- 2 w_a + 2 w_b) + -1/8/(- 2 w_a + 4 w_b) + -5/8/(2 w_a) + -1/8/(2 w_a + 2 w_b)) * A^2 phi_b^6 E^2 + (1/8/(- 3 w_a + 3 w_b) + -3/4/(- w_a + w_b) + -1/8/(- w_a + 3 w_b) + 1/8/(w_a + w_b) + -3/4/(3 w_a - w_b) + -1/8/(3 w_a + w_b)) * A^2 phi_a^2 phi_b^4 E^2",
+        "value_rad_per_us": -16.794769853184746,
+        "value_mhz": -2.6729706402250977,
+        "value_khz": -2672.9706402250977,
+        "leading_order": {
+          "value_rad_per_us": -17.548101095167343,
+          "value_mhz": -2.792867031172185,
+          "value_khz": -2792.867031172185
+        },
+        "with_next_order": {
+          "value_rad_per_us": -16.783489622905066,
+          "value_mhz": -2.671175335816872,
+          "value_khz": -2671.175335816872
+        },
+        "by_phi_degree": {
+          "6": {
+            "value_rad_per_us": -17.548101095167343,
+            "value_mhz": -2.792867031172185,
+            "value_khz": -2792.867031172185
+          },
+          "8": {
+            "value_rad_per_us": 0.7646114722622738,
+            "value_mhz": 0.12169169535531249,
+            "value_khz": 121.69169535531249
+          },
+          "10": {
+            "value_rad_per_us": -0.0112802302796855,
+            "value_mhz": -0.0017953044082268204,
+            "value_khz": -1.7953044082268204
+          }
+        },
+        "convergence_in_D": {
+          "5": {
+            "value_rad_per_us": -17.548101095167343,
+            "value_mhz": -2.792867031172185,
+            "value_khz": -2792.867031172185
+          },
+          "7": {
+            "value_rad_per_us": -16.783489622905066,
+            "value_mhz": -2.671175335816872,
+            "value_khz": -2671.175335816872
+          },
+          "9": {
+            "value_rad_per_us": -16.794769853184746,
+            "value_mhz": -2.6729706402250977,
+            "value_khz": -2672.9706402250977
+          }
+        },
+        "disp_part": {
+          "formula_leading": "(-1/4/(w_b - w_p) + -1/4/(w_b + w_p)) * A^2 phi_b^6 E^2 + (-1/4/(w_a - w_p) + -1/4/(w_a + w_p)) * A^2 phi_a^2 phi_b^4 E^2",
+          "formula_leading_reduced": "(-1/4/(- 2 w_a + 2 w_b) + -1/4/(2 w_a)) * A^2 phi_b^6 E^2 + (-1/4/(- w_a + w_b) + -1/4/(3 w_a - w_b)) * A^2 phi_a^2 phi_b^4 E^2",
+          "leading_order": {
+            "value_rad_per_us": -6.708331051037888,
+            "value_mhz": -1.0676640466695295,
+            "value_khz": -1067.6640466695296
+          },
+          "with_next_order": {
+            "value_rad_per_us": -6.708331051037888,
+            "value_mhz": -1.0676640466695295,
+            "value_khz": -1067.6640466695296
+          },
+          "all_degrees": {
+            "value_rad_per_us": -6.708331051037888,
+            "value_mhz": -1.0676640466695295,
+            "value_khz": -1067.6640466695296
+          }
+        },
+        "quantum_part": {
+          "formula_leading": "(-3/8/(w_b - w_p) + -3/8/(w_b + w_p) + -1/8/(3 w_b - w_p) + -1/8/(3 w_b + w_p)) * A^2 phi_b^6 E^2 + (1/8/(- w_a + 2 w_b - w_p) + 1/8/(- w_a + 2 w_b + w_p) + -1/2/(w_a - w_p) + -1/2/(w_a + w_p) + -1/8/(w_a + 2 w_b - w_p) + -1/8/(w_a + 2 w_b + w_p)) * A^2 phi_a^2 phi_b^4 E^2",
+          "formula_leading_reduced": "(-3/8/(- 2 w_a + 2 w_b) + -1/8/(- 2 w_a + 4 w_b) + -3/8/(2 w_a) + -1/8/(2 w_a + 2 w_b)) * A^2 phi_b^6 E^2 + (1/8/(- 3 w_a + 3 w_b) + -1/2/(- w_a + w_b) + -1/8/(- w_a + 3 w_b) + 1/8/(w_a + w_b) + -1/2/(3 w_a - w_b) + -1/8/(3 w_a + w_b)) * A^2 phi_a^2 phi_b^4 E^2",
+          "leading_order": {
+            "value_rad_per_us": -10.839770044129464,
+            "value_mhz": -1.7252029845026566,
+            "value_khz": -1725.2029845026566
+          },
+          "with_next_order": {
+            "value_rad_per_us": -10.075158571867188,
+            "value_mhz": -1.603511289147344,
+            "value_khz": -1603.511289147344
+          },
+          "all_degrees": {
+            "value_rad_per_us": -10.086438802146871,
+            "value_mhz": -1.6053065935555704,
+            "value_khz": -1605.3065935555703
+          }
+        }
+      },
+      "chi_ab": {
+        "operator": "a^dag a b^dag b",
+        "order": "H2",
+        "leading_phi_degree": 6,
+        "formula": "(-1/4/(- w_a + 2 w_b - w_p) + -1/4/(- w_a + 2 w_b + w_p) + -1/(w_b - w_p) + -1/(w_b + w_p) + -1/4/(w_a + 2 w_b - w_p) + -1/4/(w_a + 2 w_b + w_p)) * A^2 phi_a^2 phi_b^4 E^2 + (-1/(w_a - w_p) + -1/(w_a + w_p) + -1/4/(2 w_a - w_b + w_p) + -1/4/(2 w_a + w_b - w_p) + -1/4/(2 w_a + w_b + w_p)) * A^2 phi_a^4 phi_b^2 E^2",
+        "formula_next_order": "(1/4/(- w_a + 2 w_b - w_p) + 1/4/(- w_a + 2 w_b + w_p) + 1/4/(w_b - w_p) + 1/4/(w_b + w_p) + 1/4/(3 w_b - w_p) + 1/4/(3 w_b + w_p) + 1/4/(w_a + 2 w_b - w_p) + 1/4/(w_a + 2 w_b + w_p)) * A^2 phi_a^2 phi_b^6 E^2 + (1/2/(w_b - w_p) + 1/2/(w_b + w_p) + 1/2/(w_a - w_p) + 1/2/(w_a + w_p) + 1/2/(w_a + 2 w_b - w_p) + 1/2/(w_a + 2 w_b + w_p) + 1/2/(2 w_a + w_b - w_p) + 1/2/(2 w_a + w_b + w_p)) * A^2 phi_a^4 phi_b^4 E^2 + (1/4/(w_a - w_p) + 1/4/(w_a + w_p) + 1/4/(2 w_a - w_b + w_p) + 1/4/(2 w_a + w_b - w_p) + 1/4/(2 w_a + w_b + w_p) + 1/4/(3 w_a - w_p) + 1/4/(3 w_a + w_p)) * A^2 phi_a^6 phi_b^2 E^2",
+        "formula_reduced_wp_eq_2wa_minus_wb": "(-1/4/(- 3 w_a + 3 w_b) + -1/(- 2 w_a + 2 w_b) + -1/4/(- w_a + 3 w_b) + -1/4/(w_a + w_b) + -1/(2 w_a) + -1/4/(3 w_a + w_b)) * A^2 phi_a^2 phi_b^4 E^2 + (-1/(- w_a + w_b) + -1/4/(2 w_b) + -1/(3 w_a - w_b) + -1/4/(4 w_a - 2 w_b) + -1/4/(4 w_a)) * A^2 phi_a^4 phi_b^2 E^2",
+        "value_rad_per_us": -1.253488608630997,
+        "value_mhz": -0.19949890817300542,
+        "value_khz": -199.49890817300542,
+        "leading_order": {
+          "value_rad_per_us": -1.3061380071192854,
+          "value_mhz": -0.20787832019323146,
+          "value_khz": -207.87832019323147
+        },
+        "with_next_order": {
+          "value_rad_per_us": -1.2527146181745856,
+          "value_mhz": -0.19937572376596158,
+          "value_khz": -199.37572376596157
+        },
+        "by_phi_degree": {
+          "6": {
+            "value_rad_per_us": -1.3061380071192854,
+            "value_mhz": -0.20787832019323146,
+            "value_khz": -207.87832019323147
+          },
+          "8": {
+            "value_rad_per_us": 0.053423388944700285,
+            "value_mhz": 0.008502596427269965,
+            "value_khz": 8.502596427269966
+          },
+          "10": {
+            "value_rad_per_us": -0.0007739904564107801,
+            "value_mhz": -0.0001231844070437278,
+            "value_khz": -0.12318440704372781
+          }
+        },
+        "convergence_in_D": {
+          "5": {
+            "value_rad_per_us": -1.3061380071192854,
+            "value_mhz": -0.20787832019323146,
+            "value_khz": -207.87832019323147
+          },
+          "7": {
+            "value_rad_per_us": -1.2527146181745856,
+            "value_mhz": -0.19937572376596158,
+            "value_khz": -199.37572376596157
+          },
+          "9": {
+            "value_rad_per_us": -1.253488608630997,
+            "value_mhz": -0.19949890817300542,
+            "value_khz": -199.49890817300542
+          }
+        },
+        "disp_part": {
+          "formula_leading": "(-1/2/(w_b - w_p) + -1/2/(w_b + w_p)) * A^2 phi_a^2 phi_b^4 E^2 + (-1/2/(w_a - w_p) + -1/2/(w_a + w_p)) * A^2 phi_a^4 phi_b^2 E^2",
+          "formula_leading_reduced": "(-1/2/(- 2 w_a + 2 w_b) + -1/2/(2 w_a)) * A^2 phi_a^2 phi_b^4 E^2 + (-1/2/(- w_a + w_b) + -1/2/(3 w_a - w_b)) * A^2 phi_a^4 phi_b^2 E^2",
+          "leading_order": {
+            "value_rad_per_us": -0.5366664840830312,
+            "value_mhz": -0.08541312373356238,
+            "value_khz": -85.41312373356239
+          },
+          "with_next_order": {
+            "value_rad_per_us": -0.5366664840830312,
+            "value_mhz": -0.08541312373356238,
+            "value_khz": -85.41312373356239
+          },
+          "all_degrees": {
+            "value_rad_per_us": -0.5366664840830312,
+            "value_mhz": -0.08541312373356238,
+            "value_khz": -85.41312373356239
+          }
+        },
+        "quantum_part": {
+          "formula_leading": "(-1/4/(- w_a + 2 w_b - w_p) + -1/4/(- w_a + 2 w_b + w_p) + -1/2/(w_b - w_p) + -1/2/(w_b + w_p) + -1/4/(w_a + 2 w_b - w_p) + -1/4/(w_a + 2 w_b + w_p)) * A^2 phi_a^2 phi_b^4 E^2 + (-1/2/(w_a - w_p) + -1/2/(w_a + w_p) + -1/4/(2 w_a - w_b + w_p) + -1/4/(2 w_a + w_b - w_p) + -1/4/(2 w_a + w_b + w_p)) * A^2 phi_a^4 phi_b^2 E^2",
+          "formula_leading_reduced": "(-1/4/(- 3 w_a + 3 w_b) + -1/2/(- 2 w_a + 2 w_b) + -1/4/(- w_a + 3 w_b) + -1/4/(w_a + w_b) + -1/2/(2 w_a) + -1/4/(3 w_a + w_b)) * A^2 phi_a^2 phi_b^4 E^2 + (-1/2/(- w_a + w_b) + -1/4/(2 w_b) + -1/2/(3 w_a - w_b) + -1/4/(4 w_a - 2 w_b) + -1/4/(4 w_a)) * A^2 phi_a^4 phi_b^2 E^2",
+          "leading_order": {
+            "value_rad_per_us": -0.7694715230362545,
+            "value_mhz": -0.12246519645966913,
+            "value_khz": -122.46519645966913
+          },
+          "with_next_order": {
+            "value_rad_per_us": -0.7160481340915541,
+            "value_mhz": -0.11396260003239914,
+            "value_khz": -113.96260003239914
+          },
+          "all_degrees": {
+            "value_rad_per_us": -0.7168221245479649,
+            "value_mhz": -0.11408578443944287,
+            "value_khz": -114.08578443944286
+          }
+        }
+      },
+      "c_number": {
+        "operator": "1",
+        "order": "H2",
+        "leading_phi_degree": 2,
+        "formula": "(-1/4/(w_b - w_p) + -1/4/(w_b + w_p)) * A^2 phi_b^2 E^2 + (-1/4/(w_a - w_p) + -1/4/(w_a + w_p)) * A^2 phi_a^2 E^2",
+        "formula_next_order": "0",
+        "formula_reduced_wp_eq_2wa_minus_wb": "(-1/4/(- 2 w_a + 2 w_b) + -1/4/(2 w_a)) * A^2 phi_b^2 E^2 + (-1/4/(- w_a + w_b) + -1/4/(3 w_a - w_b)) * A^2 phi_a^2 E^2",
+        "value_rad_per_us": -828.4189137894228,
+        "value_mhz": -131.84696508040534,
+        "value_khz": -131846.96508040535,
+        "leading_order": {
+          "value_rad_per_us": -828.189018646653,
+          "value_mhz": -131.81037613204072,
+          "value_khz": -131810.37613204072
+        },
+        "with_next_order": {
+          "value_rad_per_us": -828.189018646653,
+          "value_mhz": -131.81037613204072,
+          "value_khz": -131810.37613204072
+        },
+        "by_phi_degree": {
+          "2": {
+            "value_rad_per_us": -828.189018646653,
+            "value_mhz": -131.81037613204072,
+            "value_khz": -131810.37613204072
+          },
+          "6": {
+            "value_rad_per_us": -0.22983671822132046,
+            "value_mhz": -0.036579649808942245,
+            "value_khz": -36.57964980894224
+          },
+          "10": {
+            "value_rad_per_us": -5.842454828458399e-05,
+            "value_mhz": -9.298555657402656e-06,
+            "value_khz": -0.009298555657402657
+          }
+        },
+        "convergence_in_D": {
+          "5": {
+            "value_rad_per_us": -828.4188553648744,
+            "value_mhz": -131.84695578184966,
+            "value_khz": -131846.95578184965
+          },
+          "7": {
+            "value_rad_per_us": -828.4188553648744,
+            "value_mhz": -131.84695578184966,
+            "value_khz": -131846.95578184965
+          },
+          "9": {
+            "value_rad_per_us": -828.4189137894228,
+            "value_mhz": -131.84696508040534,
+            "value_khz": -131846.96508040535
+          }
+        },
+        "disp_part": {
+          "formula_leading": "(-1/4/(w_b - w_p) + -1/4/(w_b + w_p)) * A^2 phi_b^2 E^2 + (-1/4/(w_a - w_p) + -1/4/(w_a + w_p)) * A^2 phi_a^2 E^2",
+          "formula_leading_reduced": "(-1/4/(- 2 w_a + 2 w_b) + -1/4/(2 w_a)) * A^2 phi_b^2 E^2 + (-1/4/(- w_a + w_b) + -1/4/(3 w_a - w_b)) * A^2 phi_a^2 E^2",
+          "leading_order": {
+            "value_rad_per_us": -828.189018646653,
+            "value_mhz": -131.81037613204072,
+            "value_khz": -131810.37613204072
+          },
+          "with_next_order": {
+            "value_rad_per_us": -828.189018646653,
+            "value_mhz": -131.81037613204072,
+            "value_khz": -131810.37613204072
+          },
+          "all_degrees": {
+            "value_rad_per_us": -828.189018646653,
+            "value_mhz": -131.81037613204072,
+            "value_khz": -131810.37613204072
+          }
+        },
+        "quantum_part": {
+          "formula_leading": "0",
+          "formula_leading_reduced": "0",
+          "leading_order": {
+            "value_rad_per_us": 0.0,
+            "value_mhz": 0.0,
+            "value_khz": 0.0
+          },
+          "with_next_order": {
+            "value_rad_per_us": 0.0,
+            "value_mhz": 0.0,
+            "value_khz": 0.0
+          },
+          "all_degrees": {
+            "value_rad_per_us": -0.22989514276960504,
+            "value_mhz": -0.036588948364599645,
+            "value_khz": -36.588948364599645
+          }
+        }
+      },
+      "eps_Z": {
+        "operator": "a^dag",
+        "order": "H1",
+        "leading_phi_degree": 1,
+        "formula": "1/2 * A_z phi_a E e^{-1i theta}",
+        "formula_next_order": "0",
+        "formula_reduced_wp_eq_2wa_minus_wb": "1/2 * A_z phi_a E e^{-1i theta}",
+        "value_per_eps_Z_power": 1.0,
+        "units": "dimensionless (coefficient / eps_Z)",
+        "leading_order": {
+          "value_per_eps_Z_power": 1.0,
+          "units": "dimensionless (coefficient / eps_Z)"
+        },
+        "with_next_order": {
+          "value_per_eps_Z_power": 1.0,
+          "units": "dimensionless (coefficient / eps_Z)"
+        },
+        "by_phi_degree": {
+          "1": {
+            "value_per_eps_Z_power": 1.0,
+            "units": "dimensionless (coefficient / eps_Z)"
+          }
+        },
+        "convergence_in_D": {
+          "5": {
+            "value_per_eps_Z_power": 1.0,
+            "units": "dimensionless (coefficient / eps_Z)"
+          },
+          "7": {
+            "value_per_eps_Z_power": 1.0,
+            "units": "dimensionless (coefficient / eps_Z)"
+          },
+          "9": {
+            "value_per_eps_Z_power": 1.0,
+            "units": "dimensionless (coefficient / eps_Z)"
+          }
+        }
+      },
+      "eps_Z_na": {
+        "operator": "a^dag^2 a (= a^dag . a^dag a)",
+        "order": "H1",
+        "leading_phi_degree": 3,
+        "formula": "-1/4 * A_z phi_a^3 E e^{-1i theta}",
+        "formula_next_order": "0",
+        "formula_reduced_wp_eq_2wa_minus_wb": "-1/4 * A_z phi_a^3 E e^{-1i theta}",
+        "value_per_eps_Z_power": -0.0017999999999999997,
+        "units": "dimensionless (coefficient / eps_Z)",
+        "leading_order": {
+          "value_per_eps_Z_power": -0.0017999999999999997,
+          "units": "dimensionless (coefficient / eps_Z)"
+        },
+        "with_next_order": {
+          "value_per_eps_Z_power": -0.0017999999999999997,
+          "units": "dimensionless (coefficient / eps_Z)"
+        },
+        "by_phi_degree": {
+          "3": {
+            "value_per_eps_Z_power": -0.0017999999999999997,
+            "units": "dimensionless (coefficient / eps_Z)"
+          }
+        },
+        "convergence_in_D": {
+          "5": {
+            "value_per_eps_Z_power": -0.0017999999999999997,
+            "units": "dimensionless (coefficient / eps_Z)"
+          },
+          "7": {
+            "value_per_eps_Z_power": -0.0017999999999999997,
+            "units": "dimensionless (coefficient / eps_Z)"
+          },
+          "9": {
+            "value_per_eps_Z_power": -0.0017999999999999997,
+            "units": "dimensionless (coefficient / eps_Z)"
+          }
+        }
+      },
+      "eps_Z_nb": {
+        "operator": "a^dag b^dag b",
+        "order": "H1",
+        "leading_phi_degree": 3,
+        "formula": "-1/2 * A_z phi_a phi_b^2 E e^{-1i theta}",
+        "formula_next_order": "0",
+        "formula_reduced_wp_eq_2wa_minus_wb": "-1/2 * A_z phi_a phi_b^2 E e^{-1i theta}",
+        "value_per_eps_Z_power": -0.08999999999999998,
+        "units": "dimensionless (coefficient / eps_Z)",
+        "leading_order": {
+          "value_per_eps_Z_power": -0.08999999999999998,
+          "units": "dimensionless (coefficient / eps_Z)"
+        },
+        "with_next_order": {
+          "value_per_eps_Z_power": -0.08999999999999998,
+          "units": "dimensionless (coefficient / eps_Z)"
+        },
+        "by_phi_degree": {
+          "3": {
+            "value_per_eps_Z_power": -0.08999999999999998,
+            "units": "dimensionless (coefficient / eps_Z)"
+          }
+        },
+        "convergence_in_D": {
+          "5": {
+            "value_per_eps_Z_power": -0.08999999999999998,
+            "units": "dimensionless (coefficient / eps_Z)"
+          },
+          "7": {
+            "value_per_eps_Z_power": -0.08999999999999998,
+            "units": "dimensionless (coefficient / eps_Z)"
+          },
+          "9": {
+            "value_per_eps_Z_power": -0.08999999999999998,
+            "units": "dimensionless (coefficient / eps_Z)"
+          }
+        }
+      },
+      "pt_a_bdag": {
+        "operator": "a b^dag (pump x tone)",
+        "order": "H2",
+        "leading_phi_degree": 4,
+        "formula": "(1/8/(- 2 w_a + 2 w_b) + 1/8/(- w_a + w_b) + 1/8/(- w_a + 2 w_b + w_p) + 1/8/(w_b - w_p) + 1/8/(w_b + w_p) + 1/8/(w_a - w_p) + 1/8/(w_a + w_b) + 1/8/(2 w_a)) * A A_z phi_a phi_b^3 E^2 e^{-1i theta} + (1/8/(- w_a + w_b) + 1/8/(w_b + w_p) + 1/8/(w_a - w_p) + 1/8/(w_a + w_p) + 1/8/(2 w_a) + 1/8/(3 w_a - w_b)) * A A_z phi_a^3 phi_b E^2 e^{-1i theta}",
+        "formula_next_order": "(-1/16/(- 2 w_a + 2 w_b) + -1/16/(- w_a + 2 w_b + w_p) + -1/16/(- w_a + 3 w_b) + -1/16/(w_b - w_p) + -1/16/(3 w_b + w_p) + -1/16/(w_a + w_b) + -1/16/(w_a + 2 w_b - w_p) + -1/16/(2 w_a + 2 w_b)) * A A_z phi_a phi_b^5 E^2 e^{-1i theta} + (-1/8/(- w_a + w_b) + -1/8/(w_b + w_p) + -1/8/(2 w_b) + -1/8/(w_a - w_p) + -1/8/(w_a + 2 w_b + w_p) + -1/8/(2 w_a) + -1/8/(2 w_a + w_b - w_p) + -1/8/(3 w_a + w_b)) * A A_z phi_a^3 phi_b^3 E^2 e^{-1i theta} + (-1/16/(w_a + w_p) + -1/16/(w_a + w_b) + -1/16/(2 w_a + w_b + w_p) + -1/16/(3 w_a - w_b) + -1/16/(3 w_a - w_p) + -1/16/(4 w_a)) * A A_z phi_a^5 phi_b E^2 e^{-1i theta}",
+        "formula_reduced_wp_eq_2wa_minus_wb": "(1/4/(- 2 w_a + 2 w_b) + 1/4/(- w_a + w_b) + 1/4/(w_a + w_b) + 1/4/(2 w_a)) * A A_z phi_a phi_b^3 E^2 e^{-1i theta} + (1/4/(- w_a + w_b) + 1/4/(2 w_a) + 1/4/(3 w_a - w_b)) * A A_z phi_a^3 phi_b E^2 e^{-1i theta}",
+        "value_per_eps_Z_power": 0.07750606516114836,
+        "units": "dimensionless (coefficient / eps_Z)",
+        "leading_order": {
+          "value_per_eps_Z_power": 0.07915301056733104,
+          "units": "dimensionless (coefficient / eps_Z)"
+        },
+        "with_next_order": {
+          "value_per_eps_Z_power": 0.07748983933443135,
+          "units": "dimensionless (coefficient / eps_Z)"
+        },
+        "by_phi_degree": {
+          "4": {
+            "value_per_eps_Z_power": 0.07915301056733104,
+            "units": "dimensionless (coefficient / eps_Z)"
+          },
+          "6": {
+            "value_per_eps_Z_power": -0.001663171232899731,
+            "units": "dimensionless (coefficient / eps_Z)"
+          },
+          "8": {
+            "value_per_eps_Z_power": 1.6526396847630757e-05,
+            "units": "dimensionless (coefficient / eps_Z)"
+          },
+          "10": {
+            "value_per_eps_Z_power": -3.005701305879932e-07,
+            "units": "dimensionless (coefficient / eps_Z)"
+          }
+        },
+        "convergence_in_D": {
+          "5": {
+            "value_per_eps_Z_power": 0.07748983933443135,
+            "units": "dimensionless (coefficient / eps_Z)"
+          },
+          "7": {
+            "value_per_eps_Z_power": 0.07750636573127895,
+            "units": "dimensionless (coefficient / eps_Z)"
+          },
+          "9": {
+            "value_per_eps_Z_power": 0.07750606516114836,
+            "units": "dimensionless (coefficient / eps_Z)"
+          }
+        },
+        "disp_part": {
+          "formula_leading": "(1/8/(- 2 w_a + 2 w_b) + 1/8/(- w_a + w_b) + 1/8/(- w_a + 2 w_b + w_p) + 1/8/(w_b - w_p) + 1/8/(w_b + w_p) + 1/8/(w_a - w_p) + 1/8/(w_a + w_b) + 1/8/(2 w_a)) * A A_z phi_a phi_b^3 E^2 e^{-1i theta} + (1/8/(- w_a + w_b) + 1/8/(w_b + w_p) + 1/8/(w_a - w_p) + 1/8/(w_a + w_p) + 1/8/(2 w_a) + 1/8/(3 w_a - w_b)) * A A_z phi_a^3 phi_b E^2 e^{-1i theta}",
+          "formula_leading_reduced": "(1/4/(- 2 w_a + 2 w_b) + 1/4/(- w_a + w_b) + 1/4/(w_a + w_b) + 1/4/(2 w_a)) * A A_z phi_a phi_b^3 E^2 e^{-1i theta} + (1/4/(- w_a + w_b) + 1/4/(2 w_a) + 1/4/(3 w_a - w_b)) * A A_z phi_a^3 phi_b E^2 e^{-1i theta}",
+          "leading_order": {
+            "value_per_eps_Z_power": 0.07915301056733104,
+            "units": "dimensionless (coefficient / eps_Z)"
+          },
+          "with_next_order": {
+            "value_per_eps_Z_power": 0.07915301056733104,
+            "units": "dimensionless (coefficient / eps_Z)"
+          },
+          "all_degrees": {
+            "value_per_eps_Z_power": 0.07915301056733104,
+            "units": "dimensionless (coefficient / eps_Z)"
+          }
+        },
+        "quantum_part": {
+          "formula_leading": "0",
+          "formula_leading_reduced": "0",
+          "leading_order": {
+            "value_per_eps_Z_power": 0.0,
+            "units": "dimensionless (coefficient / eps_Z)"
+          },
+          "with_next_order": {
+            "value_per_eps_Z_power": -0.001663171232899731,
+            "units": "dimensionless (coefficient / eps_Z)"
+          },
+          "all_degrees": {
+            "value_per_eps_Z_power": -0.001646945406182688,
+            "units": "dimensionless (coefficient / eps_Z)"
+          }
+        }
+      },
+      "pt_adag3_b": {
+        "operator": "a^dag^3 b (pump x tone)",
+        "order": "H2",
+        "leading_phi_degree": 6,
+        "formula": "(-1/48/(- 3 w_a + 2 w_b + w_p) + -1/48/(- 2 w_a + 2 w_b) + -1/12/(- w_a + w_b) + -1/16/(- w_a + 2 w_b + w_p) + -1/48/(w_b - w_p) + -1/48/(w_b + w_p) + -1/16/(2 w_b) + -1/16/(w_a - w_p) + -1/12/(w_a + w_b) + -1/48/(2 w_a) + -1/16/(2 w_a + w_b - w_p) + -1/48/(3 w_a - w_p)) * A A_z phi_a^3 phi_b^3 E^2 e^{-1i theta} + (1/24/(- w_a + w_b) + -1/16/(w_b + w_p) + 1/24/(w_a - w_p) + -1/48/(w_a + w_p) + -1/16/(w_a + w_b) + -1/12/(2 w_a) + -1/48/(3 w_a - w_b) + -1/16/(3 w_a - w_p) + -1/48/(4 w_a - w_b - w_p)) * A A_z phi_a^5 phi_b E^2 e^{-1i theta}",
+        "formula_next_order": "(1/96/(- 3 w_a + 2 w_b + w_p) + 1/96/(- 2 w_a + 2 w_b) + 1/32/(- 2 w_a + 3 w_b + w_p) + 1/96/(- w_a + w_b) + 1/32/(- w_a + 2 w_b + w_p) + 1/32/(- w_a + 3 w_b) + 1/96/(w_b - w_p) + 1/16/(2 w_b) + 1/96/(3 w_b + w_p) + 1/32/(w_a + w_b) + 1/32/(w_a + 2 w_b - w_p) + 1/96/(w_a + 3 w_b) + 1/32/(2 w_a + w_b - w_p) + 1/96/(2 w_a + 2 w_b) + 1/96/(3 w_a + 2 w_b - w_p)) * A A_z phi_a^3 phi_b^5 E^2 e^{-1i theta} + (1/48/(- w_a + w_b) + 1/16/(- w_a + 2 w_b + w_p) + 1/16/(w_b + w_p) + 1/16/(2 w_b) + 1/48/(w_a - w_p) + 1/8/(w_a + w_b) + 1/48/(w_a + 2 w_b + w_p) + 1/16/(2 w_a) + 1/16/(2 w_a + w_b - w_p) + 1/48/(2 w_a + 2 w_b) + 1/16/(3 w_a - w_p) + 1/48/(3 w_a + w_b) + 1/48/(4 w_a + w_b - w_p)) * A A_z phi_a^5 phi_b^3 E^2 e^{-1i theta} + (-1/96/(- w_a + w_b) + 1/32/(w_b + w_p) + -1/96/(w_a - w_p) + 1/32/(w_a + w_p) + 1/32/(w_a + w_b) + 1/16/(2 w_a) + 1/96/(2 w_a + w_b + w_p) + 1/32/(3 w_a - w_b) + 1/32/(3 w_a - w_p) + 1/96/(3 w_a + w_b) + 1/32/(4 w_a - w_b - w_p) + 1/96/(4 w_a) + 1/96/(5 w_a - w_p)) * A A_z phi_a^7 phi_b E^2 e^{-1i theta}",
+        "formula_reduced_wp_eq_2wa_minus_wb": "(-1/24/(- 2 w_a + 2 w_b) + -1/6/(- w_a + w_b) + -1/8/(2 w_b) + -1/6/(w_a + w_b) + -1/24/(2 w_a)) * A A_z phi_a^3 phi_b^3 E^2 e^{-1i theta} + (1/12/(- w_a + w_b) + -1/8/(w_a + w_b) + -1/6/(2 w_a) + -1/24/(3 w_a - w_b)) * A A_z phi_a^5 phi_b E^2 e^{-1i theta}",
+        "value_per_eps_Z_power": -0.00013766604065555154,
+        "units": "dimensionless (coefficient / eps_Z)",
+        "leading_order": {
+          "value_per_eps_Z_power": -0.00014102636125845773,
+          "units": "dimensionless (coefficient / eps_Z)"
+        },
+        "with_next_order": {
+          "value_per_eps_Z_power": -0.00013762534253264477,
+          "units": "dimensionless (coefficient / eps_Z)"
+        },
+        "by_phi_degree": {
+          "6": {
+            "value_per_eps_Z_power": -0.00014102636125845773,
+            "units": "dimensionless (coefficient / eps_Z)"
+          },
+          "8": {
+            "value_per_eps_Z_power": 3.401018725812956e-06,
+            "units": "dimensionless (coefficient / eps_Z)"
+          },
+          "10": {
+            "value_per_eps_Z_power": -4.069812290675598e-08,
+            "units": "dimensionless (coefficient / eps_Z)"
+          }
+        },
+        "convergence_in_D": {
+          "5": {
+            "value_per_eps_Z_power": -0.00014102636125845773,
+            "units": "dimensionless (coefficient / eps_Z)"
+          },
+          "7": {
+            "value_per_eps_Z_power": -0.00013762534253264477,
+            "units": "dimensionless (coefficient / eps_Z)"
+          },
+          "9": {
+            "value_per_eps_Z_power": -0.00013766604065555154,
+            "units": "dimensionless (coefficient / eps_Z)"
+          }
+        },
+        "disp_part": {
+          "formula_leading": "(-1/48/(- 3 w_a + 2 w_b + w_p) + -1/48/(- 2 w_a + 2 w_b) + -1/48/(- w_a + w_b) + -1/48/(w_b - w_p) + -1/48/(w_b + w_p) + -1/48/(w_a + w_b) + -1/48/(2 w_a) + -1/48/(3 w_a - w_p)) * A A_z phi_a^3 phi_b^3 E^2 e^{-1i theta} + (-1/48/(- w_a + w_b) + -1/48/(w_a - w_p) + -1/48/(w_a + w_p) + -1/48/(2 w_a) + -1/48/(3 w_a - w_b) + -1/48/(4 w_a - w_b - w_p)) * A A_z phi_a^5 phi_b E^2 e^{-1i theta}",
+          "formula_leading_reduced": "(-1/24/(- 2 w_a + 2 w_b) + -1/24/(- w_a + w_b) + -1/24/(w_a + w_b) + -1/24/(2 w_a)) * A A_z phi_a^3 phi_b^3 E^2 e^{-1i theta} + (-1/24/(- w_a + w_b) + -1/24/(2 w_a) + -1/24/(3 w_a - w_b)) * A A_z phi_a^5 phi_b E^2 e^{-1i theta}",
+          "leading_order": {
+            "value_per_eps_Z_power": -4.749180634039862e-05,
+            "units": "dimensionless (coefficient / eps_Z)"
+          },
+          "with_next_order": {
+            "value_per_eps_Z_power": -4.749180634039862e-05,
+            "units": "dimensionless (coefficient / eps_Z)"
+          },
+          "all_degrees": {
+            "value_per_eps_Z_power": -4.749180634039862e-05,
+            "units": "dimensionless (coefficient / eps_Z)"
+          }
+        },
+        "quantum_part": {
+          "formula_leading": "(-1/16/(- w_a + w_b) + -1/16/(- w_a + 2 w_b + w_p) + -1/16/(2 w_b) + -1/16/(w_a - w_p) + -1/16/(w_a + w_b) + -1/16/(2 w_a + w_b - w_p)) * A A_z phi_a^3 phi_b^3 E^2 e^{-1i theta} + (1/16/(- w_a + w_b) + -1/16/(w_b + w_p) + 1/16/(w_a - w_p) + -1/16/(w_a + w_b) + -1/16/(2 w_a) + -1/16/(3 w_a - w_p)) * A A_z phi_a^5 phi_b E^2 e^{-1i theta}",
+          "formula_leading_reduced": "(-1/8/(- w_a + w_b) + -1/8/(2 w_b) + -1/8/(w_a + w_b)) * A A_z phi_a^3 phi_b^3 E^2 e^{-1i theta} + (1/8/(- w_a + w_b) + -1/8/(w_a + w_b) + -1/8/(2 w_a)) * A A_z phi_a^5 phi_b E^2 e^{-1i theta}",
+          "leading_order": {
+            "value_per_eps_Z_power": -9.353455491805911e-05,
+            "units": "dimensionless (coefficient / eps_Z)"
+          },
+          "with_next_order": {
+            "value_per_eps_Z_power": -9.013353619224615e-05,
+            "units": "dimensionless (coefficient / eps_Z)"
+          },
+          "all_degrees": {
+            "value_per_eps_Z_power": -9.01742343151529e-05,
+            "units": "dimensionless (coefficient / eps_Z)"
+          }
+        }
+      },
+      "tt_adag2": {
+        "operator": "a^dag^2 (tone x tone)",
+        "order": "H2",
+        "leading_phi_degree": 4,
+        "formula": "(1/8/(- w_a + w_b) + 1/8/(w_a + w_b)) * A_z^2 phi_a^2 phi_b^2 E^2 e^{-2i theta} + 1/8/(2 w_a) * A_z^2 phi_a^4 E^2 e^{-2i theta}",
+        "formula_next_order": "-1/8/(2 w_b) * A_z^2 phi_a^2 phi_b^4 E^2 e^{-2i theta} + -1/4/(w_a + w_b) * A_z^2 phi_a^4 phi_b^2 E^2 e^{-2i theta} + -1/8/(2 w_a) * A_z^2 phi_a^6 E^2 e^{-2i theta}",
+        "formula_reduced_wp_eq_2wa_minus_wb": "(1/8/(- w_a + w_b) + 1/8/(w_a + w_b)) * A_z^2 phi_a^2 phi_b^2 E^2 e^{-2i theta} + 1/8/(2 w_a) * A_z^2 phi_a^4 E^2 e^{-2i theta}",
+        "value_per_eps_Z_power": 9.73062710768921e-06,
+        "units": "us/rad (coefficient / eps_Z^2)",
+        "leading_order": {
+          "value_per_eps_Z_power": 9.802135915561985e-06,
+          "units": "us/rad (coefficient / eps_Z^2)"
+        },
+        "with_next_order": {
+          "value_per_eps_Z_power": 9.729003712809167e-06,
+          "units": "us/rad (coefficient / eps_Z^2)"
+        },
+        "by_phi_degree": {
+          "4": {
+            "value_per_eps_Z_power": 9.802135915561985e-06,
+            "units": "us/rad (coefficient / eps_Z^2)"
+          },
+          "6": {
+            "value_per_eps_Z_power": -7.313220275281758e-08,
+            "units": "us/rad (coefficient / eps_Z^2)"
+          },
+          "8": {
+            "value_per_eps_Z_power": 1.6500832195303703e-09,
+            "units": "us/rad (coefficient / eps_Z^2)"
+          },
+          "10": {
+            "value_per_eps_Z_power": -2.6688339486870933e-11,
+            "units": "us/rad (coefficient / eps_Z^2)"
+          }
+        },
+        "convergence_in_D": {
+          "5": {
+            "value_per_eps_Z_power": 9.729003712809167e-06,
+            "units": "us/rad (coefficient / eps_Z^2)"
+          },
+          "7": {
+            "value_per_eps_Z_power": 9.730653796028697e-06,
+            "units": "us/rad (coefficient / eps_Z^2)"
+          },
+          "9": {
+            "value_per_eps_Z_power": 9.73062710768921e-06,
+            "units": "us/rad (coefficient / eps_Z^2)"
+          }
+        },
+        "disp_part": {
+          "formula_leading": "(1/8/(- w_a + w_b) + 1/8/(w_a + w_b)) * A_z^2 phi_a^2 phi_b^2 E^2 e^{-2i theta} + 1/8/(2 w_a) * A_z^2 phi_a^4 E^2 e^{-2i theta}",
+          "formula_leading_reduced": "(1/8/(- w_a + w_b) + 1/8/(w_a + w_b)) * A_z^2 phi_a^2 phi_b^2 E^2 e^{-2i theta} + 1/8/(2 w_a) * A_z^2 phi_a^4 E^2 e^{-2i theta}",
+          "leading_order": {
+            "value_per_eps_Z_power": 9.802135915561985e-06,
+            "units": "us/rad (coefficient / eps_Z^2)"
+          },
+          "with_next_order": {
+            "value_per_eps_Z_power": 9.802135915561985e-06,
+            "units": "us/rad (coefficient / eps_Z^2)"
+          },
+          "all_degrees": {
+            "value_per_eps_Z_power": 9.802135915561985e-06,
+            "units": "us/rad (coefficient / eps_Z^2)"
+          }
+        },
+        "quantum_part": {
+          "formula_leading": "0",
+          "formula_leading_reduced": "0",
+          "leading_order": {
+            "value_per_eps_Z_power": 0.0,
+            "units": "us/rad (coefficient / eps_Z^2)"
+          },
+          "with_next_order": {
+            "value_per_eps_Z_power": -7.313220275281758e-08,
+            "units": "us/rad (coefficient / eps_Z^2)"
+          },
+          "all_degrees": {
+            "value_per_eps_Z_power": -7.150880787277406e-08,
+            "units": "us/rad (coefficient / eps_Z^2)"
+          }
+        }
+      },
+      "tt_stark_a": {
+        "operator": "a^dag a (tone x tone)",
+        "order": "H2",
+        "leading_phi_degree": 4,
+        "formula": "(1/2/(- w_a + w_b) + 1/2/(w_a + w_b)) * A_z^2 phi_a^2 phi_b^2 E^2 + 1/2/(2 w_a) * A_z^2 phi_a^4 E^2",
+        "formula_next_order": "(-1/8/(- 2 w_a + 2 w_b) + -1/4/(2 w_b) + -1/8/(2 w_a + 2 w_b)) * A_z^2 phi_a^2 phi_b^4 E^2 + (-1/4/(- w_a + w_b) + -1/2/(w_a + w_b) + -1/4/(3 w_a + w_b)) * A_z^2 phi_a^4 phi_b^2 E^2 + (-1/4/(2 w_a) + -1/8/(4 w_a)) * A_z^2 phi_a^6 E^2",
+        "formula_reduced_wp_eq_2wa_minus_wb": "(1/2/(- w_a + w_b) + 1/2/(w_a + w_b)) * A_z^2 phi_a^2 phi_b^2 E^2 + 1/2/(2 w_a) * A_z^2 phi_a^4 E^2",
+        "value_per_eps_Z_power": 3.8561685124640586e-05,
+        "units": "us/rad (coefficient / eps_Z^2)",
+        "leading_order": {
+          "value_per_eps_Z_power": 3.920854366224793e-05,
+          "units": "us/rad (coefficient / eps_Z^2)"
+        },
+        "with_next_order": {
+          "value_per_eps_Z_power": 3.855520295787699e-05,
+          "units": "us/rad (coefficient / eps_Z^2)"
+        },
+        "by_phi_degree": {
+          "4": {
+            "value_per_eps_Z_power": 3.920854366224793e-05,
+            "units": "us/rad (coefficient / eps_Z^2)"
+          },
+          "6": {
+            "value_per_eps_Z_power": -6.533407043709184e-07,
+            "units": "us/rad (coefficient / eps_Z^2)"
+          },
+          "8": {
+            "value_per_eps_Z_power": 6.600332878121481e-09,
+            "units": "us/rad (coefficient / eps_Z^2)"
+          },
+          "10": {
+            "value_per_eps_Z_power": -1.1816611452846476e-10,
+            "units": "us/rad (coefficient / eps_Z^2)"
+          }
+        },
+        "convergence_in_D": {
+          "5": {
+            "value_per_eps_Z_power": 3.855520295787699e-05,
+            "units": "us/rad (coefficient / eps_Z^2)"
+          },
+          "7": {
+            "value_per_eps_Z_power": 3.8561803290755113e-05,
+            "units": "us/rad (coefficient / eps_Z^2)"
+          },
+          "9": {
+            "value_per_eps_Z_power": 3.8561685124640586e-05,
+            "units": "us/rad (coefficient / eps_Z^2)"
+          }
+        },
+        "disp_part": {
+          "formula_leading": "(1/2/(- w_a + w_b) + 1/2/(w_a + w_b)) * A_z^2 phi_a^2 phi_b^2 E^2 + 1/2/(2 w_a) * A_z^2 phi_a^4 E^2",
+          "formula_leading_reduced": "(1/2/(- w_a + w_b) + 1/2/(w_a + w_b)) * A_z^2 phi_a^2 phi_b^2 E^2 + 1/2/(2 w_a) * A_z^2 phi_a^4 E^2",
+          "leading_order": {
+            "value_per_eps_Z_power": 3.920854366224793e-05,
+            "units": "us/rad (coefficient / eps_Z^2)"
+          },
+          "with_next_order": {
+            "value_per_eps_Z_power": 3.920854366224793e-05,
+            "units": "us/rad (coefficient / eps_Z^2)"
+          },
+          "all_degrees": {
+            "value_per_eps_Z_power": 3.920854366224793e-05,
+            "units": "us/rad (coefficient / eps_Z^2)"
+          }
+        },
+        "quantum_part": {
+          "formula_leading": "0",
+          "formula_leading_reduced": "0",
+          "leading_order": {
+            "value_per_eps_Z_power": 0.0,
+            "units": "us/rad (coefficient / eps_Z^2)"
+          },
+          "with_next_order": {
+            "value_per_eps_Z_power": -6.533407043709184e-07,
+            "units": "us/rad (coefficient / eps_Z^2)"
+          },
+          "all_degrees": {
+            "value_per_eps_Z_power": -6.468585376073253e-07,
+            "units": "us/rad (coefficient / eps_Z^2)"
+          }
+        }
+      },
+      "tt_stark_b": {
+        "operator": "b^dag b (tone x tone)",
+        "order": "H2",
+        "leading_phi_degree": 4,
+        "formula": "(1/2/(- w_a + w_b) + 1/2/(w_a + w_b)) * A_z^2 phi_b^4 E^2 + 1/2/(2 w_a) * A_z^2 phi_a^2 phi_b^2 E^2",
+        "formula_next_order": "(-1/8/(- w_a + w_b) + -1/8/(- w_a + 3 w_b) + -1/8/(w_a + w_b) + -1/8/(w_a + 3 w_b)) * A_z^2 phi_b^6 E^2 + (-1/4/(2 w_b) + -1/4/(2 w_a) + -1/4/(2 w_a + 2 w_b)) * A_z^2 phi_a^2 phi_b^4 E^2 + (1/8/(- w_a + w_b) + -1/8/(w_a + w_b) + -1/8/(3 w_a - w_b) + -1/8/(3 w_a + w_b)) * A_z^2 phi_a^4 phi_b^2 E^2",
+        "formula_reduced_wp_eq_2wa_minus_wb": "(1/2/(- w_a + w_b) + 1/2/(w_a + w_b)) * A_z^2 phi_b^4 E^2 + 1/2/(2 w_a) * A_z^2 phi_a^2 phi_b^2 E^2",
+        "value_per_eps_Z_power": 0.0009556315881810349,
+        "units": "us/rad (coefficient / eps_Z^2)",
+        "leading_order": {
+          "value_per_eps_Z_power": 0.0009802135915561985,
+          "units": "us/rad (coefficient / eps_Z^2)"
+        },
+        "with_next_order": {
+          "value_per_eps_Z_power": 0.0009554696125467475,
+          "units": "us/rad (coefficient / eps_Z^2)"
+        },
+        "by_phi_degree": {
+          "4": {
+            "value_per_eps_Z_power": 0.0009802135915561985,
+            "units": "us/rad (coefficient / eps_Z^2)"
+          },
+          "6": {
+            "value_per_eps_Z_power": -2.4743979009450955e-05,
+            "units": "us/rad (coefficient / eps_Z^2)"
+          },
+          "8": {
+            "value_per_eps_Z_power": 1.6500832195303707e-07,
+            "units": "us/rad (coefficient / eps_Z^2)"
+          },
+          "10": {
+            "value_per_eps_Z_power": -3.0326876657319205e-09,
+            "units": "us/rad (coefficient / eps_Z^2)"
+          }
+        },
+        "convergence_in_D": {
+          "5": {
+            "value_per_eps_Z_power": 0.0009554696125467475,
+            "units": "us/rad (coefficient / eps_Z^2)"
+          },
+          "7": {
+            "value_per_eps_Z_power": 0.0009556346208687005,
+            "units": "us/rad (coefficient / eps_Z^2)"
+          },
+          "9": {
+            "value_per_eps_Z_power": 0.0009556315881810349,
+            "units": "us/rad (coefficient / eps_Z^2)"
+          }
+        },
+        "disp_part": {
+          "formula_leading": "(1/2/(- w_a + w_b) + 1/2/(w_a + w_b)) * A_z^2 phi_b^4 E^2 + 1/2/(2 w_a) * A_z^2 phi_a^2 phi_b^2 E^2",
+          "formula_leading_reduced": "(1/2/(- w_a + w_b) + 1/2/(w_a + w_b)) * A_z^2 phi_b^4 E^2 + 1/2/(2 w_a) * A_z^2 phi_a^2 phi_b^2 E^2",
+          "leading_order": {
+            "value_per_eps_Z_power": 0.0009802135915561985,
+            "units": "us/rad (coefficient / eps_Z^2)"
+          },
+          "with_next_order": {
+            "value_per_eps_Z_power": 0.0009802135915561985,
+            "units": "us/rad (coefficient / eps_Z^2)"
+          },
+          "all_degrees": {
+            "value_per_eps_Z_power": 0.0009802135915561985,
+            "units": "us/rad (coefficient / eps_Z^2)"
+          }
+        },
+        "quantum_part": {
+          "formula_leading": "0",
+          "formula_leading_reduced": "0",
+          "leading_order": {
+            "value_per_eps_Z_power": 0.0,
+            "units": "us/rad (coefficient / eps_Z^2)"
+          },
+          "with_next_order": {
+            "value_per_eps_Z_power": -2.4743979009450955e-05,
+            "units": "us/rad (coefficient / eps_Z^2)"
+          },
+          "all_degrees": {
+            "value_per_eps_Z_power": -2.4582003375163646e-05,
+            "units": "us/rad (coefficient / eps_Z^2)"
+          }
+        }
+      },
+      "tt_kerr_a": {
+        "operator": "(K/2) a^dag^2 a^2 (tone x tone)",
+        "order": "H2",
+        "leading_phi_degree": 6,
+        "formula": "(-7/8/(- w_a + w_b) + -7/8/(w_a + w_b) + 1/8/(3 w_a - w_b) + -1/8/(3 w_a + w_b)) * A_z^2 phi_a^4 phi_b^2 E^2 + (-3/4/(2 w_a) + -1/8/(4 w_a)) * A_z^2 phi_a^6 E^2",
+        "formula_next_order": "(1/4/(- 2 w_a + 2 w_b) + 1/2/(2 w_b) + 1/4/(2 w_a + 2 w_b)) * A_z^2 phi_a^4 phi_b^4 E^2 + (1/2/(- w_a + w_b) + 1/(w_a + w_b) + 1/2/(3 w_a + w_b)) * A_z^2 phi_a^6 phi_b^2 E^2 + (1/2/(2 w_a) + 1/4/(4 w_a)) * A_z^2 phi_a^8 E^2",
+        "formula_reduced_wp_eq_2wa_minus_wb": "(-7/8/(- w_a + w_b) + -7/8/(w_a + w_b) + 1/8/(3 w_a - w_b) + -1/8/(3 w_a + w_b)) * A_z^2 phi_a^4 phi_b^2 E^2 + (-3/4/(2 w_a) + -1/8/(4 w_a)) * A_z^2 phi_a^6 E^2",
+        "value_per_eps_Z_power": -2.402594293247737e-07,
+        "units": "us/rad (coefficient / eps_Z^2)",
+        "leading_order": {
+          "value_per_eps_Z_power": -2.449030894804568e-07,
+          "units": "us/rad (coefficient / eps_Z^2)"
+        },
+        "with_next_order": {
+          "value_per_eps_Z_power": -2.4019903640898614e-07,
+          "units": "us/rad (coefficient / eps_Z^2)"
+        },
+        "by_phi_degree": {
+          "6": {
+            "value_per_eps_Z_power": -2.449030894804568e-07,
+            "units": "us/rad (coefficient / eps_Z^2)"
+          },
+          "8": {
+            "value_per_eps_Z_power": 4.704053071470611e-09,
+            "units": "us/rad (coefficient / eps_Z^2)"
+          },
+          "10": {
+            "value_per_eps_Z_power": -6.039291578752081e-11,
+            "units": "us/rad (coefficient / eps_Z^2)"
+          }
+        },
+        "convergence_in_D": {
+          "5": {
+            "value_per_eps_Z_power": -2.449030894804568e-07,
+            "units": "us/rad (coefficient / eps_Z^2)"
+          },
+          "7": {
+            "value_per_eps_Z_power": -2.4019903640898614e-07,
+            "units": "us/rad (coefficient / eps_Z^2)"
+          },
+          "9": {
+            "value_per_eps_Z_power": -2.402594293247737e-07,
+            "units": "us/rad (coefficient / eps_Z^2)"
+          }
+        },
+        "disp_part": {
+          "formula_leading": "(-1/4/(- w_a + w_b) + -1/4/(w_a + w_b)) * A_z^2 phi_a^4 phi_b^2 E^2 + -1/4/(2 w_a) * A_z^2 phi_a^6 E^2",
+          "formula_leading_reduced": "(-1/4/(- w_a + w_b) + -1/4/(w_a + w_b)) * A_z^2 phi_a^4 phi_b^2 E^2 + -1/4/(2 w_a) * A_z^2 phi_a^6 E^2",
+          "leading_order": {
+            "value_per_eps_Z_power": -7.057537859204628e-08,
+            "units": "us/rad (coefficient / eps_Z^2)"
+          },
+          "with_next_order": {
+            "value_per_eps_Z_power": -7.057537859204628e-08,
+            "units": "us/rad (coefficient / eps_Z^2)"
+          },
+          "all_degrees": {
+            "value_per_eps_Z_power": -7.057537859204628e-08,
+            "units": "us/rad (coefficient / eps_Z^2)"
+          }
+        },
+        "quantum_part": {
+          "formula_leading": "(-5/8/(- w_a + w_b) + -5/8/(w_a + w_b) + 1/8/(3 w_a - w_b) + -1/8/(3 w_a + w_b)) * A_z^2 phi_a^4 phi_b^2 E^2 + (-1/2/(2 w_a) + -1/8/(4 w_a)) * A_z^2 phi_a^6 E^2",
+          "formula_leading_reduced": "(-5/8/(- w_a + w_b) + -5/8/(w_a + w_b) + 1/8/(3 w_a - w_b) + -1/8/(3 w_a + w_b)) * A_z^2 phi_a^4 phi_b^2 E^2 + (-1/2/(2 w_a) + -1/8/(4 w_a)) * A_z^2 phi_a^6 E^2",
+          "leading_order": {
+            "value_per_eps_Z_power": -1.743277108884105e-07,
+            "units": "us/rad (coefficient / eps_Z^2)"
+          },
+          "with_next_order": {
+            "value_per_eps_Z_power": -1.6962365781693992e-07,
+            "units": "us/rad (coefficient / eps_Z^2)"
+          },
+          "all_degrees": {
+            "value_per_eps_Z_power": -1.6968405073272746e-07,
+            "units": "us/rad (coefficient / eps_Z^2)"
+          }
+        }
+      },
+      "tt_chi_ab": {
+        "operator": "a^dag a b^dag b (tone x tone)",
+        "order": "H2",
+        "leading_phi_degree": 6,
+        "formula": "(-1/4/(- 2 w_a + 2 w_b) + -1/(- w_a + w_b) + -1/2/(2 w_b) + -1/(w_a + w_b) + -1/4/(2 w_a + 2 w_b)) * A_z^2 phi_a^2 phi_b^4 E^2 + (1/4/(- w_a + w_b) + -1/4/(w_a + w_b) + -1/(2 w_a) + -1/4/(3 w_a - w_b) + -1/4/(3 w_a + w_b)) * A_z^2 phi_a^4 phi_b^2 E^2",
+        "formula_next_order": "(1/4/(- 2 w_a + 2 w_b) + 1/4/(- w_a + w_b) + 1/4/(- w_a + 3 w_b) + 1/2/(2 w_b) + 1/4/(w_a + w_b) + 1/4/(w_a + 3 w_b) + 1/4/(2 w_a + 2 w_b)) * A_z^2 phi_a^2 phi_b^6 E^2 + (1/2/(- w_a + w_b) + 1/2/(2 w_b) + 1/(w_a + w_b) + 1/2/(2 w_a) + 1/2/(2 w_a + 2 w_b) + 1/2/(3 w_a + w_b)) * A_z^2 phi_a^4 phi_b^4 E^2 + (-1/4/(- w_a + w_b) + 1/4/(w_a + w_b) + 1/2/(2 w_a) + 1/4/(3 w_a - w_b) + 1/4/(3 w_a + w_b) + 1/4/(4 w_a)) * A_z^2 phi_a^6 phi_b^2 E^2",
+        "formula_reduced_wp_eq_2wa_minus_wb": "(-1/4/(- 2 w_a + 2 w_b) + -1/(- w_a + w_b) + -1/2/(2 w_b) + -1/(w_a + w_b) + -1/4/(2 w_a + 2 w_b)) * A_z^2 phi_a^2 phi_b^4 E^2 + (1/4/(- w_a + w_b) + -1/4/(w_a + w_b) + -1/(2 w_a) + -1/4/(3 w_a - w_b) + -1/4/(3 w_a + w_b)) * A_z^2 phi_a^4 phi_b^2 E^2",
+        "value_per_eps_Z_power": -7.864470858815496e-06,
+        "units": "us/rad (coefficient / eps_Z^2)",
+        "leading_order": {
+          "value_per_eps_Z_power": -8.156714603353738e-06,
+          "units": "us/rad (coefficient / eps_Z^2)"
+        },
+        "with_next_order": {
+          "value_per_eps_Z_power": -7.860956627698925e-06,
+          "units": "us/rad (coefficient / eps_Z^2)"
+        },
+        "by_phi_degree": {
+          "6": {
+            "value_per_eps_Z_power": -8.156714603353738e-06,
+            "units": "us/rad (coefficient / eps_Z^2)"
+          },
+          "8": {
+            "value_per_eps_Z_power": 2.9575797565481217e-07,
+            "units": "us/rad (coefficient / eps_Z^2)"
+          },
+          "10": {
+            "value_per_eps_Z_power": -3.5142311165678893e-09,
+            "units": "us/rad (coefficient / eps_Z^2)"
+          }
+        },
+        "convergence_in_D": {
+          "5": {
+            "value_per_eps_Z_power": -8.156714603353738e-06,
+            "units": "us/rad (coefficient / eps_Z^2)"
+          },
+          "7": {
+            "value_per_eps_Z_power": -7.860956627698925e-06,
+            "units": "us/rad (coefficient / eps_Z^2)"
+          },
+          "9": {
+            "value_per_eps_Z_power": -7.864470858815496e-06,
+            "units": "us/rad (coefficient / eps_Z^2)"
+          }
+        },
+        "disp_part": {
+          "formula_leading": "(-1/2/(- w_a + w_b) + -1/2/(w_a + w_b)) * A_z^2 phi_a^2 phi_b^4 E^2 + -1/2/(2 w_a) * A_z^2 phi_a^4 phi_b^2 E^2",
+          "formula_leading_reduced": "(-1/2/(- w_a + w_b) + -1/2/(w_a + w_b)) * A_z^2 phi_a^2 phi_b^4 E^2 + -1/2/(2 w_a) * A_z^2 phi_a^4 phi_b^2 E^2",
+          "leading_order": {
+            "value_per_eps_Z_power": -3.528768929602315e-06,
+            "units": "us/rad (coefficient / eps_Z^2)"
+          },
+          "with_next_order": {
+            "value_per_eps_Z_power": -3.528768929602315e-06,
+            "units": "us/rad (coefficient / eps_Z^2)"
+          },
+          "all_degrees": {
+            "value_per_eps_Z_power": -3.528768929602315e-06,
+            "units": "us/rad (coefficient / eps_Z^2)"
+          }
+        },
+        "quantum_part": {
+          "formula_leading": "(-1/4/(- 2 w_a + 2 w_b) + -1/2/(- w_a + w_b) + -1/2/(2 w_b) + -1/2/(w_a + w_b) + -1/4/(2 w_a + 2 w_b)) * A_z^2 phi_a^2 phi_b^4 E^2 + (1/4/(- w_a + w_b) + -1/4/(w_a + w_b) + -1/2/(2 w_a) + -1/4/(3 w_a - w_b) + -1/4/(3 w_a + w_b)) * A_z^2 phi_a^4 phi_b^2 E^2",
+          "formula_leading_reduced": "(-1/4/(- 2 w_a + 2 w_b) + -1/2/(- w_a + w_b) + -1/2/(2 w_b) + -1/2/(w_a + w_b) + -1/4/(2 w_a + 2 w_b)) * A_z^2 phi_a^2 phi_b^4 E^2 + (1/4/(- w_a + w_b) + -1/4/(w_a + w_b) + -1/2/(2 w_a) + -1/4/(3 w_a - w_b) + -1/4/(3 w_a + w_b)) * A_z^2 phi_a^4 phi_b^2 E^2",
+          "leading_order": {
+            "value_per_eps_Z_power": -4.627945673751423e-06,
+            "units": "us/rad (coefficient / eps_Z^2)"
+          },
+          "with_next_order": {
+            "value_per_eps_Z_power": -4.332187698096611e-06,
+            "units": "us/rad (coefficient / eps_Z^2)"
+          },
+          "all_degrees": {
+            "value_per_eps_Z_power": -4.335701929213178e-06,
+            "units": "us/rad (coefficient / eps_Z^2)"
+          }
+        }
+      }
+    },
+    "fock_crosscheck_all_orders": {
+      "method": "H2 = sum V(nu)V(-nu)/nu from exact matrix sin(phihat), N_a = N_b = 14; pump-only for pump terms, tone on for pt_a_bdag",
+      "Delta_a": {
+        "fock": 0.9290993405745281,
+        "series": 0.929099274499466,
+        "rel_diff": 7.111733256281026e-08
+      },
+      "Delta_b": {
+        "fock": 23.056266842716834,
+        "series": 23.056265191037742,
+        "rel_diff": 7.163688821573855e-08
+      },
+      "K_a": {
+        "fock": -0.004941367936810539,
+        "series": -0.004941401712065035,
+        "rel_diff": 6.835156594034258e-06
+      },
+      "K_b": {
+        "fock": -2.6729490164543215,
+        "series": -2.6729706402250977,
+        "rel_diff": 8.089789858062292e-06
+      },
+      "chi_ab": {
+        "fock": -0.19949719886143266,
+        "series": -0.19949890817300542,
+        "rel_diff": 8.56802469953323e-06
+      },
+      "c_number": {
+        "fock": -131.84696508177822,
+        "series": -131.84696508040534,
+        "rel_diff": 1.041269513855703e-11
+      },
+      "c_a4b2": {
+        "fock": 4.625291650497763e-05,
+        "series": 4.623486243697927e-05,
+        "rel_diff": 0.0003904860325466195
+      },
+      "pt_a_bdag": {
+        "fock": 0.07750606926598101,
+        "series": 0.07750606516114836,
+        "rel_diff": 5.2961437866888125e-08
+      }
+    },
+    "runtime_s": 18.917810201644897
+  }
+}

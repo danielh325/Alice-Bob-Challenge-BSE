@@ -1,0 +1,1757 @@
+{
+ "source": {
+  "notebook": "intro_track.ipynb",
+  "sha256": "c7587101984328b6108e541659614e8a76bf028889afa54902e1b39f5448b532",
+  "builder": "tools/build_notebook.py",
+  "libraries": {
+   "dynamiqs": "0.3.7",
+   "jax": "0.12.0.1",
+   "numpy": "2.5.4",
+   "scipy": "1.18.1",
+   "matplotlib": "3.11.2"
+  },
+  "note": "claims = printed outputs of executed cells; inputs = chosen settings; derived = arithmetic"
+ },
+ "claims": {
+  "g2": {
+   "value": 4.7941,
+   "text": "4.7941",
+   "cell": 1,
+   "line": "g2      = 4.7941 rad/us"
+  },
+  "kappa_b": {
+   "value": 16.3363,
+   "text": "16.3363",
+   "cell": 1,
+   "line": "kappa_b = 16.3363 rad/us"
+  },
+  "kappa_a": {
+   "value": 0.05843,
+   "text": "0.05843",
+   "cell": 1,
+   "line": "kappa_a = 0.05843 rad/us"
+  },
+  "eps_d": {
+   "value": 21.1419,
+   "text": "21.1419",
+   "cell": 1,
+   "line": "eps_d   = alpha^2 g2 = 21.1419 rad/us"
+  },
+  "kappa2": {
+   "value": 5.6275,
+   "text": "5.6275",
+   "cell": 1,
+   "line": "kappa2  = 4 g2^2 / kappa_b = 5.6275 rad/us  (kappa2/2pi = 0.8956 MHz)"
+  },
+  "kappa2_mhz": {
+   "value": 0.8956,
+   "text": "0.8956",
+   "cell": 1,
+   "line": "kappa2  = 4 g2^2 / kappa_b = 5.6275 rad/us  (kappa2/2pi = 0.8956 MHz)"
+  },
+  "a0_max_err": {
+   "value": 5.49e-11,
+   "text": "5.49e-11",
+   "cell": 3,
+   "line": "max |simulation - analytic| = 5.49e-11 photons"
+  },
+  "a0_min_fid": {
+   "value": 1.0,
+   "text": "1.00000000",
+   "cell": 3,
+   "line": "min fidelity with the shrinking coherent state = 1.00000000"
+  },
+  "b0_n_final": {
+   "value": 0.499832,
+   "text": "0.499832",
+   "cell": 5,
+   "line": "<n>(3 us)           = 0.499832"
+  },
+  "b0_odd_pop": {
+   "value": 0.499832,
+   "text": "0.499832",
+   "cell": 5,
+   "line": "(1 - e^-8) / 2       = 0.499832   (initial odd-photon-number population)"
+  },
+  "b0_p0_final": {
+   "value": 0.500168,
+   "text": "0.500168",
+   "cell": 5,
+   "line": "final P(|0>), P(|1>) = 0.500168, 0.499832"
+  },
+  "b0_p1_final": {
+   "value": 0.499832,
+   "text": "0.499832",
+   "cell": 5,
+   "line": "final P(|0>), P(|1>) = 0.500168, 0.499832"
+  },
+  "b0_p01_init": {
+   "value": 0.0916,
+   "text": "0.0916",
+   "cell": 5,
+   "line": "initial P(|0>) + P(|1>) = 0.0916"
+  },
+  "starter_peak": {
+   "value": 6.115,
+   "text": "6.115",
+   "cell": 9,
+   "line": "peak <a^dag a> = 6.115 at t = 230 ns, <a^dag a>(3 us) = 4.4026"
+  },
+  "starter_b_peak": {
+   "value": 1.887,
+   "text": "1.887",
+   "cell": 9,
+   "line": "peak <b^dag b> = 1.887"
+  },
+  "starter_top_buffer": {
+   "value": 0.046,
+   "text": "4.6e-02",
+   "cell": 9,
+   "line": "max population in top buffer level    = 4.6e-02  <-- not negligible"
+  },
+  "na_conv": {
+   "value": 28.0,
+   "text": "28",
+   "cell": 12,
+   "line": "converged truncation for both quantities: N_a = 28, N_b = 12"
+  },
+  "nb_conv": {
+   "value": 12.0,
+   "text": "12",
+   "cell": 12,
+   "line": "converged truncation for both quantities: N_a = 28, N_b = 12"
+  },
+  "tol6_steady": {
+   "value": 4.402524,
+   "text": "4.402524",
+   "cell": 15,
+   "line": "N_a=32, N_b=14, tol=1e-06: steady 4.402524, peak 6.91080, top-2 memory max 1.4e-03 (min -1.2e-03), top buffer max 1.3e-04"
+  },
+  "tol6_min": {
+   "value": -0.0012,
+   "text": "-1.2e-03",
+   "cell": 15,
+   "line": "N_a=32, N_b=14, tol=1e-06: steady 4.402524, peak 6.91080, top-2 memory max 1.4e-03 (min -1.2e-03), top buffer max 1.3e-04"
+  },
+  "tol9_steady": {
+   "value": 4.402635,
+   "text": "4.402635",
+   "cell": 15,
+   "line": "N_a=32, N_b=14, tol=1e-09: steady 4.402635, peak 6.91083, top-2 memory max 2.3e-05 (min -1.3e-06), top buffer max 1.9e-05"
+  },
+  "tol9_min": {
+   "value": -1.3e-06,
+   "text": "-1.3e-06",
+   "cell": 15,
+   "line": "N_a=32, N_b=14, tol=1e-09: steady 4.402635, peak 6.91083, top-2 memory max 2.3e-05 (min -1.3e-06), top buffer max 1.9e-05"
+  },
+  "n_ss": {
+   "value": 4.40263,
+   "text": "4.40263",
+   "cell": 18,
+   "line": "converged steady state <n_a>      = 4.40263  (-0.17% vs alpha^2)"
+  },
+  "n_ss_pct": {
+   "value": -0.17,
+   "text": "-0.17",
+   "cell": 18,
+   "line": "converged steady state <n_a>      = 4.40263  (-0.17% vs alpha^2)"
+  },
+  "n_lossless": {
+   "value": 4.4087,
+   "text": "4.40870",
+   "cell": 18,
+   "line": "same with kappa_a = 0             = 4.40870"
+  },
+  "n_tanh": {
+   "value": 4.4087,
+   "text": "4.40870",
+   "cell": 18,
+   "line": "alpha^2 tanh(alpha^2) (even cat)  = 4.40870"
+  },
+  "n_shift": {
+   "value": -0.00606,
+   "text": "-0.00606",
+   "cell": 18,
+   "line": "shift from kappa_a                = -0.00606"
+  },
+  "n_shift_mf": {
+   "value": -0.00519,
+   "text": "-0.00519",
+   "cell": 18,
+   "line": "mean-field estimate -kappa_a/(2 kappa2) = -0.00519"
+  },
+  "peak_n": {
+   "value": 6.894,
+   "text": "6.894",
+   "cell": 20,
+   "line": "peak <a^dag a> = 6.894 at t = 230 ns"
+  },
+  "peak_t_ns": {
+   "value": 230.0,
+   "text": "230",
+   "cell": 20,
+   "line": "peak <a^dag a> = 6.894 at t = 230 ns"
+  },
+  "settle_us": {
+   "value": 1.07,
+   "text": "1.07",
+   "cell": 20,
+   "line": "<a^dag a> stays within 1% of alpha^2 from t = 1.07 us; <a^dag a>(3 us) = 4.4026"
+  },
+  "n_3us": {
+   "value": 4.4026,
+   "text": "4.4026",
+   "cell": 20,
+   "line": "<a^dag a> stays within 1% of alpha^2 from t = 1.07 us; <a^dag a>(3 us) = 4.4026"
+  },
+  "b_peak": {
+   "value": 1.992,
+   "text": "1.992",
+   "cell": 20,
+   "line": "peak <b^dag b> = 1.992 at t = 130 ns, <b^dag b>(3 us) = 1.8e-05"
+  },
+  "b_peak_t_ns": {
+   "value": 130.0,
+   "text": "130",
+   "cell": 20,
+   "line": "peak <b^dag b> = 1.992 at t = 130 ns, <b^dag b>(3 us) = 1.8e-05"
+  },
+  "b_end": {
+   "value": 1.8e-05,
+   "text": "1.8e-05",
+   "cell": 20,
+   "line": "peak <b^dag b> = 1.992 at t = 130 ns, <b^dag b>(3 us) = 1.8e-05"
+  },
+  "top2_mem": {
+   "value": 0.00022,
+   "text": "2.2e-04",
+   "cell": 20,
+   "line": "max top-2 memory population = 2.2e-04, max top buffer population = 1.8e-04"
+  },
+  "top_buffer": {
+   "value": 0.00018,
+   "text": "1.8e-04",
+   "cell": 20,
+   "line": "max top-2 memory population = 2.2e-04, max top buffer population = 1.8e-04"
+  },
+  "g2_over_kb": {
+   "value": 0.293,
+   "text": "0.293",
+   "cell": 20,
+   "line": "adiabatic condition: g2/kappa_b = 0.293, eps_d/kappa_b = 1.294"
+  },
+  "epsd_over_kb": {
+   "value": 1.294,
+   "text": "1.294",
+   "cell": 20,
+   "line": "adiabatic condition: g2/kappa_b = 0.293, eps_d/kappa_b = 1.294"
+  },
+  "parity_control": {
+   "value": 2.4e-15,
+   "text": "2.4e-15",
+   "cell": 22,
+   "line": "kappa_a = 0 control: max |<P> - 1| over 6 us = 2.4e-15"
+  },
+  "coh_decay": {
+   "value": 0.5126,
+   "text": "0.5126",
+   "cell": 22,
+   "line": "fitted decay of cat coherence = 0.5126 /us"
+  },
+  "parity_decay": {
+   "value": 0.5132,
+   "text": "0.5132",
+   "cell": 22,
+   "line": "fitted decay of parity        = 0.5132 /us"
+  },
+  "gamma_pred": {
+   "value": 0.5154,
+   "text": "0.5154",
+   "cell": 22,
+   "line": "prediction 2 kappa_a alpha^2   = 0.5154 /us  ->  superposition lifetime 1/Gamma = 1.95 us"
+  },
+  "lifetime_us": {
+   "value": 1.95,
+   "text": "1.95",
+   "cell": 22,
+   "line": "prediction 2 kappa_a alpha^2   = 0.5154 /us  ->  superposition lifetime 1/Gamma = 1.95 us"
+  },
+  "liou_gamma": {
+   "value": 0.514559,
+   "text": "0.514559",
+   "cell": 22,
+   "line": "Liouvillian, (N_a, N_b) = (32, 10): Gamma = 0.514559 /us, lifetime 1.9434 us"
+  },
+  "liou_lifetime": {
+   "value": 1.9434,
+   "text": "1.9434",
+   "cell": 22,
+   "line": "Liouvillian, (N_a, N_b) = (32, 10): Gamma = 0.514559 /us, lifetime 1.9434 us"
+  },
+  "mix_fid": {
+   "value": 0.5,
+   "text": "0.500",
+   "cell": 24,
+   "line": "equal mixture of |+-alpha>: F(+alpha) = 0.500, <n> = 4.41, <P> = +0.000, coherence = +0.000, purity = 0.500"
+  },
+  "mix_n": {
+   "value": 4.41,
+   "text": "4.41",
+   "cell": 24,
+   "line": "equal mixture of |+-alpha>: F(+alpha) = 0.500, <n> = 4.41, <P> = +0.000, coherence = +0.000, purity = 0.500"
+  },
+  "mix_parity": {
+   "value": 0.0,
+   "text": "+0.000",
+   "cell": 24,
+   "line": "equal mixture of |+-alpha>: F(+alpha) = 0.500, <n> = 4.41, <P> = +0.000, coherence = +0.000, purity = 0.500"
+  },
+  "mix_coh": {
+   "value": 0.0,
+   "text": "+0.000",
+   "cell": 24,
+   "line": "equal mixture of |+-alpha>: F(+alpha) = 0.500, <n> = 4.41, <P> = +0.000, coherence = +0.000, purity = 0.500"
+  },
+  "mix_purity": {
+   "value": 0.5,
+   "text": "0.500",
+   "cell": 24,
+   "line": "equal mixture of |+-alpha>: F(+alpha) = 0.500, <n> = 4.41, <P> = +0.000, coherence = +0.000, purity = 0.500"
+  },
+  "prep_fid": {
+   "value": 0.498,
+   "text": "0.498",
+   "cell": 24,
+   "line": "prepared state, t = 1 us: F(+alpha) = 0.498, <n> = 4.36, <P> = +0.629, coherence = +0.626, purity = 0.692"
+  },
+  "prep_n": {
+   "value": 4.36,
+   "text": "4.36",
+   "cell": 24,
+   "line": "prepared state, t = 1 us: F(+alpha) = 0.498, <n> = 4.36, <P> = +0.629, coherence = +0.626, purity = 0.692"
+  },
+  "prep_parity": {
+   "value": 0.629,
+   "text": "+0.629",
+   "cell": 24,
+   "line": "prepared state, t = 1 us: F(+alpha) = 0.498, <n> = 4.36, <P> = +0.629, coherence = +0.626, purity = 0.692"
+  },
+  "prep_coh": {
+   "value": 0.626,
+   "text": "+0.626",
+   "cell": 24,
+   "line": "prepared state, t = 1 us: F(+alpha) = 0.498, <n> = 4.36, <P> = +0.629, coherence = +0.626, purity = 0.692"
+  },
+  "prep_purity": {
+   "value": 0.692,
+   "text": "0.692",
+   "cell": 24,
+   "line": "prepared state, t = 1 us: F(+alpha) = 0.498, <n> = 4.36, <P> = +0.629, coherence = +0.626, purity = 0.692"
+  },
+  "a_monitor": {
+   "value": 0.00018,
+   "text": "1.8e-04",
+   "cell": 26,
+   "line": "max truncation-monitor population over method A runs: 1.8e-04"
+  },
+  "b_monitor": {
+   "value": 0.0025,
+   "text": "2.5e-03",
+   "cell": 28,
+   "line": "max truncation-monitor population over method B runs: 2.5e-03"
+  },
+  "b_area": {
+   "value": 2.5,
+   "text": "2.5",
+   "cell": 28,
+   "line": "chosen pulse: A = 2.5, T = 50 ns, eps/2pi = 8.0 MHz -> F(+alpha) = 0.9985, Re<a> = 2.092"
+  },
+  "b_T_ns": {
+   "value": 50.0,
+   "text": "50",
+   "cell": 28,
+   "line": "chosen pulse: A = 2.5, T = 50 ns, eps/2pi = 8.0 MHz -> F(+alpha) = 0.9985, Re<a> = 2.092"
+  },
+  "b_mhz": {
+   "value": 8.0,
+   "text": "8.0",
+   "cell": 28,
+   "line": "chosen pulse: A = 2.5, T = 50 ns, eps/2pi = 8.0 MHz -> F(+alpha) = 0.9985, Re<a> = 2.092"
+  },
+  "b_fid": {
+   "value": 0.9985,
+   "text": "0.9985",
+   "cell": 28,
+   "line": "chosen pulse: A = 2.5, T = 50 ns, eps/2pi = 8.0 MHz -> F(+alpha) = 0.9985, Re<a> = 2.092"
+  },
+  "b_re_a": {
+   "value": 2.092,
+   "text": "2.092",
+   "cell": 28,
+   "line": "chosen pulse: A = 2.5, T = 50 ns, eps/2pi = 8.0 MHz -> F(+alpha) = 0.9985, Re<a> = 2.092"
+  },
+  "big_pulse_fid": {
+   "value": 0.9551,
+   "text": "0.9551",
+   "cell": 31,
+   "line": "two-mode, N_a = 40, pulse A = 4, T = 10 ns: F(+alpha) = 0.9551  (top-level monitor max 2.5e-05)"
+  },
+  "big_beta_fid": {
+   "value": 0.9559,
+   "text": "0.9559",
+   "cell": 31,
+   "line": "two-mode, N_a = 40, displaced start beta = 4: F(+alpha) = 0.9559  (top-level monitor max 2.6e-05)"
+  },
+  "eff_beta4_fid": {
+   "value": 1.0,
+   "text": "1.0000",
+   "cell": 31,
+   "line": "effective model, beta = 4: F(+alpha) = 1.0000  (basin model 1.0000)"
+  },
+  "lambda": {
+   "value": 24.8,
+   "text": "24.8",
+   "cell": 36,
+   "line": "growth rate with the stabilization on: lambda = kappa_2 alpha^2 = 24.8 /us"
+  },
+  "weak005_model": {
+   "value": 0.52,
+   "text": "0.5200",
+   "cell": 36,
+   "line": "weak push 0.05 g2 for 1 us: model F = 0.5200, simulated F = 0.5216"
+  },
+  "weak005_sim": {
+   "value": 0.5216,
+   "text": "0.5216",
+   "cell": 36,
+   "line": "weak push 0.05 g2 for 1 us: model F = 0.5200, simulated F = 0.5216"
+  },
+  "weak02_model": {
+   "value": 0.5794,
+   "text": "0.5794",
+   "cell": 36,
+   "line": "weak push 0.2 g2 for 1 us: model F = 0.5794, simulated F = 0.5853"
+  },
+  "weak02_sim": {
+   "value": 0.5853,
+   "text": "0.5853",
+   "cell": 36,
+   "line": "weak push 0.2 g2 for 1 us: model F = 0.5794, simulated F = 0.5853"
+  },
+  "c_monitor": {
+   "value": 1.3e-06,
+   "text": "1.3e-06",
+   "cell": 38,
+   "line": "max truncation-monitor population over method C runs: 1.3e-06"
+  },
+  "robust_a_before": {
+   "value": 0.00122,
+   "text": "1.22e-03",
+   "cell": 40,
+   "line": "method A: error 1.22e-03 -> 1.30e-03 with circuit terms"
+  },
+  "robust_a_after": {
+   "value": 0.0013,
+   "text": "1.30e-03",
+   "cell": 40,
+   "line": "method A: error 1.22e-03 -> 1.30e-03 with circuit terms"
+  },
+  "robust_b_before": {
+   "value": 0.00146,
+   "text": "1.46e-03",
+   "cell": 40,
+   "line": "method B: error 1.46e-03 -> 1.32e-03 with circuit terms"
+  },
+  "robust_b_after": {
+   "value": 0.00132,
+   "text": "1.32e-03",
+   "cell": 40,
+   "line": "method B: error 1.46e-03 -> 1.32e-03 with circuit terms"
+  },
+  "robust_c_before": {
+   "value": 0.000575,
+   "text": "5.75e-04",
+   "cell": 40,
+   "line": "method C: error 5.75e-04 -> 7.78e-04 with circuit terms"
+  },
+  "robust_c_after": {
+   "value": 0.000778,
+   "text": "7.78e-04",
+   "cell": 40,
+   "line": "method C: error 5.75e-04 -> 7.78e-04 with circuit terms"
+  },
+  "d_dark_h": {
+   "value": 3.2e-05,
+   "text": "3.2e-05",
+   "cell": 43,
+   "line": "|H|alpha,0>| = 3.2e-05, |b|alpha,0>| = 0.0e+00  (N_a = 28, N_b = 12)"
+  },
+  "d_dark_b": {
+   "value": 0.0,
+   "text": "0.0e+00",
+   "cell": 43,
+   "line": "|H|alpha,0>| = 3.2e-05, |b|alpha,0>| = 0.0e+00  (N_a = 28, N_b = 12)"
+  },
+  "d_err_lossless": {
+   "value": 9.3e-12,
+   "text": "9.3e-12",
+   "cell": 43,
+   "line": "method D with kappa_a = 0: error 9.3e-12"
+  },
+  "d_err": {
+   "value": 8.41e-06,
+   "text": "8.41e-06",
+   "cell": 43,
+   "line": "method D: error 8.41e-06 -> 5.37e-05 with circuit terms"
+  },
+  "d_err_circuit": {
+   "value": 5.37e-05,
+   "text": "5.37e-05",
+   "cell": 43,
+   "line": "method D: error 8.41e-06 -> 5.37e-05 with circuit terms"
+  },
+  "d_vs_c": {
+   "value": 68.0,
+   "text": "68",
+   "cell": 43,
+   "line": "method D vs method C: 68x lower error, 14x lower with circuit terms"
+  },
+  "d_vs_c_circuit": {
+   "value": 14.0,
+   "text": "14",
+   "cell": 43,
+   "line": "method D vs method C: 68x lower error, 14x lower with circuit terms"
+  },
+  "sweep.na.16.steady": {
+   "value": 4.405889,
+   "text": "4.405889",
+   "cell": 11,
+   "line": "16 | 4.405889   | 6.36550    | 5.7e-02          | 1.2e-03"
+  },
+  "sweep.na.16.peak": {
+   "value": 6.3655,
+   "text": "6.36550",
+   "cell": 11,
+   "line": "16 | 4.405889   | 6.36550    | 5.7e-02          | 1.2e-03"
+  },
+  "sweep.na.16.top2": {
+   "value": 0.057,
+   "text": "5.7e-02",
+   "cell": 11,
+   "line": "16 | 4.405889   | 6.36550    | 5.7e-02          | 1.2e-03"
+  },
+  "sweep.na.16.topbuf": {
+   "value": 0.0012,
+   "text": "1.2e-03",
+   "cell": 11,
+   "line": "16 | 4.405889   | 6.36550    | 5.7e-02          | 1.2e-03"
+  },
+  "sweep.na.20.steady": {
+   "value": 4.402673,
+   "text": "4.402673",
+   "cell": 11,
+   "line": "20 | 4.402673   | 6.80347    | 1.3e-02          | 4.6e-04"
+  },
+  "sweep.na.20.peak": {
+   "value": 6.80347,
+   "text": "6.80347",
+   "cell": 11,
+   "line": "20 | 4.402673   | 6.80347    | 1.3e-02          | 4.6e-04"
+  },
+  "sweep.na.20.top2": {
+   "value": 0.013,
+   "text": "1.3e-02",
+   "cell": 11,
+   "line": "20 | 4.402673   | 6.80347    | 1.3e-02          | 4.6e-04"
+  },
+  "sweep.na.20.topbuf": {
+   "value": 0.00046,
+   "text": "4.6e-04",
+   "cell": 11,
+   "line": "20 | 4.402673   | 6.80347    | 1.3e-02          | 4.6e-04"
+  },
+  "sweep.na.24.steady": {
+   "value": 4.402636,
+   "text": "4.402636",
+   "cell": 11,
+   "line": "24 | 4.402636   | 6.89641    | 2.0e-03          | 1.5e-04"
+  },
+  "sweep.na.24.peak": {
+   "value": 6.89641,
+   "text": "6.89641",
+   "cell": 11,
+   "line": "24 | 4.402636   | 6.89641    | 2.0e-03          | 1.5e-04"
+  },
+  "sweep.na.24.top2": {
+   "value": 0.002,
+   "text": "2.0e-03",
+   "cell": 11,
+   "line": "24 | 4.402636   | 6.89641    | 2.0e-03          | 1.5e-04"
+  },
+  "sweep.na.24.topbuf": {
+   "value": 0.00015,
+   "text": "1.5e-04",
+   "cell": 11,
+   "line": "24 | 4.402636   | 6.89641    | 2.0e-03          | 1.5e-04"
+  },
+  "sweep.na.28.steady": {
+   "value": 4.402635,
+   "text": "4.402635",
+   "cell": 11,
+   "line": "28 | 4.402635   | 6.90957    | 2.5e-04          | 4.0e-05"
+  },
+  "sweep.na.28.peak": {
+   "value": 6.90957,
+   "text": "6.90957",
+   "cell": 11,
+   "line": "28 | 4.402635   | 6.90957    | 2.5e-04          | 4.0e-05"
+  },
+  "sweep.na.28.top2": {
+   "value": 0.00025,
+   "text": "2.5e-04",
+   "cell": 11,
+   "line": "28 | 4.402635   | 6.90957    | 2.5e-04          | 4.0e-05"
+  },
+  "sweep.na.28.topbuf": {
+   "value": 4e-05,
+   "text": "4.0e-05",
+   "cell": 11,
+   "line": "28 | 4.402635   | 6.90957    | 2.5e-04          | 4.0e-05"
+  },
+  "sweep.na.32.steady": {
+   "value": 4.402635,
+   "text": "4.402635",
+   "cell": 11,
+   "line": "32 | 4.402635   | 6.91083    | 2.3e-05          | 1.9e-05"
+  },
+  "sweep.na.32.peak": {
+   "value": 6.91083,
+   "text": "6.91083",
+   "cell": 11,
+   "line": "32 | 4.402635   | 6.91083    | 2.3e-05          | 1.9e-05"
+  },
+  "sweep.na.32.top2": {
+   "value": 2.3e-05,
+   "text": "2.3e-05",
+   "cell": 11,
+   "line": "32 | 4.402635   | 6.91083    | 2.3e-05          | 1.9e-05"
+  },
+  "sweep.na.32.topbuf": {
+   "value": 1.9e-05,
+   "text": "1.9e-05",
+   "cell": 11,
+   "line": "32 | 4.402635   | 6.91083    | 2.3e-05          | 1.9e-05"
+  },
+  "na_steady_from": {
+   "value": 16.0,
+   "text": "16",
+   "cell": 11,
+   "line": "steady: converged (rtol 0.001) from N_a = 16"
+  },
+  "na_peak_from": {
+   "value": 28.0,
+   "text": "28",
+   "cell": 11,
+   "line": "peak: converged (rtol 0.001) from N_a = 28"
+  },
+  "sweep.nb.4.steady": {
+   "value": 4.402649,
+   "text": "4.402649",
+   "cell": 11,
+   "line": "4 | 4.402649   | 4.46203    | 6.8e-08          | 1.9e-01"
+  },
+  "sweep.nb.4.peak": {
+   "value": 4.46203,
+   "text": "4.46203",
+   "cell": 11,
+   "line": "4 | 4.402649   | 4.46203    | 6.8e-08          | 1.9e-01"
+  },
+  "sweep.nb.4.top2": {
+   "value": 6.8e-08,
+   "text": "6.8e-08",
+   "cell": 11,
+   "line": "4 | 4.402649   | 4.46203    | 6.8e-08          | 1.9e-01"
+  },
+  "sweep.nb.4.topbuf": {
+   "value": 0.19,
+   "text": "1.9e-01",
+   "cell": 11,
+   "line": "4 | 4.402649   | 4.46203    | 6.8e-08          | 1.9e-01"
+  },
+  "sweep.nb.6.steady": {
+   "value": 4.402634,
+   "text": "4.402634",
+   "cell": 11,
+   "line": "6 | 4.402634   | 6.11429    | 1.6e-08          | 4.6e-02"
+  },
+  "sweep.nb.6.peak": {
+   "value": 6.11429,
+   "text": "6.11429",
+   "cell": 11,
+   "line": "6 | 4.402634   | 6.11429    | 1.6e-08          | 4.6e-02"
+  },
+  "sweep.nb.6.top2": {
+   "value": 1.6e-08,
+   "text": "1.6e-08",
+   "cell": 11,
+   "line": "6 | 4.402634   | 6.11429    | 1.6e-08          | 4.6e-02"
+  },
+  "sweep.nb.6.topbuf": {
+   "value": 0.046,
+   "text": "4.6e-02",
+   "cell": 11,
+   "line": "6 | 4.402634   | 6.11429    | 1.6e-08          | 4.6e-02"
+  },
+  "sweep.nb.8.steady": {
+   "value": 4.402634,
+   "text": "4.402634",
+   "cell": 11,
+   "line": "8 | 4.402634   | 6.74415    | 2.0e-07          | 8.6e-03"
+  },
+  "sweep.nb.8.peak": {
+   "value": 6.74415,
+   "text": "6.74415",
+   "cell": 11,
+   "line": "8 | 4.402634   | 6.74415    | 2.0e-07          | 8.6e-03"
+  },
+  "sweep.nb.8.top2": {
+   "value": 2e-07,
+   "text": "2.0e-07",
+   "cell": 11,
+   "line": "8 | 4.402634   | 6.74415    | 2.0e-07          | 8.6e-03"
+  },
+  "sweep.nb.8.topbuf": {
+   "value": 0.0086,
+   "text": "8.6e-03",
+   "cell": 11,
+   "line": "8 | 4.402634   | 6.74415    | 2.0e-07          | 8.6e-03"
+  },
+  "sweep.nb.10.steady": {
+   "value": 4.402635,
+   "text": "4.402635",
+   "cell": 11,
+   "line": "10 | 4.402635   | 6.88646    | 3.1e-06          | 1.3e-03"
+  },
+  "sweep.nb.10.peak": {
+   "value": 6.88646,
+   "text": "6.88646",
+   "cell": 11,
+   "line": "10 | 4.402635   | 6.88646    | 3.1e-06          | 1.3e-03"
+  },
+  "sweep.nb.10.top2": {
+   "value": 3.1e-06,
+   "text": "3.1e-06",
+   "cell": 11,
+   "line": "10 | 4.402635   | 6.88646    | 3.1e-06          | 1.3e-03"
+  },
+  "sweep.nb.10.topbuf": {
+   "value": 0.0013,
+   "text": "1.3e-03",
+   "cell": 11,
+   "line": "10 | 4.402635   | 6.88646    | 3.1e-06          | 1.3e-03"
+  },
+  "sweep.nb.12.steady": {
+   "value": 4.402635,
+   "text": "4.402635",
+   "cell": 11,
+   "line": "12 | 4.402635   | 6.90843    | 1.4e-05          | 1.7e-04"
+  },
+  "sweep.nb.12.peak": {
+   "value": 6.90843,
+   "text": "6.90843",
+   "cell": 11,
+   "line": "12 | 4.402635   | 6.90843    | 1.4e-05          | 1.7e-04"
+  },
+  "sweep.nb.12.top2": {
+   "value": 1.4e-05,
+   "text": "1.4e-05",
+   "cell": 11,
+   "line": "12 | 4.402635   | 6.90843    | 1.4e-05          | 1.7e-04"
+  },
+  "sweep.nb.12.topbuf": {
+   "value": 0.00017,
+   "text": "1.7e-04",
+   "cell": 11,
+   "line": "12 | 4.402635   | 6.90843    | 1.4e-05          | 1.7e-04"
+  },
+  "sweep.nb.14.steady": {
+   "value": 4.402635,
+   "text": "4.402635",
+   "cell": 11,
+   "line": "14 | 4.402635   | 6.91083    | 2.3e-05          | 1.9e-05"
+  },
+  "sweep.nb.14.peak": {
+   "value": 6.91083,
+   "text": "6.91083",
+   "cell": 11,
+   "line": "14 | 4.402635   | 6.91083    | 2.3e-05          | 1.9e-05"
+  },
+  "sweep.nb.14.top2": {
+   "value": 2.3e-05,
+   "text": "2.3e-05",
+   "cell": 11,
+   "line": "14 | 4.402635   | 6.91083    | 2.3e-05          | 1.9e-05"
+  },
+  "sweep.nb.14.topbuf": {
+   "value": 1.9e-05,
+   "text": "1.9e-05",
+   "cell": 11,
+   "line": "14 | 4.402635   | 6.91083    | 2.3e-05          | 1.9e-05"
+  },
+  "nb_steady_from": {
+   "value": 4.0,
+   "text": "4",
+   "cell": 11,
+   "line": "steady: converged (rtol 0.001) from N_b = 4"
+  },
+  "nb_peak_from": {
+   "value": 12.0,
+   "text": "12",
+   "cell": 11,
+   "line": "peak: converged (rtol 0.001) from N_b = 12"
+  },
+  "c0.0.25.n2us": {
+   "value": 4.3872,
+   "text": "4.3872",
+   "cell": 7,
+   "line": "kappa2 x 0.25: <n>(2 us) = 4.3872, t90 = 614.6 ns, t90 * kappa2 = 0.865  (lossless: 0.850)"
+  },
+  "c0.0.25.t90_ns": {
+   "value": 614.6,
+   "text": "614.6",
+   "cell": 7,
+   "line": "kappa2 x 0.25: <n>(2 us) = 4.3872, t90 = 614.6 ns, t90 * kappa2 = 0.865  (lossless: 0.850)"
+  },
+  "c0.0.25.t90k2": {
+   "value": 0.865,
+   "text": "0.865",
+   "cell": 7,
+   "line": "kappa2 x 0.25: <n>(2 us) = 4.3872, t90 = 614.6 ns, t90 * kappa2 = 0.865  (lossless: 0.850)"
+  },
+  "c0.0.25.t90k2_lossless": {
+   "value": 0.85,
+   "text": "0.850",
+   "cell": 7,
+   "line": "kappa2 x 0.25: <n>(2 us) = 4.3872, t90 = 614.6 ns, t90 * kappa2 = 0.865  (lossless: 0.850)"
+  },
+  "c0.1.0.n2us": {
+   "value": 4.404,
+   "text": "4.4040",
+   "cell": 7,
+   "line": "kappa2 x 1.0 : <n>(2 us) = 4.4040, t90 = 151.7 ns, t90 * kappa2 = 0.854  (lossless: 0.850)"
+  },
+  "c0.1.0.t90_ns": {
+   "value": 151.7,
+   "text": "151.7",
+   "cell": 7,
+   "line": "kappa2 x 1.0 : <n>(2 us) = 4.4040, t90 = 151.7 ns, t90 * kappa2 = 0.854  (lossless: 0.850)"
+  },
+  "c0.1.0.t90k2": {
+   "value": 0.854,
+   "text": "0.854",
+   "cell": 7,
+   "line": "kappa2 x 1.0 : <n>(2 us) = 4.4040, t90 = 151.7 ns, t90 * kappa2 = 0.854  (lossless: 0.850)"
+  },
+  "c0.1.0.t90k2_lossless": {
+   "value": 0.85,
+   "text": "0.850",
+   "cell": 7,
+   "line": "kappa2 x 1.0 : <n>(2 us) = 4.4040, t90 = 151.7 ns, t90 * kappa2 = 0.854  (lossless: 0.850)"
+  },
+  "c0.4.0.n2us": {
+   "value": 4.4081,
+   "text": "4.4081",
+   "cell": 7,
+   "line": "kappa2 x 4.0 : <n>(2 us) = 4.4081, t90 =  37.8 ns, t90 * kappa2 = 0.851  (lossless: 0.851)"
+  },
+  "c0.4.0.t90_ns": {
+   "value": 37.8,
+   "text": "37.8",
+   "cell": 7,
+   "line": "kappa2 x 4.0 : <n>(2 us) = 4.4081, t90 =  37.8 ns, t90 * kappa2 = 0.851  (lossless: 0.851)"
+  },
+  "c0.4.0.t90k2": {
+   "value": 0.851,
+   "text": "0.851",
+   "cell": 7,
+   "line": "kappa2 x 4.0 : <n>(2 us) = 4.4081, t90 =  37.8 ns, t90 * kappa2 = 0.851  (lossless: 0.851)"
+  },
+  "c0.4.0.t90k2_lossless": {
+   "value": 0.851,
+   "text": "0.851",
+   "cell": 7,
+   "line": "kappa2 x 4.0 : <n>(2 us) = 4.4081, t90 =  37.8 ns, t90 * kappa2 = 0.851  (lossless: 0.851)"
+  },
+  "cat_t.1.parity": {
+   "value": 0.629,
+   "text": "0.629",
+   "cell": 22,
+   "line": "t = 1 us: <P> = 0.629, F(C+) = 0.811, F(+alpha) = 0.498, purity = 0.692, coherence = 0.626"
+  },
+  "cat_t.1.fid_cat": {
+   "value": 0.811,
+   "text": "0.811",
+   "cell": 22,
+   "line": "t = 1 us: <P> = 0.629, F(C+) = 0.811, F(+alpha) = 0.498, purity = 0.692, coherence = 0.626"
+  },
+  "cat_t.1.fid_plus": {
+   "value": 0.498,
+   "text": "0.498",
+   "cell": 22,
+   "line": "t = 1 us: <P> = 0.629, F(C+) = 0.811, F(+alpha) = 0.498, purity = 0.692, coherence = 0.626"
+  },
+  "cat_t.1.purity": {
+   "value": 0.692,
+   "text": "0.692",
+   "cell": 22,
+   "line": "t = 1 us: <P> = 0.629, F(C+) = 0.811, F(+alpha) = 0.498, purity = 0.692, coherence = 0.626"
+  },
+  "cat_t.1.coherence": {
+   "value": 0.626,
+   "text": "0.626",
+   "cell": 22,
+   "line": "t = 1 us: <P> = 0.629, F(C+) = 0.811, F(+alpha) = 0.498, purity = 0.692, coherence = 0.626"
+  },
+  "cat_t.3.parity": {
+   "value": 0.225,
+   "text": "0.225",
+   "cell": 22,
+   "line": "t = 3 us: <P> = 0.225, F(C+) = 0.612, F(+alpha) = 0.500, purity = 0.525, coherence = 0.225"
+  },
+  "cat_t.3.fid_cat": {
+   "value": 0.612,
+   "text": "0.612",
+   "cell": 22,
+   "line": "t = 3 us: <P> = 0.225, F(C+) = 0.612, F(+alpha) = 0.500, purity = 0.525, coherence = 0.225"
+  },
+  "cat_t.3.fid_plus": {
+   "value": 0.5,
+   "text": "0.500",
+   "cell": 22,
+   "line": "t = 3 us: <P> = 0.225, F(C+) = 0.612, F(+alpha) = 0.500, purity = 0.525, coherence = 0.225"
+  },
+  "cat_t.3.purity": {
+   "value": 0.525,
+   "text": "0.525",
+   "cell": 22,
+   "line": "t = 3 us: <P> = 0.225, F(C+) = 0.612, F(+alpha) = 0.500, purity = 0.525, coherence = 0.225"
+  },
+  "cat_t.3.coherence": {
+   "value": 0.225,
+   "text": "0.225",
+   "cell": 22,
+   "line": "t = 3 us: <P> = 0.225, F(C+) = 0.612, F(+alpha) = 0.500, purity = 0.525, coherence = 0.225"
+  },
+  "cat_t.6.parity": {
+   "value": 0.048,
+   "text": "0.048",
+   "cell": 22,
+   "line": "t = 6 us: <P> = 0.048, F(C+) = 0.524, F(+alpha) = 0.500, purity = 0.501, coherence = 0.048"
+  },
+  "cat_t.6.fid_cat": {
+   "value": 0.524,
+   "text": "0.524",
+   "cell": 22,
+   "line": "t = 6 us: <P> = 0.048, F(C+) = 0.524, F(+alpha) = 0.500, purity = 0.501, coherence = 0.048"
+  },
+  "cat_t.6.fid_plus": {
+   "value": 0.5,
+   "text": "0.500",
+   "cell": 22,
+   "line": "t = 6 us: <P> = 0.048, F(C+) = 0.524, F(+alpha) = 0.500, purity = 0.501, coherence = 0.048"
+  },
+  "cat_t.6.purity": {
+   "value": 0.501,
+   "text": "0.501",
+   "cell": 22,
+   "line": "t = 6 us: <P> = 0.048, F(C+) = 0.524, F(+alpha) = 0.500, purity = 0.501, coherence = 0.048"
+  },
+  "cat_t.6.coherence": {
+   "value": 0.048,
+   "text": "0.048",
+   "cell": 22,
+   "line": "t = 6 us: <P> = 0.048, F(C+) = 0.524, F(+alpha) = 0.500, purity = 0.501, coherence = 0.048"
+  },
+  "a_beta.0.00.fid": {
+   "value": 0.5,
+   "text": "0.5000",
+   "cell": 26,
+   "line": "beta = 0.00: F(+alpha) = 0.5000, basin model = 0.5000, Re<a> = 0.000"
+  },
+  "a_beta.0.00.basin": {
+   "value": 0.5,
+   "text": "0.5000",
+   "cell": 26,
+   "line": "beta = 0.00: F(+alpha) = 0.5000, basin model = 0.5000, Re<a> = 0.000"
+  },
+  "a_beta.0.00.re_a": {
+   "value": 0.0,
+   "text": "0.000",
+   "cell": 26,
+   "line": "beta = 0.00: F(+alpha) = 0.5000, basin model = 0.5000, Re<a> = 0.000"
+  },
+  "a_beta.0.25.fid": {
+   "value": 0.6931,
+   "text": "0.6931",
+   "cell": 26,
+   "line": "beta = 0.25: F(+alpha) = 0.6931, basin model = 0.6915, Re<a> = 0.810"
+  },
+  "a_beta.0.25.basin": {
+   "value": 0.6915,
+   "text": "0.6915",
+   "cell": 26,
+   "line": "beta = 0.25: F(+alpha) = 0.6931, basin model = 0.6915, Re<a> = 0.810"
+  },
+  "a_beta.0.25.re_a": {
+   "value": 0.81,
+   "text": "0.810",
+   "cell": 26,
+   "line": "beta = 0.25: F(+alpha) = 0.6931, basin model = 0.6915, Re<a> = 0.810"
+  },
+  "a_beta.0.50.fid": {
+   "value": 0.8436,
+   "text": "0.8436",
+   "cell": 26,
+   "line": "beta = 0.50: F(+alpha) = 0.8436, basin model = 0.8413, Re<a> = 1.442"
+  },
+  "a_beta.0.50.basin": {
+   "value": 0.8413,
+   "text": "0.8413",
+   "cell": 26,
+   "line": "beta = 0.50: F(+alpha) = 0.8436, basin model = 0.8413, Re<a> = 1.442"
+  },
+  "a_beta.0.50.re_a": {
+   "value": 1.442,
+   "text": "1.442",
+   "cell": 26,
+   "line": "beta = 0.50: F(+alpha) = 0.8436, basin model = 0.8413, Re<a> = 1.442"
+  },
+  "a_beta.0.75.fid": {
+   "value": 0.9351,
+   "text": "0.9351",
+   "cell": 26,
+   "line": "beta = 0.75: F(+alpha) = 0.9351, basin model = 0.9332, Re<a> = 1.826"
+  },
+  "a_beta.0.75.basin": {
+   "value": 0.9332,
+   "text": "0.9332",
+   "cell": 26,
+   "line": "beta = 0.75: F(+alpha) = 0.9351, basin model = 0.9332, Re<a> = 1.826"
+  },
+  "a_beta.0.75.re_a": {
+   "value": 1.826,
+   "text": "1.826",
+   "cell": 26,
+   "line": "beta = 0.75: F(+alpha) = 0.9351, basin model = 0.9332, Re<a> = 1.826"
+  },
+  "a_beta.1.00.fid": {
+   "value": 0.9783,
+   "text": "0.9783",
+   "cell": 26,
+   "line": "beta = 1.00: F(+alpha) = 0.9783, basin model = 0.9772, Re<a> = 2.007"
+  },
+  "a_beta.1.00.basin": {
+   "value": 0.9772,
+   "text": "0.9772",
+   "cell": 26,
+   "line": "beta = 1.00: F(+alpha) = 0.9783, basin model = 0.9772, Re<a> = 2.007"
+  },
+  "a_beta.1.00.re_a": {
+   "value": 2.007,
+   "text": "2.007",
+   "cell": 26,
+   "line": "beta = 1.00: F(+alpha) = 0.9783, basin model = 0.9772, Re<a> = 2.007"
+  },
+  "a_beta.1.25.fid": {
+   "value": 0.9942,
+   "text": "0.9942",
+   "cell": 26,
+   "line": "beta = 1.25: F(+alpha) = 0.9942, basin model = 0.9938, Re<a> = 2.074"
+  },
+  "a_beta.1.25.basin": {
+   "value": 0.9938,
+   "text": "0.9938",
+   "cell": 26,
+   "line": "beta = 1.25: F(+alpha) = 0.9942, basin model = 0.9938, Re<a> = 2.074"
+  },
+  "a_beta.1.25.re_a": {
+   "value": 2.074,
+   "text": "2.074",
+   "cell": 26,
+   "line": "beta = 1.25: F(+alpha) = 0.9942, basin model = 0.9938, Re<a> = 2.074"
+  },
+  "a_beta.1.50.fid": {
+   "value": 0.9988,
+   "text": "0.9988",
+   "cell": 26,
+   "line": "beta = 1.50: F(+alpha) = 0.9988, basin model = 0.9987, Re<a> = 2.093"
+  },
+  "a_beta.1.50.basin": {
+   "value": 0.9987,
+   "text": "0.9987",
+   "cell": 26,
+   "line": "beta = 1.50: F(+alpha) = 0.9988, basin model = 0.9987, Re<a> = 2.093"
+  },
+  "a_beta.1.50.re_a": {
+   "value": 2.093,
+   "text": "2.093",
+   "cell": 26,
+   "line": "beta = 1.50: F(+alpha) = 0.9988, basin model = 0.9987, Re<a> = 2.093"
+  },
+  "a_beta.2.00.fid": {
+   "value": 1.0,
+   "text": "1.0000",
+   "cell": 26,
+   "line": "beta = 2.00: F(+alpha) = 1.0000, basin model = 1.0000, Re<a> = 2.098"
+  },
+  "a_beta.2.00.basin": {
+   "value": 1.0,
+   "text": "1.0000",
+   "cell": 26,
+   "line": "beta = 2.00: F(+alpha) = 1.0000, basin model = 1.0000, Re<a> = 2.098"
+  },
+  "a_beta.2.00.re_a": {
+   "value": 2.098,
+   "text": "2.098",
+   "cell": 26,
+   "line": "beta = 2.00: F(+alpha) = 1.0000, basin model = 1.0000, Re<a> = 2.098"
+  },
+  "a_phase.0.0.fid": {
+   "value": 0.9988,
+   "text": "0.9988",
+   "cell": 26,
+   "line": "phase error  0.0 deg: F(+alpha) = 0.9988, basin model = 0.9987"
+  },
+  "a_phase.0.0.basin": {
+   "value": 0.9987,
+   "text": "0.9987",
+   "cell": 26,
+   "line": "phase error  0.0 deg: F(+alpha) = 0.9988, basin model = 0.9987"
+  },
+  "a_phase.22.5.fid": {
+   "value": 0.9946,
+   "text": "0.9946",
+   "cell": 26,
+   "line": "phase error 22.5 deg: F(+alpha) = 0.9946, basin model = 0.9972"
+  },
+  "a_phase.22.5.basin": {
+   "value": 0.9972,
+   "text": "0.9972",
+   "cell": 26,
+   "line": "phase error 22.5 deg: F(+alpha) = 0.9946, basin model = 0.9972"
+  },
+  "a_phase.45.0.fid": {
+   "value": 0.9573,
+   "text": "0.9573",
+   "cell": 26,
+   "line": "phase error 45.0 deg: F(+alpha) = 0.9573, basin model = 0.9831"
+  },
+  "a_phase.45.0.basin": {
+   "value": 0.9831,
+   "text": "0.9831",
+   "cell": 26,
+   "line": "phase error 45.0 deg: F(+alpha) = 0.9573, basin model = 0.9831"
+  },
+  "a_phase.67.5.fid": {
+   "value": 0.8057,
+   "text": "0.8057",
+   "cell": 26,
+   "line": "phase error 67.5 deg: F(+alpha) = 0.8057, basin model = 0.8745"
+  },
+  "a_phase.67.5.basin": {
+   "value": 0.8745,
+   "text": "0.8745",
+   "cell": 26,
+   "line": "phase error 67.5 deg: F(+alpha) = 0.8057, basin model = 0.8745"
+  },
+  "a_phase.90.0.fid": {
+   "value": 0.5,
+   "text": "0.5000",
+   "cell": 26,
+   "line": "phase error 90.0 deg: F(+alpha) = 0.5000, basin model = 0.5000"
+  },
+  "a_phase.90.0.basin": {
+   "value": 0.5,
+   "text": "0.5000",
+   "cell": 26,
+   "line": "phase error 90.0 deg: F(+alpha) = 0.5000, basin model = 0.5000"
+  },
+  "phase_err.0.0.err_a": {
+   "value": 0.00122,
+   "text": "1.22e-03",
+   "cell": 34,
+   "line": "phase error  0.0 deg: error A = 1.22e-03, error B = 1.46e-03"
+  },
+  "phase_err.0.0.err_b": {
+   "value": 0.00146,
+   "text": "1.46e-03",
+   "cell": 34,
+   "line": "phase error  0.0 deg: error A = 1.22e-03, error B = 1.46e-03"
+  },
+  "phase_err.22.5.err_a": {
+   "value": 0.00545,
+   "text": "5.45e-03",
+   "cell": 34,
+   "line": "phase error 22.5 deg: error A = 5.45e-03, error B = 4.26e-03"
+  },
+  "phase_err.22.5.err_b": {
+   "value": 0.00426,
+   "text": "4.26e-03",
+   "cell": 34,
+   "line": "phase error 22.5 deg: error A = 5.45e-03, error B = 4.26e-03"
+  },
+  "phase_err.45.0.err_a": {
+   "value": 0.0427,
+   "text": "4.27e-02",
+   "cell": 34,
+   "line": "phase error 45.0 deg: error A = 4.27e-02, error B = 1.27e-02"
+  },
+  "phase_err.45.0.err_b": {
+   "value": 0.0127,
+   "text": "1.27e-02",
+   "cell": 34,
+   "line": "phase error 45.0 deg: error A = 4.27e-02, error B = 1.27e-02"
+  },
+  "beff.10 ns, A = 0.5.beta_eff": {
+   "value": 0.498,
+   "text": "0.498",
+   "cell": 36,
+   "line": "T =  10 ns, A = 0.5: beta_eff = 0.498, model F = 0.8405, simulated F = 0.8428"
+  },
+  "beff.10 ns, A = 0.5.model": {
+   "value": 0.8405,
+   "text": "0.8405",
+   "cell": 36,
+   "line": "T =  10 ns, A = 0.5: beta_eff = 0.498, model F = 0.8405, simulated F = 0.8428"
+  },
+  "beff.10 ns, A = 0.5.sim": {
+   "value": 0.8428,
+   "text": "0.8428",
+   "cell": 36,
+   "line": "T =  10 ns, A = 0.5: beta_eff = 0.498, model F = 0.8405, simulated F = 0.8428"
+  },
+  "beff.10 ns, A = 1.0.beta_eff": {
+   "value": 0.997,
+   "text": "0.997",
+   "cell": 36,
+   "line": "T =  10 ns, A = 1.0: beta_eff = 0.997, model F = 0.9769, simulated F = 0.9780"
+  },
+  "beff.10 ns, A = 1.0.model": {
+   "value": 0.9769,
+   "text": "0.9769",
+   "cell": 36,
+   "line": "T =  10 ns, A = 1.0: beta_eff = 0.997, model F = 0.9769, simulated F = 0.9780"
+  },
+  "beff.10 ns, A = 1.0.sim": {
+   "value": 0.978,
+   "text": "0.9780",
+   "cell": 36,
+   "line": "T =  10 ns, A = 1.0: beta_eff = 0.997, model F = 0.9769, simulated F = 0.9780"
+  },
+  "beff.50 ns, A = 0.5.beta_eff": {
+   "value": 0.464,
+   "text": "0.464",
+   "cell": 36,
+   "line": "T =  50 ns, A = 0.5: beta_eff = 0.464, model F = 0.8235, simulated F = 0.8255"
+  },
+  "beff.50 ns, A = 0.5.model": {
+   "value": 0.8235,
+   "text": "0.8235",
+   "cell": 36,
+   "line": "T =  50 ns, A = 0.5: beta_eff = 0.464, model F = 0.8235, simulated F = 0.8255"
+  },
+  "beff.50 ns, A = 0.5.sim": {
+   "value": 0.8255,
+   "text": "0.8255",
+   "cell": 36,
+   "line": "T =  50 ns, A = 0.5: beta_eff = 0.464, model F = 0.8235, simulated F = 0.8255"
+  },
+  "beff.50 ns, A = 1.0.beta_eff": {
+   "value": 0.929,
+   "text": "0.929",
+   "cell": 36,
+   "line": "T =  50 ns, A = 1.0: beta_eff = 0.929, model F = 0.9684, simulated F = 0.9695"
+  },
+  "beff.50 ns, A = 1.0.model": {
+   "value": 0.9684,
+   "text": "0.9684",
+   "cell": 36,
+   "line": "T =  50 ns, A = 1.0: beta_eff = 0.929, model F = 0.9684, simulated F = 0.9695"
+  },
+  "beff.50 ns, A = 1.0.sim": {
+   "value": 0.9695,
+   "text": "0.9695",
+   "cell": 36,
+   "line": "T =  50 ns, A = 1.0: beta_eff = 0.929, model F = 0.9684, simulated F = 0.9695"
+  },
+  "beff.100 ns, A = 0.5.beta_eff": {
+   "value": 0.389,
+   "text": "0.389",
+   "cell": 36,
+   "line": "T = 100 ns, A = 0.5: beta_eff = 0.389, model F = 0.7818, simulated F = 0.7831"
+  },
+  "beff.100 ns, A = 0.5.model": {
+   "value": 0.7818,
+   "text": "0.7818",
+   "cell": 36,
+   "line": "T = 100 ns, A = 0.5: beta_eff = 0.389, model F = 0.7818, simulated F = 0.7831"
+  },
+  "beff.100 ns, A = 0.5.sim": {
+   "value": 0.7831,
+   "text": "0.7831",
+   "cell": 36,
+   "line": "T = 100 ns, A = 0.5: beta_eff = 0.389, model F = 0.7818, simulated F = 0.7831"
+  },
+  "beff.100 ns, A = 1.0.beta_eff": {
+   "value": 0.778,
+   "text": "0.778",
+   "cell": 36,
+   "line": "T = 100 ns, A = 1.0: beta_eff = 0.778, model F = 0.9402, simulated F = 0.9411"
+  },
+  "beff.100 ns, A = 1.0.model": {
+   "value": 0.9402,
+   "text": "0.9402",
+   "cell": 36,
+   "line": "T = 100 ns, A = 1.0: beta_eff = 0.778, model F = 0.9402, simulated F = 0.9411"
+  },
+  "beff.100 ns, A = 1.0.sim": {
+   "value": 0.9411,
+   "text": "0.9411",
+   "cell": 36,
+   "line": "T = 100 ns, A = 1.0: beta_eff = 0.778, model F = 0.9402, simulated F = 0.9411"
+  },
+  "c_ramp.0.25.push": {
+   "value": 8.08,
+   "text": "8.08",
+   "cell": 38,
+   "line": "ramp 0.25 us: push eps = 8.08 rad/us = 1.68 g2 (1.29 MHz) -> F(+alpha) = 0.99908, error 9.2e-04"
+  },
+  "c_ramp.0.25.push_g2": {
+   "value": 1.68,
+   "text": "1.68",
+   "cell": 38,
+   "line": "ramp 0.25 us: push eps = 8.08 rad/us = 1.68 g2 (1.29 MHz) -> F(+alpha) = 0.99908, error 9.2e-04"
+  },
+  "c_ramp.0.25.push_mhz": {
+   "value": 1.29,
+   "text": "1.29",
+   "cell": 38,
+   "line": "ramp 0.25 us: push eps = 8.08 rad/us = 1.68 g2 (1.29 MHz) -> F(+alpha) = 0.99908, error 9.2e-04"
+  },
+  "c_ramp.0.25.fid": {
+   "value": 0.99908,
+   "text": "0.99908",
+   "cell": 38,
+   "line": "ramp 0.25 us: push eps = 8.08 rad/us = 1.68 g2 (1.29 MHz) -> F(+alpha) = 0.99908, error 9.2e-04"
+  },
+  "c_ramp.0.25.err": {
+   "value": 0.00092,
+   "text": "9.2e-04",
+   "cell": 38,
+   "line": "ramp 0.25 us: push eps = 8.08 rad/us = 1.68 g2 (1.29 MHz) -> F(+alpha) = 0.99908, error 9.2e-04"
+  },
+  "c_ramp.0.50.push": {
+   "value": 5.77,
+   "text": "5.77",
+   "cell": 38,
+   "line": "ramp 0.50 us: push eps = 5.77 rad/us = 1.20 g2 (0.92 MHz) -> F(+alpha) = 0.99943, error 5.7e-04"
+  },
+  "c_ramp.0.50.push_g2": {
+   "value": 1.2,
+   "text": "1.20",
+   "cell": 38,
+   "line": "ramp 0.50 us: push eps = 5.77 rad/us = 1.20 g2 (0.92 MHz) -> F(+alpha) = 0.99943, error 5.7e-04"
+  },
+  "c_ramp.0.50.push_mhz": {
+   "value": 0.92,
+   "text": "0.92",
+   "cell": 38,
+   "line": "ramp 0.50 us: push eps = 5.77 rad/us = 1.20 g2 (0.92 MHz) -> F(+alpha) = 0.99943, error 5.7e-04"
+  },
+  "c_ramp.0.50.fid": {
+   "value": 0.99943,
+   "text": "0.99943",
+   "cell": 38,
+   "line": "ramp 0.50 us: push eps = 5.77 rad/us = 1.20 g2 (0.92 MHz) -> F(+alpha) = 0.99943, error 5.7e-04"
+  },
+  "c_ramp.0.50.err": {
+   "value": 0.00057,
+   "text": "5.7e-04",
+   "cell": 38,
+   "line": "ramp 0.50 us: push eps = 5.77 rad/us = 1.20 g2 (0.92 MHz) -> F(+alpha) = 0.99943, error 5.7e-04"
+  },
+  "c_ramp.1.00.push": {
+   "value": 4.37,
+   "text": "4.37",
+   "cell": 38,
+   "line": "ramp 1.00 us: push eps = 4.37 rad/us = 0.91 g2 (0.70 MHz) -> F(+alpha) = 0.99943, error 5.7e-04"
+  },
+  "c_ramp.1.00.push_g2": {
+   "value": 0.91,
+   "text": "0.91",
+   "cell": 38,
+   "line": "ramp 1.00 us: push eps = 4.37 rad/us = 0.91 g2 (0.70 MHz) -> F(+alpha) = 0.99943, error 5.7e-04"
+  },
+  "c_ramp.1.00.push_mhz": {
+   "value": 0.7,
+   "text": "0.70",
+   "cell": 38,
+   "line": "ramp 1.00 us: push eps = 4.37 rad/us = 0.91 g2 (0.70 MHz) -> F(+alpha) = 0.99943, error 5.7e-04"
+  },
+  "c_ramp.1.00.fid": {
+   "value": 0.99943,
+   "text": "0.99943",
+   "cell": 38,
+   "line": "ramp 1.00 us: push eps = 4.37 rad/us = 0.91 g2 (0.70 MHz) -> F(+alpha) = 0.99943, error 5.7e-04"
+  },
+  "c_ramp.1.00.err": {
+   "value": 0.00057,
+   "text": "5.7e-04",
+   "cell": 38,
+   "line": "ramp 1.00 us: push eps = 4.37 rad/us = 0.91 g2 (0.70 MHz) -> F(+alpha) = 0.99943, error 5.7e-04"
+  },
+  "c_ramp.2.00.push": {
+   "value": 3.29,
+   "text": "3.29",
+   "cell": 38,
+   "line": "ramp 2.00 us: push eps = 3.29 rad/us = 0.69 g2 (0.52 MHz) -> F(+alpha) = 0.99878, error 1.2e-03"
+  },
+  "c_ramp.2.00.push_g2": {
+   "value": 0.69,
+   "text": "0.69",
+   "cell": 38,
+   "line": "ramp 2.00 us: push eps = 3.29 rad/us = 0.69 g2 (0.52 MHz) -> F(+alpha) = 0.99878, error 1.2e-03"
+  },
+  "c_ramp.2.00.push_mhz": {
+   "value": 0.52,
+   "text": "0.52",
+   "cell": 38,
+   "line": "ramp 2.00 us: push eps = 3.29 rad/us = 0.69 g2 (0.52 MHz) -> F(+alpha) = 0.99878, error 1.2e-03"
+  },
+  "c_ramp.2.00.fid": {
+   "value": 0.99878,
+   "text": "0.99878",
+   "cell": 38,
+   "line": "ramp 2.00 us: push eps = 3.29 rad/us = 0.69 g2 (0.52 MHz) -> F(+alpha) = 0.99878, error 1.2e-03"
+  },
+  "c_ramp.2.00.err": {
+   "value": 0.0012,
+   "text": "1.2e-03",
+   "cell": 38,
+   "line": "ramp 2.00 us: push eps = 3.29 rad/us = 0.69 g2 (0.52 MHz) -> F(+alpha) = 0.99878, error 1.2e-03"
+  },
+  "c_phase.0.0.err": {
+   "value": 0.000575,
+   "text": "5.75e-04",
+   "cell": 38,
+   "line": "method C, phase error  0.0 deg: error = 5.75e-04"
+  },
+  "c_phase.22.5.err": {
+   "value": 0.00189,
+   "text": "1.89e-03",
+   "cell": 38,
+   "line": "method C, phase error 22.5 deg: error = 1.89e-03"
+  },
+  "c_phase.45.0.err": {
+   "value": 0.0367,
+   "text": "3.67e-02",
+   "cell": 38,
+   "line": "method C, phase error 45.0 deg: error = 3.67e-02"
+  },
+  "b_grid.10.0.25": {
+   "value": 0.6925,
+   "text": "0.6925",
+   "cell": 28,
+   "line": "T =  10 ns | F(+alpha) for areas [0.25, 0.5, 1.0, 1.5, 2.5, 4.0]: 0.6925 0.8428 0.9780 0.9987 0.9998 0.9542  (drive up to 64 MHz)"
+  },
+  "b_grid.10.0.5": {
+   "value": 0.8428,
+   "text": "0.8428",
+   "cell": 28,
+   "line": "T =  10 ns | F(+alpha) for areas [0.25, 0.5, 1.0, 1.5, 2.5, 4.0]: 0.6925 0.8428 0.9780 0.9987 0.9998 0.9542  (drive up to 64 MHz)"
+  },
+  "b_grid.10.1.0": {
+   "value": 0.978,
+   "text": "0.9780",
+   "cell": 28,
+   "line": "T =  10 ns | F(+alpha) for areas [0.25, 0.5, 1.0, 1.5, 2.5, 4.0]: 0.6925 0.8428 0.9780 0.9987 0.9998 0.9542  (drive up to 64 MHz)"
+  },
+  "b_grid.10.1.5": {
+   "value": 0.9987,
+   "text": "0.9987",
+   "cell": 28,
+   "line": "T =  10 ns | F(+alpha) for areas [0.25, 0.5, 1.0, 1.5, 2.5, 4.0]: 0.6925 0.8428 0.9780 0.9987 0.9998 0.9542  (drive up to 64 MHz)"
+  },
+  "b_grid.10.2.5": {
+   "value": 0.9998,
+   "text": "0.9998",
+   "cell": 28,
+   "line": "T =  10 ns | F(+alpha) for areas [0.25, 0.5, 1.0, 1.5, 2.5, 4.0]: 0.6925 0.8428 0.9780 0.9987 0.9998 0.9542  (drive up to 64 MHz)"
+  },
+  "b_grid.10.4.0": {
+   "value": 0.9542,
+   "text": "0.9542",
+   "cell": 28,
+   "line": "T =  10 ns | F(+alpha) for areas [0.25, 0.5, 1.0, 1.5, 2.5, 4.0]: 0.6925 0.8428 0.9780 0.9987 0.9998 0.9542  (drive up to 64 MHz)"
+  },
+  "b_grid.10.max_mhz": {
+   "value": 64.0,
+   "text": "64",
+   "cell": 28,
+   "line": "T =  10 ns | F(+alpha) for areas [0.25, 0.5, 1.0, 1.5, 2.5, 4.0]: 0.6925 0.8428 0.9780 0.9987 0.9998 0.9542  (drive up to 64 MHz)"
+  },
+  "b_grid.50.0.25": {
+   "value": 0.6802,
+   "text": "0.6802",
+   "cell": 28,
+   "line": "T =  50 ns | F(+alpha) for areas [0.25, 0.5, 1.0, 1.5, 2.5, 4.0]: 0.6802 0.8255 0.9695 0.9974 0.9985 0.9376  (drive up to 13 MHz)"
+  },
+  "b_grid.50.0.5": {
+   "value": 0.8255,
+   "text": "0.8255",
+   "cell": 28,
+   "line": "T =  50 ns | F(+alpha) for areas [0.25, 0.5, 1.0, 1.5, 2.5, 4.0]: 0.6802 0.8255 0.9695 0.9974 0.9985 0.9376  (drive up to 13 MHz)"
+  },
+  "b_grid.50.1.0": {
+   "value": 0.9695,
+   "text": "0.9695",
+   "cell": 28,
+   "line": "T =  50 ns | F(+alpha) for areas [0.25, 0.5, 1.0, 1.5, 2.5, 4.0]: 0.6802 0.8255 0.9695 0.9974 0.9985 0.9376  (drive up to 13 MHz)"
+  },
+  "b_grid.50.1.5": {
+   "value": 0.9974,
+   "text": "0.9974",
+   "cell": 28,
+   "line": "T =  50 ns | F(+alpha) for areas [0.25, 0.5, 1.0, 1.5, 2.5, 4.0]: 0.6802 0.8255 0.9695 0.9974 0.9985 0.9376  (drive up to 13 MHz)"
+  },
+  "b_grid.50.2.5": {
+   "value": 0.9985,
+   "text": "0.9985",
+   "cell": 28,
+   "line": "T =  50 ns | F(+alpha) for areas [0.25, 0.5, 1.0, 1.5, 2.5, 4.0]: 0.6802 0.8255 0.9695 0.9974 0.9985 0.9376  (drive up to 13 MHz)"
+  },
+  "b_grid.50.4.0": {
+   "value": 0.9376,
+   "text": "0.9376",
+   "cell": 28,
+   "line": "T =  50 ns | F(+alpha) for areas [0.25, 0.5, 1.0, 1.5, 2.5, 4.0]: 0.6802 0.8255 0.9695 0.9974 0.9985 0.9376  (drive up to 13 MHz)"
+  },
+  "b_grid.50.max_mhz": {
+   "value": 13.0,
+   "text": "13",
+   "cell": 28,
+   "line": "T =  50 ns | F(+alpha) for areas [0.25, 0.5, 1.0, 1.5, 2.5, 4.0]: 0.6802 0.8255 0.9695 0.9974 0.9985 0.9376  (drive up to 13 MHz)"
+  },
+  "b_grid.100.0.25": {
+   "value": 0.6523,
+   "text": "0.6523",
+   "cell": 28,
+   "line": "T = 100 ns | F(+alpha) for areas [0.25, 0.5, 1.0, 1.5, 2.5, 4.0]: 0.6523 0.7831 0.9411 0.9897 0.9934 0.9181  (drive up to 6 MHz)"
+  },
+  "b_grid.100.0.5": {
+   "value": 0.7831,
+   "text": "0.7831",
+   "cell": 28,
+   "line": "T = 100 ns | F(+alpha) for areas [0.25, 0.5, 1.0, 1.5, 2.5, 4.0]: 0.6523 0.7831 0.9411 0.9897 0.9934 0.9181  (drive up to 6 MHz)"
+  },
+  "b_grid.100.1.0": {
+   "value": 0.9411,
+   "text": "0.9411",
+   "cell": 28,
+   "line": "T = 100 ns | F(+alpha) for areas [0.25, 0.5, 1.0, 1.5, 2.5, 4.0]: 0.6523 0.7831 0.9411 0.9897 0.9934 0.9181  (drive up to 6 MHz)"
+  },
+  "b_grid.100.1.5": {
+   "value": 0.9897,
+   "text": "0.9897",
+   "cell": 28,
+   "line": "T = 100 ns | F(+alpha) for areas [0.25, 0.5, 1.0, 1.5, 2.5, 4.0]: 0.6523 0.7831 0.9411 0.9897 0.9934 0.9181  (drive up to 6 MHz)"
+  },
+  "b_grid.100.2.5": {
+   "value": 0.9934,
+   "text": "0.9934",
+   "cell": 28,
+   "line": "T = 100 ns | F(+alpha) for areas [0.25, 0.5, 1.0, 1.5, 2.5, 4.0]: 0.6523 0.7831 0.9411 0.9897 0.9934 0.9181  (drive up to 6 MHz)"
+  },
+  "b_grid.100.4.0": {
+   "value": 0.9181,
+   "text": "0.9181",
+   "cell": 28,
+   "line": "T = 100 ns | F(+alpha) for areas [0.25, 0.5, 1.0, 1.5, 2.5, 4.0]: 0.6523 0.7831 0.9411 0.9897 0.9934 0.9181  (drive up to 6 MHz)"
+  },
+  "b_grid.100.max_mhz": {
+   "value": 6.0,
+   "text": "6",
+   "cell": 28,
+   "line": "T = 100 ns | F(+alpha) for areas [0.25, 0.5, 1.0, 1.5, 2.5, 4.0]: 0.6523 0.7831 0.9411 0.9897 0.9934 0.9181  (drive up to 6 MHz)"
+  },
+  "d_beta.1.80.err": {
+   "value": 0.000131,
+   "text": "1.31e-04",
+   "cell": 43,
+   "line": "method D sweep: beta = 1.80: error 1.31e-04, Re<a> = 2.098"
+  },
+  "d_beta.1.80.re_a": {
+   "value": 2.098,
+   "text": "2.098",
+   "cell": 43,
+   "line": "method D sweep: beta = 1.80: error 1.31e-04, Re<a> = 2.098"
+  },
+  "d_beta.2.10.err": {
+   "value": 8.41e-06,
+   "text": "8.41e-06",
+   "cell": 43,
+   "line": "method D sweep: beta = 2.10: error 8.41e-06, Re<a> = 2.098"
+  },
+  "d_beta.2.10.re_a": {
+   "value": 2.098,
+   "text": "2.098",
+   "cell": 43,
+   "line": "method D sweep: beta = 2.10: error 8.41e-06, Re<a> = 2.098"
+  },
+  "d_beta.2.30.err": {
+   "value": 4.63e-05,
+   "text": "4.63e-05",
+   "cell": 43,
+   "line": "method D sweep: beta = 2.30: error 4.63e-05, Re<a> = 2.098"
+  },
+  "d_beta.2.30.re_a": {
+   "value": 2.098,
+   "text": "2.098",
+   "cell": 43,
+   "line": "method D sweep: beta = 2.30: error 4.63e-05, Re<a> = 2.098"
+  },
+  "d_beta.2.50.err": {
+   "value": 0.000202,
+   "text": "2.02e-04",
+   "cell": 43,
+   "line": "method D sweep: beta = 2.50: error 2.02e-04, Re<a> = 2.097"
+  },
+  "d_beta.2.50.re_a": {
+   "value": 2.097,
+   "text": "2.097",
+   "cell": 43,
+   "line": "method D sweep: beta = 2.50: error 2.02e-04, Re<a> = 2.097"
+  },
+  "d_amp.0.9.err": {
+   "value": 5.85e-05,
+   "text": "5.85e-05",
+   "cell": 43,
+   "line": "method D amplitude 0.9 alpha: error 5.85e-05"
+  },
+  "d_amp.1.1.err": {
+   "value": 5.06e-05,
+   "text": "5.06e-05",
+   "cell": 43,
+   "line": "method D amplitude 1.1 alpha: error 5.06e-05"
+  },
+  "d_phase.22.5.err": {
+   "value": 0.00169,
+   "text": "1.69e-03",
+   "cell": 43,
+   "line": "method D phase error 22.5 deg: error 1.69e-03"
+  },
+  "d_phase.45.0.err": {
+   "value": 0.0273,
+   "text": "2.73e-02",
+   "cell": 43,
+   "line": "method D phase error 45.0 deg: error 2.73e-02"
+  }
+ },
+ "derived": {
+  "alpha2": {
+   "value": 4.41,
+   "formula": "alpha^2 with alpha = 2.1 (input)"
+  },
+  "peak_over_alpha2_pct": {
+   "value": 56.32653061224489,
+   "formula": "100 * (peak_n / alpha2 - 1)"
+  },
+  "gamma_agree_pct": {
+   "value": 0.5462348809988304,
+   "formula": "100 * (gamma_pred / coh_decay - 1)"
+  },
+  "n_shift_agree_pct": {
+   "value": 16.763005780346816,
+   "formula": "100 * (n_shift / n_shift_mf - 1)"
+  },
+  "b0_p01_init_formula": {
+   "value": 0.0915781944436709,
+   "formula": "e^-4 (1 + 4) for |alpha_0|^2 = 4"
+  },
+  "c_err_best": {
+   "value": 0.00057,
+   "formula": "min(c_ramp.*.err)"
+  },
+  "c_vs_a_ratio": {
+   "value": 2.1217391304347823,
+   "formula": "phase_err.0.0.err_a / c_phase.0.0.err"
+  },
+  "b_grid_overdrive_drop": {
+   "value": 0.060900000000000065,
+   "formula": "b_grid.50.2.5 - b_grid.50.4.0"
+  },
+  "b_drive_over_g2": {
+   "value": 10.484927916120576,
+   "formula": "b_mhz / g2_mhz (input)"
+  },
+  "b_over_c_drive": {
+   "value": 11.428571428571429,
+   "formula": "b_mhz / c_ramp.1.00.push_mhz"
+  }
+ },
+ "inputs": {
+  "alpha": {
+   "value": 2.1,
+   "source": "catqubit/params.py: TARGET_ALPHA = 2.1"
+  },
+  "g2_mhz": {
+   "value": 0.763,
+   "source": "catqubit/params.py: G2_MHZ = 0.763 (Réglade et al., Table S2)"
+  },
+  "kappa_b_mhz": {
+   "value": 2.6,
+   "source": "catqubit/params.py: KAPPA_B_MHZ = 2.6 (Réglade et al., Table S2)"
+  },
+  "kappa_a_mhz": {
+   "value": 0.0093,
+   "source": "catqubit/params.py: KAPPA_A_MHZ = 9.3e-3 (Réglade et al., Table S2)"
+  },
+  "a0_delta_mhz": {
+   "value": 1.0,
+   "source": "tools/build_notebook.py: DELTA = to_angular(1.0)"
+  },
+  "a0_kappa_mhz": {
+   "value": 1.0,
+   "source": "tools/build_notebook.py: KAPPA = to_angular(1.0)"
+  },
+  "a0_alpha0": {
+   "value": 2.0,
+   "source": "tools/build_notebook.py: dq.coherent(N, 2.0)"
+  },
+  "a0_n0": {
+   "value": 4.0,
+   "source": "|alpha_0|^2 with alpha_0 = 2"
+  },
+  "b0_t_us": {
+   "value": 3.0,
+   "source": "tools/build_notebook.py: t_b = jnp.linspace(0.0, 3.0, 301)"
+  },
+  "c0_t_us": {
+   "value": 2.0,
+   "source": "tools/build_notebook.py: t_c = jnp.linspace(0.0, 2.0, 2001)"
+  },
+  "sim_t_us": {
+   "value": 3.0,
+   "source": "tools/build_notebook.py: t_1 = jnp.linspace(0.0, 3.0, 301)"
+  },
+  "parity_t_us": {
+   "value": 6.0,
+   "source": "tools/build_notebook.py: t_3 = jnp.linspace(0.0, 6.0, 121)"
+  },
+  "rtol": {
+   "value": 0.001,
+   "source": "catqubit convergence criterion, printed as 'rtol 0.001' in cell 11"
+  }
+ }
+}
